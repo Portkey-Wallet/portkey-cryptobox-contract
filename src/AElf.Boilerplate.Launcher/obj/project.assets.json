@@ -13792,14 +13792,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/AElf.Boilerplate.Launcher.csproj",
+      "projectUniqueName": "/Users/wangyue/Desktop/template/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/AElf.Boilerplate.Launcher.csproj",
       "projectName": "AElf.Boilerplate.Launcher",
-      "projectPath": "/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/AElf.Boilerplate.Launcher.csproj",
+      "projectPath": "/Users/wangyue/Desktop/template/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/AElf.Boilerplate.Launcher.csproj",
       "packagesPath": "/Users/wangyue/.nuget/packages/",
-      "outputPath": "/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/obj/",
+      "outputPath": "/Users/wangyue/Desktop/template/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/NuGet.Config",
+        "/Users/wangyue/Desktop/template/aelf-boilerplate/chain/NuGet.Config",
         "/Users/wangyue/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
@@ -13813,8 +13813,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/src/AElf.Boilerplate.MainChain/AElf.Boilerplate.MainChain.csproj": {
-              "projectPath": "/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/src/AElf.Boilerplate.MainChain/AElf.Boilerplate.MainChain.csproj"
+            "/Users/wangyue/Desktop/template/aelf-boilerplate/chain/src/AElf.Boilerplate.MainChain/AElf.Boilerplate.MainChain.csproj": {
+              "projectPath": "/Users/wangyue/Desktop/template/aelf-boilerplate/chain/src/AElf.Boilerplate.MainChain/AElf.Boilerplate.MainChain.csproj"
             }
           }
         }

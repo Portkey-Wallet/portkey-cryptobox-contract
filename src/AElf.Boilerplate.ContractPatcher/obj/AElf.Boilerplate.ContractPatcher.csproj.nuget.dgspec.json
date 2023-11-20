@@ -14,13 +14,15 @@
         "outputPath": "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/src/AElf.Boilerplate.ContractPatcher/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/NuGet.Config",
           "/Users/wangyue/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/aelf-project-dev/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -40,15 +42,15 @@
           "dependencies": {
             "AElf.CSharp.CodeOps": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Runtime.CSharp.Core": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Types": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "CommandLineParser": {
               "target": "Package",

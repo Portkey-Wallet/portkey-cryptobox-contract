@@ -19,19 +19,17 @@
         </ContractCode>
     </ItemGroup>
 
-    <ItemGroup>
 
+    <ItemGroup>
         <ContractReference Include="..\..\protobuf\token_contract.proto">
             <Link>Protobuf\Proto\reference\token_contract.proto</Link>
         </ContractReference>
-        
     </ItemGroup>
+
     <ItemGroup>
-        <None Update="Protobuf\refrence\token_contract.proto">
-            <Link>Protobuf\Proto\refrence\token_contract.proto</Link>
-        </None>
+        <ContractBase Include="..\..\protobuf\acs12.proto">
+            <Link>Protobuf\Proto\reference\acs12.proto</Link>
+        </ContractBase>
     </ItemGroup>
-    <ItemGroup>
-      <PackageReference Include="Google.Protobuf" Version="3.19.4" />
-    </ItemGroup>
+    
 </Project>

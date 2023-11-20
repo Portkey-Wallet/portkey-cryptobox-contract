@@ -7047,13 +7047,15 @@
       "outputPath": "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/src/AElf.Boilerplate.CodeGenerator/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/NuGet.Config",
         "/Users/wangyue/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/aelf-project-dev/api/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {

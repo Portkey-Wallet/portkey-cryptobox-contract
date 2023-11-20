@@ -4,6 +4,6 @@ namespace Portkey.Contracts.RedPacket;
 
 public class RedPacketContractConstants
 {
-    public static int MaxRedPacketCount { get; set; } = 1000;
+    public const int MaxRedPacketCount = 1000;
     
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J09TPO0JMwbdlfU/SqSdj7jBFaY1w9cMaL5qb8YZ5hep7dZG/bAT9r38XW2TrCSTSCIL7X0QrJ5josKAfJH+lw==",
+  "dgSpecHash": "iV1y5aZG9buBISLzJb6gtoWLwywXIdqsmo4Iwr8SOVY66hLTVzThagfqtuBfehgwlmUwUScCFVBNcbakU/a0iw==",
   "success": true,
-  "projectFilePath": "/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/AElf.Boilerplate.Launcher.csproj",
+  "projectFilePath": "/Users/wangyue/Desktop/template/aelf-boilerplate/chain/src/AElf.Boilerplate.Launcher/AElf.Boilerplate.Launcher.csproj",
   "expectedPackageFiles": [
     "/Users/wangyue/.nuget/packages/aelf.blockchains.basicbasechain/1.2.3/aelf.blockchains.basicbasechain.1.2.3.nupkg.sha512",
     "/Users/wangyue/.nuget/packages/aelf.contractdeployer/1.2.3/aelf.contractdeployer.1.2.3.nupkg.sha512",

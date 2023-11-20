@@ -14,13 +14,15 @@
         "outputPath": "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/contract/Portkey.Contracts.RedPacket/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/NuGet.Config",
           "/Users/wangyue/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/aelf-project-dev/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -40,11 +42,7 @@
           "dependencies": {
             "AElf.Sdk.CSharp": {
               "target": "Package",
-              "version": "[1.6.0, )"
-            },
-            "Google.Protobuf": {
-              "target": "Package",
-              "version": "[3.19.4, )"
+              "version": "[1.2.3, )"
             }
           },
           "imports": [
@@ -77,13 +75,15 @@
         "outputPath": "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/src/AElf.Boilerplate.TestBase/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/NuGet.Config",
           "/Users/wangyue/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/aelf-project-dev/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -103,75 +103,75 @@
           "dependencies": {
             "AElf.ContractDeployer": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.ContractTestBase": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Association": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Configuration": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Consensus.AEDPoS": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.CrossChain": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Economic": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Election": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.MultiToken": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Parliament": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Profit": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Referendum": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.TokenConverter": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.TokenHolder": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Treasury": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.Contracts.Vote": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.EconomicSystem": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "AElf.GovernmentSystem": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.2.3, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
@@ -228,13 +228,15 @@
         "outputPath": "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/test/Portkey.Contracts.RedPacket.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/NuGet.Config",
           "/Users/wangyue/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/aelf-project-dev/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
