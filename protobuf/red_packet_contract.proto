@@ -1,0 +1,77 @@
+/**
+  * RedPacketContract.proto
+ **/
+syntax = "proto3";
+
+import "aelf/core.proto";
+import "aelf/options.proto";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "Portkey.Contracts.RedPacket";
+
+service RedPacketContract {
+
+  option (aelf.csharp_state) = "Portkey.Contracts.RedPacket.RedPacketContractState";
+
+  rpc CreateRedPacket (CreateRedPacketInput) returns (google.protobuf.Empty) {}
+
+  rpc TransferRedPacket (TransferRedPacketBatchInput) returns (google.protobuf.Empty) {}
+}
+
+
+message CreateRedPacketInput{
+  string red_packet_id = 1;
+  string red_packet_symbol = 2;
+  int64 total_amount = 3;
+  int64 min_amount = 4;
+  int64 expiration_time = 5;
+  int64 total_count = 6;
+  string RedPacketType = 7;
+  string public_key = 8;
+  string red_packet_signature = 9;
+  aelf.Hash from_sender = 10;
+}
+
+message TransferRedPacketInput{
+  string red_packet_id = 1;
+  int64 amount = 2;
+  aelf.Address receiver_address = 3;
+  string red_packet_signature = 4;
+}
+
+message TransferRedPacketBatchInput{
+  string red_packet_id = 1;
+  repeated TransferRedPacketInput transfer_red_packet_inputs = 2;
+}
+
+enum RedPacketType {
+  UNKNOWN = 0;
+  FIXED = 1;
+  RANDOM = 2;
+  QUICK_TRANSFER = 3;
+}
+
+message RedPacketInfo {
+  string red_packet_id = 1;
+  string red_packet_symbol = 2;
+  int64 total_amount = 3;
+  int64 min_amount = 4;
+  int64 expiration_time = 5;
+  int64 total_count = 6;
+  string RedPacketType = 7;
+  string public_key = 8;
+}
+
+message RedPacketCreated{
+  option (aelf.is_event) = true;
+  aelf.Hash from_sender = 1;
+  string red_packet_id = 2;
+  string red_packet_symbol = 3;
+  int64 total_amount = 4;
+  int64 total_count = 5;
+  string RedPacketType = 6;
+  
+
+}
+

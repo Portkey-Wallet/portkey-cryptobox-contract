@@ -1,0 +1,12 @@
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/Portkey.Contracts.RedPacket.csproj.AssemblyReference.cache
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/Portkey.Contracts.RedPacket.GeneratedMSBuildEditorConfig.editorconfig
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/Portkey.Contracts.RedPacket.AssemblyInfoInputs.cache
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/Portkey.Contracts.RedPacket.AssemblyInfo.cs
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/Portkey.Contracts.RedPacket.csproj.CoreCompileInputs.cache
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/bin/Debug/net6.0/Portkey.Contracts.RedPacket.deps.json
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/bin/Debug/net6.0/Portkey.Contracts.RedPacket.dll
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/bin/Debug/net6.0/Portkey.Contracts.RedPacket.pdb
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/Portkey.Contracts.RedPacket.dll
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/refint/Portkey.Contracts.RedPacket.dll
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/Portkey.Contracts.RedPacket.pdb
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/Portkey.Contracts.RedPacket/obj/Debug/net6.0/ref/Portkey.Contracts.RedPacket.dll

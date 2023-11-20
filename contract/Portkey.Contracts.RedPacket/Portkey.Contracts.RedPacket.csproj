@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <!-- The root namespace -->
+        <RootNamespace>Portkey.Contracts.RedPacket</RootNamespace>
+        <!-- Mark this project as a contract -->
+        <IsContract>true</IsContract>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- Reference the protobuf definition of the contract -->
+        <ContractCode Include="..\..\protobuf\red_packet_contract.proto">
+            <Link>Protobuf\Proto\red_packet_contract.proto</Link>
+        </ContractCode>
+    </ItemGroup>
+
+    <ItemGroup>
+
+        <ContractReference Include="..\..\protobuf\token_contract.proto">
+            <Link>Protobuf\Proto\reference\token_contract.proto</Link>
+        </ContractReference>
+        
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="Protobuf\refrence\token_contract.proto">
+            <Link>Protobuf\Proto\refrence\token_contract.proto</Link>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Google.Protobuf" Version="3.19.4" />
+    </ItemGroup>
+</Project>

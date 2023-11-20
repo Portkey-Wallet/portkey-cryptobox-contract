@@ -1,0 +1,12 @@
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/bin/Debug/net6.0/AElf.Contracts.RedPacketContract.deps.json
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/bin/Debug/net6.0/AElf.Contracts.RedPacketContract.dll
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/bin/Debug/net6.0/AElf.Contracts.RedPacketContract.pdb
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/AElf.Contracts.RedPacketContract.csproj.AssemblyReference.cache
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/AElf.Contracts.RedPacketContract.GeneratedMSBuildEditorConfig.editorconfig
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/AElf.Contracts.RedPacketContract.AssemblyInfoInputs.cache
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/AElf.Contracts.RedPacketContract.AssemblyInfo.cs
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/AElf.Contracts.RedPacketContract.csproj.CoreCompileInputs.cache
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/AElf.Contracts.RedPacketContract.dll
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/refint/AElf.Contracts.RedPacketContract.dll
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/AElf.Contracts.RedPacketContract.pdb
+/Users/wangyue/Desktop/RedPacket/aelf-boilerplate/chain/contract/AElf.Contracts.RedPacketContract/obj/Debug/net6.0/ref/AElf.Contracts.RedPacketContract.dll
