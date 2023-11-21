@@ -1058,3 +1058,4 @@
 /Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/src/AElf.Boilerplate.RedPacketContract.Launcher/obj/Debug/net6.0/AElf.Boilerplate.RedPacketContract.Launcher.pdb
 /Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/src/AElf.Boilerplate.RedPacketContract.Launcher/obj/Debug/net6.0/AElf.Boilerplate.RedPacketContract.Launcher.genruntimeconfig.cache
 /Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/src/AElf.Boilerplate.RedPacketContract.Launcher/obj/Debug/net6.0/ref/AElf.Boilerplate.RedPacketContract.Launcher.dll
+/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/src/AElf.Boilerplate.RedPacketContract.Launcher/bin/Debug/net6.0/Basic.Reference.Assemblies.Net60.dll

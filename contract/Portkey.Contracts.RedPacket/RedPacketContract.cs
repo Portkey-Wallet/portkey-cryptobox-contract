@@ -1,6 +1,5 @@
 using AElf;
 using AElf.Contracts.MultiToken;
-using AElf.Cryptography;
 using AElf.Sdk.CSharp;
 using AElf.Types;
 using Google.Protobuf;

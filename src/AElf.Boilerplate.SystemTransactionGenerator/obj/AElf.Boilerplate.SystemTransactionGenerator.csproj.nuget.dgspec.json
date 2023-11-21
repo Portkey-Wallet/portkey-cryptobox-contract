@@ -42,19 +42,19 @@
           "dependencies": {
             "AElf.Core": {
               "target": "Package",
-              "version": "[1.2.3, )"
+              "version": "[1.6.0, )"
             },
             "AElf.Kernel.Consensus.Core": {
               "target": "Package",
-              "version": "[1.2.3, )"
+              "version": "[1.6.0, )"
             },
             "AElf.Kernel.Core": {
               "target": "Package",
-              "version": "[1.2.3, )"
+              "version": "[1.6.0, )"
             },
             "AElf.Kernel.SmartContract": {
               "target": "Package",
-              "version": "[1.2.3, )"
+              "version": "[1.6.0, )"
             }
           },
           "imports": [

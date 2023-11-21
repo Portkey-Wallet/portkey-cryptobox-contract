@@ -8,24 +8,24 @@
     ".NETCoreApp,Version=v6.0": {
       "AElf.Boilerplate.TestBase/1.0.0": {
         "dependencies": {
-          "AElf.ContractDeployer": "1.2.3",
-          "AElf.ContractTestBase": "1.2.3",
-          "AElf.Contracts.Association": "1.2.3",
-          "AElf.Contracts.Configuration": "1.2.3",
-          "AElf.Contracts.Consensus.AEDPoS": "1.2.3",
-          "AElf.Contracts.CrossChain": "1.2.3",
-          "AElf.Contracts.Economic": "1.2.3",
-          "AElf.Contracts.Election": "1.2.3",
-          "AElf.Contracts.MultiToken": "1.2.3",
-          "AElf.Contracts.Parliament": "1.2.3",
-          "AElf.Contracts.Profit": "1.2.3",
-          "AElf.Contracts.Referendum": "1.2.3",
-          "AElf.Contracts.TokenConverter": "1.2.3",
-          "AElf.Contracts.TokenHolder": "1.2.3",
-          "AElf.Contracts.Treasury": "1.2.3",
-          "AElf.Contracts.Vote": "1.2.3",
-          "AElf.EconomicSystem": "1.2.3",
-          "AElf.GovernmentSystem": "1.2.3",
+          "AElf.ContractDeployer": "1.6.0",
+          "AElf.ContractTestBase": "1.6.0",
+          "AElf.Contracts.Association": "1.6.0",
+          "AElf.Contracts.Configuration": "1.6.0",
+          "AElf.Contracts.Consensus.AEDPoS": "1.6.0",
+          "AElf.Contracts.CrossChain": "1.6.0",
+          "AElf.Contracts.Economic": "1.6.0",
+          "AElf.Contracts.Election": "1.6.0",
+          "AElf.Contracts.MultiToken": "1.6.0",
+          "AElf.Contracts.Parliament": "1.6.0",
+          "AElf.Contracts.Profit": "1.6.0",
+          "AElf.Contracts.Referendum": "1.6.0",
+          "AElf.Contracts.TokenConverter": "1.6.0",
+          "AElf.Contracts.TokenHolder": "1.6.0",
+          "AElf.Contracts.Treasury": "1.6.0",
+          "AElf.Contracts.Vote": "1.6.0",
+          "AElf.EconomicSystem": "1.6.0",
+          "AElf.GovernmentSystem": "1.6.0",
           "Microsoft.NET.Test.Sdk": "16.3.0",
           "Shouldly": "3.0.2",
           "coverlet.msbuild": "2.5.1",
@@ -38,197 +38,197 @@
           "AElf.Boilerplate.TestBase.dll": {}
         }
       },
-      "AElf.ContractDeployer/1.2.3": {
+      "AElf.ContractDeployer/1.6.0": {
         "dependencies": {
-          "AElf.CSharp.CodeOps": "1.2.3",
-          "AElf.Runtime.CSharp.Core": "1.2.3",
-          "AElf.Types": "1.2.3",
+          "AElf.CSharp.CodeOps": "1.6.0",
+          "AElf.Runtime.CSharp.Core": "1.6.0",
+          "AElf.Types": "1.6.0",
           "CommandLineParser": "2.8.0"
         },
         "runtime": {
           "lib/net6.0/AElf.ContractDeployer.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Association/1.2.3": {
+      "AElf.Contracts.Association/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Association.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Configuration/1.2.3": {
+      "AElf.Contracts.Configuration/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Configuration.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Consensus.AEDPoS/1.2.3": {
+      "AElf.Contracts.Consensus.AEDPoS/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Consensus.AEDPoS.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.CrossChain/1.2.3": {
+      "AElf.Contracts.CrossChain/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.CrossChain.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Economic/1.2.3": {
+      "AElf.Contracts.Economic/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Economic.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Election/1.2.3": {
+      "AElf.Contracts.Election/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Election.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Genesis/1.2.3": {
+      "AElf.Contracts.Genesis/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Genesis.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.MultiToken/1.2.3": {
+      "AElf.Contracts.MultiToken/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.MultiToken.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Parliament/1.2.3": {
+      "AElf.Contracts.Parliament/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Parliament.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Profit/1.2.3": {
+      "AElf.Contracts.Profit/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Profit.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Referendum/1.2.3": {
+      "AElf.Contracts.Referendum/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Referendum.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.TokenConverter/1.2.3": {
+      "AElf.Contracts.TokenConverter/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.TokenConverter.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.TokenHolder/1.2.3": {
+      "AElf.Contracts.TokenHolder/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.TokenHolder.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Treasury/1.2.3": {
+      "AElf.Contracts.Treasury/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Treasury.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Contracts.Vote/1.2.3": {
+      "AElf.Contracts.Vote/1.6.0": {
         "dependencies": {
-          "AElf.Sdk.CSharp": "1.2.3"
+          "AElf.Sdk.CSharp": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Contracts.Vote.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.ContractTestBase/1.2.3": {
+      "AElf.ContractTestBase/1.6.0": {
         "dependencies": {
-          "AElf.ContractDeployer": "1.2.3",
-          "AElf.Contracts.Genesis": "1.2.3",
-          "AElf.CrossChain": "1.2.3",
-          "AElf.EconomicSystem": "1.2.3",
-          "AElf.GovernmentSystem": "1.2.3",
-          "AElf.Kernel": "1.2.3",
-          "AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold": "1.2.3",
-          "AElf.Kernel.SmartContract.ExecutionPluginForMethodFee": "1.2.3",
-          "AElf.Kernel.SmartContract.ExecutionPluginForResourceFee": "1.2.3",
-          "AElf.Runtime.CSharp": "1.2.3",
+          "AElf.ContractDeployer": "1.6.0",
+          "AElf.Contracts.Genesis": "1.6.0",
+          "AElf.CrossChain": "1.6.0",
+          "AElf.EconomicSystem": "1.6.0",
+          "AElf.GovernmentSystem": "1.6.0",
+          "AElf.Kernel": "1.6.0",
+          "AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold": "1.6.0",
+          "AElf.Kernel.SmartContract.ExecutionPluginForMethodFee": "1.6.0",
+          "AElf.Kernel.SmartContract.ExecutionPluginForResourceFee": "1.6.0",
+          "AElf.Runtime.CSharp": "1.6.0",
           "MartinCostello.Logging.XUnit": "0.1.0",
           "Moq": "4.14.5",
           "Volo.Abp.Autofac": "5.2.2",
@@ -237,12 +237,12 @@
         },
         "runtime": {
           "lib/net6.0/AElf.ContractTestBase.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Core/1.2.3": {
+      "AElf.Core/1.6.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "6.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
@@ -251,419 +251,420 @@
         },
         "runtime": {
           "lib/net6.0/AElf.Core.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.CrossChain/1.2.3": {
+      "AElf.CrossChain/1.6.0": {
         "dependencies": {
-          "AElf.CrossChain.Core": "1.2.3"
+          "AElf.CrossChain.Core": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.CrossChain.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.CrossChain.Core/1.2.3": {
+      "AElf.CrossChain.Core/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Node": "1.2.3",
-          "AElf.Kernel.Proposal": "1.2.3"
+          "AElf.Kernel.Node": "1.6.0",
+          "AElf.Kernel.Proposal": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.CrossChain.Core.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Cryptography/1.2.3": {
+      "AElf.Cryptography/1.6.0": {
         "dependencies": {
-          "AElf.Types": "1.2.3",
+          "AElf.Types": "1.6.0",
           "Portable.BouncyCastle": "1.9.0",
           "Secp256k1.Native": "0.1.24-alpha",
-          "Secp256k1.Net": "1.0.0-alpha",
+          "Secp256k1.Net": "1.2.0",
           "Virgil.Crypto": "2.4.10"
         },
         "runtime": {
           "lib/net6.0/AElf.Cryptography.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.CSharp.CodeOps/1.2.3": {
+      "AElf.CSharp.CodeOps/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.CodeCheck": "1.2.3",
-          "AElf.Sdk.CSharp": "1.2.3",
+          "AElf.Kernel.CodeCheck": "1.6.0",
+          "AElf.Sdk.CSharp": "1.6.0",
+          "Basic.Reference.Assemblies.Net60": "1.4.1",
           "Mono.Cecil": "0.11.4"
         },
         "runtime": {
           "lib/net6.0/AElf.CSharp.CodeOps.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.CSharp.Core/1.2.3": {
+      "AElf.CSharp.Core/1.6.0": {
         "dependencies": {
-          "AElf.Types": "1.2.3",
+          "AElf.Types": "1.6.0",
           "Microsoft.CSharp": "4.7.0"
         },
         "runtime": {
           "lib/net6.0/AElf.CSharp.Core.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Database/1.2.3": {
+      "AElf.Database/1.6.0": {
         "dependencies": {
-          "AElf.Core": "1.2.3",
+          "AElf.Core": "1.6.0",
           "Volo.Abp.Data": "5.2.2"
         },
         "runtime": {
           "lib/net6.0/AElf.Database.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.EconomicSystem/1.2.3": {
+      "AElf.EconomicSystem/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Consensus.AEDPoS": "1.2.3",
-          "AElf.Kernel.SmartContract": "1.2.3",
-          "AElf.OS.Core": "1.2.3"
+          "AElf.Kernel.Consensus.AEDPoS": "1.6.0",
+          "AElf.Kernel.SmartContract": "1.6.0",
+          "AElf.OS.Core": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.EconomicSystem.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.GovernmentSystem/1.2.3": {
+      "AElf.GovernmentSystem/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Consensus.AEDPoS": "1.2.3",
-          "AElf.Kernel.Proposal": "1.2.3",
-          "AElf.Kernel.SmartContract": "1.2.3",
-          "AElf.OS.Core": "1.2.3"
+          "AElf.Kernel.Consensus.AEDPoS": "1.6.0",
+          "AElf.Kernel.Proposal": "1.6.0",
+          "AElf.Kernel.SmartContract": "1.6.0",
+          "AElf.OS.Core": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.GovernmentSystem.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel/1.2.3": {
+      "AElf.Kernel/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.ChainController": "1.2.3",
-          "AElf.Kernel.CodeCheck": "1.2.3",
-          "AElf.Kernel.Configuration": "1.2.3",
-          "AElf.Kernel.Consensus.Core": "1.2.3",
-          "AElf.Kernel.Node": "1.2.3",
-          "AElf.Kernel.Proposal": "1.2.3",
-          "AElf.Kernel.SmartContract": "1.2.3",
-          "AElf.Kernel.SmartContractExecution": "1.2.3",
-          "AElf.Kernel.TransactionPool": "1.2.3"
+          "AElf.Kernel.ChainController": "1.6.0",
+          "AElf.Kernel.CodeCheck": "1.6.0",
+          "AElf.Kernel.Configuration": "1.6.0",
+          "AElf.Kernel.Consensus.Core": "1.6.0",
+          "AElf.Kernel.Node": "1.6.0",
+          "AElf.Kernel.Proposal": "1.6.0",
+          "AElf.Kernel.SmartContract": "1.6.0",
+          "AElf.Kernel.SmartContractExecution": "1.6.0",
+          "AElf.Kernel.TransactionPool": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.ChainController/1.2.3": {
+      "AElf.Kernel.ChainController/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContractExecution": "1.2.3"
+          "AElf.Kernel.SmartContractExecution": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.ChainController.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.CodeCheck/1.2.3": {
+      "AElf.Kernel.CodeCheck/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Configuration": "1.2.3",
-          "AElf.Kernel.Proposal": "1.2.3"
+          "AElf.Kernel.Configuration": "1.6.0",
+          "AElf.Kernel.Proposal": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.CodeCheck.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Configuration/1.2.3": {
+      "AElf.Kernel.Configuration/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContract": "1.2.3"
+          "AElf.Kernel.SmartContract": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Configuration.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Consensus.AEDPoS/1.2.3": {
+      "AElf.Kernel.Consensus.AEDPoS/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Consensus.Scheduler.RxNet": "1.2.3",
+          "AElf.Kernel.Consensus.Scheduler.RxNet": "1.6.0",
           "Microsoft.Extensions.Caching.Memory": "3.1.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Consensus.AEDPoS.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Consensus.Core/1.2.3": {
+      "AElf.Kernel.Consensus.Core/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContractExecution": "1.2.3"
+          "AElf.Kernel.SmartContractExecution": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Consensus.Core.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Consensus.Scheduler.RxNet/1.2.3": {
+      "AElf.Kernel.Consensus.Scheduler.RxNet/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Consensus.Core": "1.2.3",
+          "AElf.Kernel.Consensus.Core": "1.6.0",
           "System.Reactive": "4.4.1"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Consensus.Scheduler.RxNet.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Core/1.2.3": {
+      "AElf.Kernel.Core/1.6.0": {
         "dependencies": {
-          "AElf.CSharp.Core": "1.2.3",
-          "AElf.Cryptography": "1.2.3",
-          "AElf.Database": "1.2.3",
-          "AElf.Kernel.Types": "1.2.3",
+          "AElf.CSharp.Core": "1.6.0",
+          "AElf.Cryptography": "1.6.0",
+          "AElf.Database": "1.6.0",
+          "AElf.Kernel.Types": "1.6.0",
           "Newtonsoft.Json": "13.0.1",
           "Volo.Abp.EventBus": "5.2.2"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Core.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.FeeCalculation/1.2.3": {
+      "AElf.Kernel.FeeCalculation/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContract": "1.2.3",
-          "AElf.Kernel.Token": "1.2.3"
+          "AElf.Kernel.SmartContract": "1.6.0",
+          "AElf.Kernel.Token": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.FeeCalculation.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Node/1.2.3": {
+      "AElf.Kernel.Node/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.ChainController": "1.2.3",
-          "AElf.Kernel.Consensus.Core": "1.2.3",
-          "AElf.Kernel.TransactionPool": "1.2.3"
+          "AElf.Kernel.ChainController": "1.6.0",
+          "AElf.Kernel.Consensus.Core": "1.6.0",
+          "AElf.Kernel.TransactionPool": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Node.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Proposal/1.2.3": {
+      "AElf.Kernel.Proposal/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContract": "1.2.3"
+          "AElf.Kernel.SmartContract": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Proposal.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.SmartContract/1.2.3": {
+      "AElf.Kernel.SmartContract/1.6.0": {
         "dependencies": {
-          "AElf.CSharp.Core": "1.2.3",
-          "AElf.Kernel.Core": "1.2.3",
-          "AElf.Kernel.SmartContract.Shared": "1.2.3",
+          "AElf.CSharp.Core": "1.6.0",
+          "AElf.Kernel.Core": "1.6.0",
+          "AElf.Kernel.SmartContract.Shared": "1.6.0",
           "Sandwych.QuickGraph.Core": "1.0.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.SmartContract.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold/1.2.3": {
+      "AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContract": "1.2.3",
-          "AElf.Kernel.Token": "1.2.3"
+          "AElf.Kernel.SmartContract": "1.6.0",
+          "AElf.Kernel.Token": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.SmartContract.ExecutionPluginForMethodFee/1.2.3": {
+      "AElf.Kernel.SmartContract.ExecutionPluginForMethodFee/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.FeeCalculation": "1.2.3",
-          "AElf.Kernel.SmartContract": "1.2.3"
+          "AElf.Kernel.FeeCalculation": "1.6.0",
+          "AElf.Kernel.SmartContract": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.SmartContract.ExecutionPluginForMethodFee.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.SmartContract.ExecutionPluginForResourceFee/1.2.3": {
+      "AElf.Kernel.SmartContract.ExecutionPluginForResourceFee/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.FeeCalculation": "1.2.3",
-          "AElf.Kernel.SmartContract": "1.2.3"
+          "AElf.Kernel.FeeCalculation": "1.6.0",
+          "AElf.Kernel.SmartContract": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.SmartContract.ExecutionPluginForResourceFee.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.SmartContract.Shared/1.2.3": {
+      "AElf.Kernel.SmartContract.Shared/1.6.0": {
         "dependencies": {
-          "AElf.Types": "1.2.3"
+          "AElf.Types": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.SmartContract.Shared.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.SmartContractExecution/1.2.3": {
+      "AElf.Kernel.SmartContractExecution/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Configuration": "1.2.3",
-          "AElf.Kernel.SmartContract": "1.2.3"
+          "AElf.Kernel.Configuration": "1.6.0",
+          "AElf.Kernel.SmartContract": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.SmartContractExecution.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Token/1.2.3": {
+      "AElf.Kernel.Token/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContract": "1.2.3",
-          "AElf.Types": "1.2.3"
+          "AElf.Kernel.SmartContract": "1.6.0",
+          "AElf.Types": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Token.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.TransactionPool/1.2.3": {
+      "AElf.Kernel.TransactionPool/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.SmartContractExecution": "1.2.3"
+          "AElf.Kernel.SmartContractExecution": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.TransactionPool.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Kernel.Types/1.2.3": {
+      "AElf.Kernel.Types/1.6.0": {
         "dependencies": {
-          "AElf.Types": "1.2.3"
+          "AElf.Types": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Kernel.Types.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.OS.Core/1.2.3": {
+      "AElf.OS.Core/1.6.0": {
         "dependencies": {
-          "AElf.Kernel.Node": "1.2.3",
-          "AElf.Kernel.Token": "1.2.3"
+          "AElf.Kernel.Node": "1.6.0",
+          "AElf.Kernel.Token": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.OS.Core.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Runtime.CSharp/1.2.3": {
+      "AElf.Runtime.CSharp/1.6.0": {
         "dependencies": {
-          "AElf.CSharp.CodeOps": "1.2.3",
-          "AElf.Kernel.SmartContract": "1.2.3",
-          "AElf.Runtime.CSharp.Core": "1.2.3",
-          "AElf.Sdk.CSharp": "1.2.3",
+          "AElf.CSharp.CodeOps": "1.6.0",
+          "AElf.Kernel.SmartContract": "1.6.0",
+          "AElf.Runtime.CSharp.Core": "1.6.0",
+          "AElf.Sdk.CSharp": "1.6.0",
           "Mono.Cecil": "0.11.4"
         },
         "runtime": {
           "lib/net6.0/AElf.Runtime.CSharp.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Runtime.CSharp.Core/1.2.3": {
+      "AElf.Runtime.CSharp.Core/1.6.0": {
         "dependencies": {
           "Mono.Cecil": "0.11.4"
         },
         "runtime": {
           "lib/net6.0/AElf.Runtime.CSharp.Core.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Sdk.CSharp/1.2.3": {
+      "AElf.Sdk.CSharp/1.6.0": {
         "dependencies": {
-          "AElf.CSharp.Core": "1.2.3",
-          "AElf.Cryptography": "1.2.3",
-          "AElf.Kernel.SmartContract.Shared": "1.2.3"
+          "AElf.CSharp.Core": "1.6.0",
+          "AElf.Cryptography": "1.6.0",
+          "AElf.Kernel.SmartContract.Shared": "1.6.0"
         },
         "runtime": {
           "lib/net6.0/AElf.Sdk.CSharp.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
-      "AElf.Types/1.2.3": {
+      "AElf.Types/1.6.0": {
         "dependencies": {
           "Google.Protobuf": "3.19.4"
         },
         "runtime": {
           "lib/net6.0/AElf.Types.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
           }
         }
       },
@@ -699,6 +700,17 @@
           "lib/netstandard2.1/Autofac.Extras.DynamicProxy.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "Basic.Reference.Assemblies.Net60/1.4.1": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Common": "3.9.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Basic.Reference.Assemblies.Net60.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -775,6 +787,65 @@
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.Analyzers/3.0.0": {},
+      "Microsoft.CodeAnalysis.Common/3.9.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Analyzers": "3.0.0",
+          "System.Collections.Immutable": "6.0.0",
+          "System.Memory": "4.5.5",
+          "System.Reflection.Metadata": "5.0.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.CodeAnalysis.dll": {
+            "assemblyVersion": "3.9.0.0",
+            "fileVersion": "3.900.21.12420"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.1/cs/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.1/de/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.1/es/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.1/fr/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/it/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.1/ja/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.1/ko/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.1/pl/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.1/pt-BR/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/tr/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "zh-Hant"
           }
         }
       },
@@ -1092,7 +1163,7 @@
         }
       },
       "Microsoft.NETCore.Jit/1.0.2": {},
-      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.NETCore.Platforms/2.1.2": {},
       "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -1360,7 +1431,7 @@
       },
       "Microsoft.Win32.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -1388,7 +1459,7 @@
       "Moq/4.14.5": {
         "dependencies": {
           "Castle.Core": "4.4.1",
-          "System.Threading.Tasks.Extensions": "4.5.1"
+          "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "runtime": {
           "lib/netstandard2.0/Moq.dll": {
@@ -1399,7 +1470,7 @@
       },
       "NETStandard.Library/1.6.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.Win32.Primitives": "4.3.0",
           "System.AppContext": "4.3.0",
           "System.Collections": "4.3.0",
@@ -1527,19 +1598,19 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "runtime.native.System.IO.Compression/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "runtime.native.System.Net.Http/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
@@ -1625,11 +1696,14 @@
           }
         }
       },
-      "Secp256k1.Net/1.0.0-alpha": {
+      "Secp256k1.Net/1.2.0": {
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
         "runtime": {
           "lib/netstandard2.0/Secp256k1.Net.dll": {
-            "assemblyVersion": "0.1.0.0",
-            "fileVersion": "0.1.0.0"
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
           }
         }
       },
@@ -1662,7 +1736,7 @@
       },
       "System.Collections/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -1740,7 +1814,7 @@
       },
       "System.Console/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -1754,7 +1828,7 @@
       },
       "System.Diagnostics.Debug/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -1766,14 +1840,14 @@
       },
       "System.Diagnostics.Tools/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Diagnostics.TraceSource/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -1786,7 +1860,7 @@
       },
       "System.Diagnostics.Tracing/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -1811,14 +1885,14 @@
       },
       "System.Globalization/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Globalization.Calendars/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Globalization": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -1826,7 +1900,7 @@
       },
       "System.Globalization.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -1836,7 +1910,7 @@
       },
       "System.IO/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0",
@@ -1845,7 +1919,7 @@
       },
       "System.IO.Compression/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.Buffers": "4.3.0",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -1877,7 +1951,7 @@
       },
       "System.IO.FileSystem/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
@@ -1942,9 +2016,10 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Memory/4.5.5": {},
       "System.Net.Http/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.DiagnosticSource": "6.0.0",
@@ -1974,7 +2049,7 @@
       },
       "System.Net.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Handles": "4.3.0"
@@ -1982,7 +2057,7 @@
       },
       "System.Net.Sockets/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Net.Primitives": "4.3.0",
@@ -2002,7 +2077,7 @@
       "System.Reactive/4.4.1": {},
       "System.Reflection/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -2035,15 +2110,16 @@
       },
       "System.Reflection.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Reflection.Metadata/5.0.0": {},
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -2056,7 +2132,7 @@
       },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Globalization": "4.3.0",
           "System.Reflection": "4.3.0",
@@ -2065,28 +2141,28 @@
       },
       "System.Runtime/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Runtime.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.Handles/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.InteropServices/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -2122,7 +2198,7 @@
       },
       "System.Security.Cryptography.Algorithms/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -2140,7 +2216,7 @@
       },
       "System.Security.Cryptography.Cng/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -2155,7 +2231,7 @@
       },
       "System.Security.Cryptography.Csp/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -2172,7 +2248,7 @@
       },
       "System.Security.Cryptography.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Linq": "4.3.0",
@@ -2216,7 +2292,7 @@
       },
       "System.Security.Cryptography.X509Certificates/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -2245,14 +2321,20 @@
       },
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Text.Encoding.CodePages/4.5.1": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.1.2",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
       "System.Text.Encoding.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0"
@@ -2282,16 +2364,16 @@
       },
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Threading.Tasks.Dataflow/4.11.1": {},
-      "System.Threading.Tasks.Extensions/4.5.1": {},
+      "System.Threading.Tasks.Extensions/4.5.4": {},
       "System.Threading.Timer/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.2",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
@@ -2312,7 +2394,7 @@
           "System.Text.Encoding.Extensions": "4.3.0",
           "System.Text.RegularExpressions": "4.3.0",
           "System.Threading.Tasks": "4.3.0",
-          "System.Threading.Tasks.Extensions": "4.5.1"
+          "System.Threading.Tasks.Extensions": "4.5.4"
         }
       },
       "System.Xml.XDocument/4.3.0": {
@@ -2835,362 +2917,362 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AElf.ContractDeployer/1.2.3": {
+    "AElf.ContractDeployer/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1MicE8kpyLfqa20Z6Px86BjpoyZZeiWbwI0AMOX+gAO46ZeNzt/DSob9FkCt32+qVF6Tz44WD9pJ6oPQ0+Dr4g==",
-      "path": "aelf.contractdeployer/1.2.3",
-      "hashPath": "aelf.contractdeployer.1.2.3.nupkg.sha512"
+      "sha512": "sha512-XpTHDI5GReFlIRudGw5oafcbOl6j59049Z6tyqT32vcA0aTZIoU83BsX7Fo85qFRoJpwaVQbDllgTImgJ1IY4A==",
+      "path": "aelf.contractdeployer/1.6.0",
+      "hashPath": "aelf.contractdeployer.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Association/1.2.3": {
+    "AElf.Contracts.Association/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dmS/+LfLfybT5SJD7u2OOWPhq9241dBmxDWupTEdlvU8QnaxTwjsOrpcSjCb6SxXbhQeABK1NGoaa1GGCf3fMw==",
-      "path": "aelf.contracts.association/1.2.3",
-      "hashPath": "aelf.contracts.association.1.2.3.nupkg.sha512"
+      "sha512": "sha512-818/25gWJhGZYhSIVUHDRdhsUrqcTr93oTl7ATm8MejUhAQ9laRPwFeX0XmpDC9gByHXOzYN72I6pSEhgTSVIQ==",
+      "path": "aelf.contracts.association/1.6.0",
+      "hashPath": "aelf.contracts.association.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Configuration/1.2.3": {
+    "AElf.Contracts.Configuration/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-HsV38+QTX1BfqoZ+F3TmYD05i/AK9TjVbtoIMPha/DYlI3ISJvFtAJyP4fF5CIaWt/M//rhPnYROQy+8vyfQeQ==",
-      "path": "aelf.contracts.configuration/1.2.3",
-      "hashPath": "aelf.contracts.configuration.1.2.3.nupkg.sha512"
+      "sha512": "sha512-XyuTa4qQXgHqZ/ACvhohRKzYOqReiU/n7wjmzWQpeiGjv55v+v++zZba7725hE2RRG7iXXJq9HrX52YJScmYIg==",
+      "path": "aelf.contracts.configuration/1.6.0",
+      "hashPath": "aelf.contracts.configuration.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Consensus.AEDPoS/1.2.3": {
+    "AElf.Contracts.Consensus.AEDPoS/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SrWiCK1X20oqfXFOB+Hbgg7Kfo1TUA6GwkhTq73OqtRkWocTVBlHC0kZK/BqxoUelExpj1DLkJd7Z9xlqDiYFQ==",
-      "path": "aelf.contracts.consensus.aedpos/1.2.3",
-      "hashPath": "aelf.contracts.consensus.aedpos.1.2.3.nupkg.sha512"
+      "sha512": "sha512-WVPufBwD+cFCcYJDBW8IpUxWcFWd0zRANOXjsYMizRH+8xJ4qw/wqQlyzzr4ZJbynpct10qJWeoB3N5SvWqU6w==",
+      "path": "aelf.contracts.consensus.aedpos/1.6.0",
+      "hashPath": "aelf.contracts.consensus.aedpos.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.CrossChain/1.2.3": {
+    "AElf.Contracts.CrossChain/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-e2IpE4VQ8Ne0NRzExrh6AGK7gl8DawuXzpAkS2+PpR4On2zac6bgouL8FLwOdmlccFRElYZtGwqfGaMFOujpsw==",
-      "path": "aelf.contracts.crosschain/1.2.3",
-      "hashPath": "aelf.contracts.crosschain.1.2.3.nupkg.sha512"
+      "sha512": "sha512-fF9XnfgotpIWz3be6GgnaIRnelhVmb1s+5LCiRf2RtOD4JIXRx98WZroflWVgTaprQWpXiqgSgl0NDzWkxd4Iw==",
+      "path": "aelf.contracts.crosschain/1.6.0",
+      "hashPath": "aelf.contracts.crosschain.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Economic/1.2.3": {
+    "AElf.Contracts.Economic/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-g0zwfRqWdjPsjD/T+vm6einKIfWorRODT4ZaDSPyVEg7XNEVBM5SmEF/FDe7fm5l5w4XGyzL7GcqwwobcHauVw==",
-      "path": "aelf.contracts.economic/1.2.3",
-      "hashPath": "aelf.contracts.economic.1.2.3.nupkg.sha512"
+      "sha512": "sha512-uowJShT1lvIYxunJjjJaoceEyKbkX8UvydAqqfP9d1nj77ZNaK0SS6bS0+eR92QxQ9r48gDVLJU+TwtotLBVDA==",
+      "path": "aelf.contracts.economic/1.6.0",
+      "hashPath": "aelf.contracts.economic.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Election/1.2.3": {
+    "AElf.Contracts.Election/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-s/Z2S+w/SyMpt8vZ5BOIVD9OG1fPq2FsPScpzj/6eEiDsAm9mZsBjk7z+g7bAKRdrlAhSfr3Yz3B7PMG1Kelqg==",
-      "path": "aelf.contracts.election/1.2.3",
-      "hashPath": "aelf.contracts.election.1.2.3.nupkg.sha512"
+      "sha512": "sha512-p1q9I910tru0HT7iTWzm8H+IA9W2yoQGwQCflgZ+nV0nrD6nh2fcHamUDGBJiszNCZfn9mbPlssdaFxmznX05Q==",
+      "path": "aelf.contracts.election/1.6.0",
+      "hashPath": "aelf.contracts.election.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Genesis/1.2.3": {
+    "AElf.Contracts.Genesis/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-24Z5jMMjzQMb2JJJFFDtG3yEhcbXMj7ZYaA2lySh0jOdmDnX9VvsPbNTNo32Pgudd1tgmcwNYwjwDyTiPv8i8A==",
-      "path": "aelf.contracts.genesis/1.2.3",
-      "hashPath": "aelf.contracts.genesis.1.2.3.nupkg.sha512"
+      "sha512": "sha512-Xd4BFSShjXHKaAkrCSbYzaqD18DMI2XUDs7/3KSq1QBVSICQmsNycwUcqfknwrevtS0yKDZf/BBbm0St+rHV7A==",
+      "path": "aelf.contracts.genesis/1.6.0",
+      "hashPath": "aelf.contracts.genesis.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.MultiToken/1.2.3": {
+    "AElf.Contracts.MultiToken/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3tlifyqKEl4Kqp9CsM/+jKOCplHfq3HcN0b/SN77bRCrOS0ij2BV3qKKDOQQYElp/xO4Rqd8ls5KcSZBToRGug==",
-      "path": "aelf.contracts.multitoken/1.2.3",
-      "hashPath": "aelf.contracts.multitoken.1.2.3.nupkg.sha512"
+      "sha512": "sha512-lbXP+7UXUg+p4RHzXmQVF6Mnjer3LO36TYp8+6Pyzt16R9mFxsqXlCFx3hQ1XsFsEeckSKzFaUUu4S4SFVLp7Q==",
+      "path": "aelf.contracts.multitoken/1.6.0",
+      "hashPath": "aelf.contracts.multitoken.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Parliament/1.2.3": {
+    "AElf.Contracts.Parliament/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BQ0IrCpYs+CLkoN3NnsDt0wnyAHuRmuoItvLHremTqTsGC60a7b6HxO/grNwuCq/opb2Of9osEkxr48P+V7SFw==",
-      "path": "aelf.contracts.parliament/1.2.3",
-      "hashPath": "aelf.contracts.parliament.1.2.3.nupkg.sha512"
+      "sha512": "sha512-gmq31B5MbiF9A1USSGcRS5OOSBDtAxcStQB3aEsWEsfDCuH5WTfO8iOyBrIfsqEMlRd7mS2GMIFdDx5VXYV/8g==",
+      "path": "aelf.contracts.parliament/1.6.0",
+      "hashPath": "aelf.contracts.parliament.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Profit/1.2.3": {
+    "AElf.Contracts.Profit/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nZY1/529Ycbh5h5Jh3OJH05RA9sQ+sI2YGknaXPA5XZinfrGb9x5kaFSrTSG1xVXVCwgGDG2eDzYADuQkxkl9Q==",
-      "path": "aelf.contracts.profit/1.2.3",
-      "hashPath": "aelf.contracts.profit.1.2.3.nupkg.sha512"
+      "sha512": "sha512-uhFL8+HM33RDH4EHGl6dCQqA2VKfj4PFy5KJ1iJElcRTvqFzmlEQswRrkmLqSGhHwXJJvKM8AH30exJYmmev/Q==",
+      "path": "aelf.contracts.profit/1.6.0",
+      "hashPath": "aelf.contracts.profit.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Referendum/1.2.3": {
+    "AElf.Contracts.Referendum/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TEl0cLt42c/pxKCkq3kDJXdYq5y2f6LtCvo/jk9cyIzML4KrAi75zXDEKGxLt6d7fA5JXd94Yti7fRbPAgmd3A==",
-      "path": "aelf.contracts.referendum/1.2.3",
-      "hashPath": "aelf.contracts.referendum.1.2.3.nupkg.sha512"
+      "sha512": "sha512-u1fOrRoMnhDY61MtwRJXuGrUIvcxzWdUFyHRoe9OLVkG91+oH70D+u9ksPveQSGtWNeemguDSmPd9qmV4AvIHg==",
+      "path": "aelf.contracts.referendum/1.6.0",
+      "hashPath": "aelf.contracts.referendum.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.TokenConverter/1.2.3": {
+    "AElf.Contracts.TokenConverter/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Y7SaUB+C7vHnzeLqF5viOJa9UcVDpYKDL8TW+5MkErm7TUJ5yOipsFZ8W/quDfHAqjmSoWEWqsTGDrf8+p7YZw==",
-      "path": "aelf.contracts.tokenconverter/1.2.3",
-      "hashPath": "aelf.contracts.tokenconverter.1.2.3.nupkg.sha512"
+      "sha512": "sha512-s5QEO/n0keBzr5vJP+QEUk5sIbrnB4XC9MsuMkTs072TweH+Gyi05/N2uxFFB0pbxX0kqN3OWfENS47EOpbytQ==",
+      "path": "aelf.contracts.tokenconverter/1.6.0",
+      "hashPath": "aelf.contracts.tokenconverter.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.TokenHolder/1.2.3": {
+    "AElf.Contracts.TokenHolder/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WaNXHRxJcOzcJnLXYur1XSWmC2isTbWIoOPw0bPxFLmE1ZG4QxIaV0fPtKtXcECxl6GmkXDSN0VJq5+rPk3AyQ==",
-      "path": "aelf.contracts.tokenholder/1.2.3",
-      "hashPath": "aelf.contracts.tokenholder.1.2.3.nupkg.sha512"
+      "sha512": "sha512-VQ2EOzem8BREpHD5AD9WtdciYyFSnanz5qbpN7kH7GbnmTbe7fPC4sOnBh7lT0VZBOPZB5xdPB7arSalTS7pXw==",
+      "path": "aelf.contracts.tokenholder/1.6.0",
+      "hashPath": "aelf.contracts.tokenholder.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Treasury/1.2.3": {
+    "AElf.Contracts.Treasury/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-j17mw4ccJ2ZDM+sZwuRevbZJt7YGraO145cj0XUVidSpXTftuAfz4ihXWxzWuAWlGgWRedsKwyexrg+hVREzSg==",
-      "path": "aelf.contracts.treasury/1.2.3",
-      "hashPath": "aelf.contracts.treasury.1.2.3.nupkg.sha512"
+      "sha512": "sha512-h24dYAdc35KwCQlDP/zqKT/3wzbfHoio+eMzmqSwy+okezympJwAypBpn49IXTujDNUNO7xuFj4XDRX/5wnF9A==",
+      "path": "aelf.contracts.treasury/1.6.0",
+      "hashPath": "aelf.contracts.treasury.1.6.0.nupkg.sha512"
     },
-    "AElf.Contracts.Vote/1.2.3": {
+    "AElf.Contracts.Vote/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lx5Kkcb/96j6HNNynBRQl/heqElt2SkTYaECm40Hs9iv81jysW7v44e2ypLgdh2Yytgjc2wVqPhvLTZFkl0zPw==",
-      "path": "aelf.contracts.vote/1.2.3",
-      "hashPath": "aelf.contracts.vote.1.2.3.nupkg.sha512"
+      "sha512": "sha512-DaPqhe6aVZbi01SdeM9LP10KMfhUY5/6fi/LFc/z0FYl7MlQL8XALwRBBWm8Dvu5AQ6EVR0UxWfbveIS3Pk1YA==",
+      "path": "aelf.contracts.vote/1.6.0",
+      "hashPath": "aelf.contracts.vote.1.6.0.nupkg.sha512"
     },
-    "AElf.ContractTestBase/1.2.3": {
+    "AElf.ContractTestBase/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5Cl8sIyDdibhgc8qqMs5dRi11KfHVkRVoKG1Hr7dyEjhErYykqi+QuvMsAxfICO5D4RWq17XQKFBZJ1Dik3ydg==",
-      "path": "aelf.contracttestbase/1.2.3",
-      "hashPath": "aelf.contracttestbase.1.2.3.nupkg.sha512"
+      "sha512": "sha512-R/cuDnEWS35rIv1Ga1BT0m/dMxzHuGeDgAy4CfaevefAiF6iKAPxk8vdKLPYaKVqeG3ajB5xEowJxjlOx5BdIQ==",
+      "path": "aelf.contracttestbase/1.6.0",
+      "hashPath": "aelf.contracttestbase.1.6.0.nupkg.sha512"
     },
-    "AElf.Core/1.2.3": {
+    "AElf.Core/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Cdv37xlrGyYFQ0G8IQuXyL9qk+I14X3/vyAuhRlxqwwo7OrOvD+Pp3H6ENtOe5IMi67cVfYxY8n34+pIf5jpjw==",
-      "path": "aelf.core/1.2.3",
-      "hashPath": "aelf.core.1.2.3.nupkg.sha512"
+      "sha512": "sha512-ClRJqbTZ6gr3iEn7Uc0ZvSBMckY1cQjORrmcP1FV7NGt0EsMsHMg9g7dwhNfkIJ3X1NSO15+LlT3VeTw5WTkng==",
+      "path": "aelf.core/1.6.0",
+      "hashPath": "aelf.core.1.6.0.nupkg.sha512"
     },
-    "AElf.CrossChain/1.2.3": {
+    "AElf.CrossChain/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JENYTOtulfQg/ihCYZbLs6d14YTaCGpT7Rmae4abNwrpzyGFkNnLKA6VE4I3KnzkvSoPEbraw2BR7FUrmpnUcA==",
-      "path": "aelf.crosschain/1.2.3",
-      "hashPath": "aelf.crosschain.1.2.3.nupkg.sha512"
+      "sha512": "sha512-vffDdo543toP0Or3YBGzCgeM8Mzclk+kAHU/TIbQjPnmRgS75khW8Pkr01qWXnBgFfHfa0zt82M20iOiyYnAjg==",
+      "path": "aelf.crosschain/1.6.0",
+      "hashPath": "aelf.crosschain.1.6.0.nupkg.sha512"
     },
-    "AElf.CrossChain.Core/1.2.3": {
+    "AElf.CrossChain.Core/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xoRLv57SwNfu9wYjv8PN7upzW06vK7cZ8hY5bwWYLSWn2qDaYdtnhcolNaibecmq81c70QFAd16fPTeTOApTgQ==",
-      "path": "aelf.crosschain.core/1.2.3",
-      "hashPath": "aelf.crosschain.core.1.2.3.nupkg.sha512"
+      "sha512": "sha512-i/QqGw+PGXNg4+385rLEPDMxX9+cNEi4YOuMWulJD8iSKBknmDIviWrvZcOU8n85z6g06k5BVgixiU/zI4orFQ==",
+      "path": "aelf.crosschain.core/1.6.0",
+      "hashPath": "aelf.crosschain.core.1.6.0.nupkg.sha512"
     },
-    "AElf.Cryptography/1.2.3": {
+    "AElf.Cryptography/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U7mJ+RI26zSF9BqMTTD79BbhCX9Bqm1wALI1jHihL6VfXqkrF7Wr/3xBbcfPPcC7nKgHJiAmhgVxrNW/QVs3fQ==",
-      "path": "aelf.cryptography/1.2.3",
-      "hashPath": "aelf.cryptography.1.2.3.nupkg.sha512"
+      "sha512": "sha512-6hxElmj3LzSbadH6rz3/OG1oz35f+leSdJqnF8yrI0X4Kn/WT0YSGhXQ5Dqm+DDd+sCK6JH6je17m2bsA6oOjw==",
+      "path": "aelf.cryptography/1.6.0",
+      "hashPath": "aelf.cryptography.1.6.0.nupkg.sha512"
     },
-    "AElf.CSharp.CodeOps/1.2.3": {
+    "AElf.CSharp.CodeOps/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3A4gApTR9yBTXBMHOJi1Yb9IgQg5Ga4c3ad/zlLQN8e7OuV9zLg9wNQxZemkud4jRMn6tI8JaKtPenWlTgimPA==",
-      "path": "aelf.csharp.codeops/1.2.3",
-      "hashPath": "aelf.csharp.codeops.1.2.3.nupkg.sha512"
+      "sha512": "sha512-emV6cwwyDuqfYZi68sveW03xSeHR0+gWvYkUdWX+DQJ59+9R+k+qiHhFlqq09uxvt380Yh31bm0rBhVl6K/Z1g==",
+      "path": "aelf.csharp.codeops/1.6.0",
+      "hashPath": "aelf.csharp.codeops.1.6.0.nupkg.sha512"
     },
-    "AElf.CSharp.Core/1.2.3": {
+    "AElf.CSharp.Core/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0VNay4Jxi131fpk9Mqpu6Uo8BXhevXwTXpX1UmbSoSv34rE+LqQTIN09Z56zoyVEUgHDjvS76/kLJIdNwS/BEw==",
-      "path": "aelf.csharp.core/1.2.3",
-      "hashPath": "aelf.csharp.core.1.2.3.nupkg.sha512"
+      "sha512": "sha512-hMQ6G4Zwgcpm8TAWj6Di9r040gSEcUrPkmMtlXxrBW9M23+jGjgNqbShp1qQGCik8qW89kaC8TugEAGO17RAbA==",
+      "path": "aelf.csharp.core/1.6.0",
+      "hashPath": "aelf.csharp.core.1.6.0.nupkg.sha512"
     },
-    "AElf.Database/1.2.3": {
+    "AElf.Database/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6CwLVXV7h6a0z9Clt9usu7IV0J5/XDZPpDzawysEYgusZKgq8fc2HPxi1h0tj80c+tGbUXARUM19H9GuYGPDKQ==",
-      "path": "aelf.database/1.2.3",
-      "hashPath": "aelf.database.1.2.3.nupkg.sha512"
+      "sha512": "sha512-/RT7VuA+LYzMOnu/3bldtLfJAs/kc65fa25briUyUy2KkqD23UcAXRdWMYpVL2MjpgSQMhX6/cmJttrh9lSTYw==",
+      "path": "aelf.database/1.6.0",
+      "hashPath": "aelf.database.1.6.0.nupkg.sha512"
     },
-    "AElf.EconomicSystem/1.2.3": {
+    "AElf.EconomicSystem/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wiUMzFGQFwqg1MSdnojAhDta9YuMHhiVlCWoHGdoK50EqJkOfnz87lIZrFfbHTFPF+tupKX1IJz1JubQNtQZRw==",
-      "path": "aelf.economicsystem/1.2.3",
-      "hashPath": "aelf.economicsystem.1.2.3.nupkg.sha512"
+      "sha512": "sha512-ux5CczzoAmN3NNbLnz9wumA6rnWPXgN46a32nGJBITpqZLTpjlmImNBBpCtSuBjWscUsofbyKzne2GASKFVV7A==",
+      "path": "aelf.economicsystem/1.6.0",
+      "hashPath": "aelf.economicsystem.1.6.0.nupkg.sha512"
     },
-    "AElf.GovernmentSystem/1.2.3": {
+    "AElf.GovernmentSystem/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-c9G3+JUWVWxdEoPYrErZ+zYoeJVIQ9m1RSyAPMnhCwwOAG5yxhD6A7P7fB/2IhKD6OhlwybIo0STR7//HcHp0g==",
-      "path": "aelf.governmentsystem/1.2.3",
-      "hashPath": "aelf.governmentsystem.1.2.3.nupkg.sha512"
+      "sha512": "sha512-tsLYwKWroJ8rAjhyipPgynVlabZ9hst2inS/s/WMqShL1oVLMzZaMXBQH0OAmuDRy/71g42Wv3Baxzi4XCsfnw==",
+      "path": "aelf.governmentsystem/1.6.0",
+      "hashPath": "aelf.governmentsystem.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel/1.2.3": {
+    "AElf.Kernel/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PQ9kfH+0LsJZavp8Nla5H+HkW0nDrXrDtHBv74EBECMMu697YVam+CSbQ02EIuImV1E3ozWGDBqMQjyC3hVC2A==",
-      "path": "aelf.kernel/1.2.3",
-      "hashPath": "aelf.kernel.1.2.3.nupkg.sha512"
+      "sha512": "sha512-xsZ0gFEO/+Zsg0NU4v42M6slD6BsJg3rddZINbPhqyPmq/xA0dYw7MWIXoHntfy49FjY3AOK1zt+euEHxoGfIA==",
+      "path": "aelf.kernel/1.6.0",
+      "hashPath": "aelf.kernel.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.ChainController/1.2.3": {
+    "AElf.Kernel.ChainController/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Gf/pIppE61nnfi0gWcez3z6kCnIgn0h375TYdqzBKACFbjhQB5870AkZFUNffgzAnQd30kaGGA7xq8P2AuKtLw==",
-      "path": "aelf.kernel.chaincontroller/1.2.3",
-      "hashPath": "aelf.kernel.chaincontroller.1.2.3.nupkg.sha512"
+      "sha512": "sha512-wpbarFSG/QPKi3w2PyUoqW93aY/Rfy0WMicceJQ5zg1f641/hwVdUp4UEf91PsM2IDU5NQg5H3XSYD6hFdetWg==",
+      "path": "aelf.kernel.chaincontroller/1.6.0",
+      "hashPath": "aelf.kernel.chaincontroller.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.CodeCheck/1.2.3": {
+    "AElf.Kernel.CodeCheck/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-NTKV54AblTZ0AdX6daL7iKZMFnxhQNs3eVHH6pSLHFs7mjeBkGGJLWmnO52IkIxgS0SalZtG8zKvNo/B3rxHaA==",
-      "path": "aelf.kernel.codecheck/1.2.3",
-      "hashPath": "aelf.kernel.codecheck.1.2.3.nupkg.sha512"
+      "sha512": "sha512-Iot7dAZcWU3+obhn+wxEs+PIDmNaZdmldOPyOC/xLSl4IZpPQNakecac2+SY/mWi6pEyjzpOxBAPMgAm4xMNSQ==",
+      "path": "aelf.kernel.codecheck/1.6.0",
+      "hashPath": "aelf.kernel.codecheck.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Configuration/1.2.3": {
+    "AElf.Kernel.Configuration/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sSBAWk8sl8dDTlowcTuoyDYdWJYN3F8YHWtrtX6DYFzrXLyom61MopA2HSmpJ9xcOTfXw3gZOrMsP78e22YXHQ==",
-      "path": "aelf.kernel.configuration/1.2.3",
-      "hashPath": "aelf.kernel.configuration.1.2.3.nupkg.sha512"
+      "sha512": "sha512-HCXTqFgmVCm9spgmhKkkC+MOnViKHQoZaPF0t1jmqxzKG7cP/hIZk5/XhJgxw+WBOioOSkPaO99PoR+T0/mQTQ==",
+      "path": "aelf.kernel.configuration/1.6.0",
+      "hashPath": "aelf.kernel.configuration.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Consensus.AEDPoS/1.2.3": {
+    "AElf.Kernel.Consensus.AEDPoS/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-L4uGYNTTqNoMguN+I2wQKMA6omNfQn/vx1w06RnHTY5ep2KrdLwikQl2VdqrMGWMBisaPT1SVgXw9zrLJCtXJA==",
-      "path": "aelf.kernel.consensus.aedpos/1.2.3",
-      "hashPath": "aelf.kernel.consensus.aedpos.1.2.3.nupkg.sha512"
+      "sha512": "sha512-HHzIjsf0GFwHnLPNi5olL4Pw2QP92MAKnYsp/wRf25NkHegGRWTxkXqqgL7EcQ6XtH+88Ho/W/Z839xns8X/IQ==",
+      "path": "aelf.kernel.consensus.aedpos/1.6.0",
+      "hashPath": "aelf.kernel.consensus.aedpos.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Consensus.Core/1.2.3": {
+    "AElf.Kernel.Consensus.Core/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LOTAD3bdAIXZbTgPiHHELXqRzXvZv1Bnm44qp/KIy1tSQjUoUVqRP6p+wyszGk+6n+3MNeEjKhiFq/RZKQCt/Q==",
-      "path": "aelf.kernel.consensus.core/1.2.3",
-      "hashPath": "aelf.kernel.consensus.core.1.2.3.nupkg.sha512"
+      "sha512": "sha512-fVWvcLvSzheoL4yhmluoVVhqF2EEYQ0/IbCqP7a1057ePMWHi5USIqOMCB0rAKYysnuMUmbT4RhBuqZuJPydwA==",
+      "path": "aelf.kernel.consensus.core/1.6.0",
+      "hashPath": "aelf.kernel.consensus.core.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Consensus.Scheduler.RxNet/1.2.3": {
+    "AElf.Kernel.Consensus.Scheduler.RxNet/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Rkq9e/1ZEDYQ+C+wRH0CyPBbdITGMRpPpHU1GpjH9b/5qWCcfN7mY6AZ7QayhF8D964lkwR6c7ggGz6WAIc4IQ==",
-      "path": "aelf.kernel.consensus.scheduler.rxnet/1.2.3",
-      "hashPath": "aelf.kernel.consensus.scheduler.rxnet.1.2.3.nupkg.sha512"
+      "sha512": "sha512-On8vZnLW4CHmzALHaGVvvoFCBrtcjB1q9fxEIbCwVQjOnV/TAdOMerrAg/aTxpGoR79epbyaMoCTWKsf9JG8Qw==",
+      "path": "aelf.kernel.consensus.scheduler.rxnet/1.6.0",
+      "hashPath": "aelf.kernel.consensus.scheduler.rxnet.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Core/1.2.3": {
+    "AElf.Kernel.Core/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Xa+wQV/07fyEanDV4kZNFjzE0HobFIrS5fx53I1fG+YpQm5Jf3qaLhiOa+m38ov57OcFd6SRzK072f/EPX6GrQ==",
-      "path": "aelf.kernel.core/1.2.3",
-      "hashPath": "aelf.kernel.core.1.2.3.nupkg.sha512"
+      "sha512": "sha512-ybDBSAqamLKJI1aBZUvUcs1CySW+8STuP416SVggJ1K4EG+KIYGLsBSgdjMDePRcpElD4B9HplD+hww2vbiBOQ==",
+      "path": "aelf.kernel.core/1.6.0",
+      "hashPath": "aelf.kernel.core.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.FeeCalculation/1.2.3": {
+    "AElf.Kernel.FeeCalculation/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-njDsSm9AA/SaYZV3d+bVKa/27UKfDOmwHItghu0qPHzdzIcssiiroyXcR39lo04lo9lrFsWc/GQ4HiQF7Gx9tg==",
-      "path": "aelf.kernel.feecalculation/1.2.3",
-      "hashPath": "aelf.kernel.feecalculation.1.2.3.nupkg.sha512"
+      "sha512": "sha512-jcD0dX1OwydojH7TDNNxLClAL6OgevXH+scgw5lsIhDgnLOAdSZF0FYDP4wPKaHGbdUnYNu2C0iTnCc/BFrcWQ==",
+      "path": "aelf.kernel.feecalculation/1.6.0",
+      "hashPath": "aelf.kernel.feecalculation.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Node/1.2.3": {
+    "AElf.Kernel.Node/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-E+GU0UVitmBvv9ycbFDhbySIIVW+LCBoEWCFbQsKNJRfiM3s0KgGNXbt1Zo2vS4HTPBN7xj0AS/VfwGY46pHYw==",
-      "path": "aelf.kernel.node/1.2.3",
-      "hashPath": "aelf.kernel.node.1.2.3.nupkg.sha512"
+      "sha512": "sha512-KDgX8ZlnuL6uGsvx7E2kWkFGFmXSx77aFcOIECpFmM0tYAmUlkxIWTMp9/6NUVgMmRldcStV0Rsoz2x/APnj9g==",
+      "path": "aelf.kernel.node/1.6.0",
+      "hashPath": "aelf.kernel.node.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Proposal/1.2.3": {
+    "AElf.Kernel.Proposal/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BcsVLVFBJewRiwscMFX3LoqWy92hL6ugFAOg1AtIllAv/hfMRkEzUhniypZTLk1MagiNe+lPPMxQqsGwRCeqfA==",
-      "path": "aelf.kernel.proposal/1.2.3",
-      "hashPath": "aelf.kernel.proposal.1.2.3.nupkg.sha512"
+      "sha512": "sha512-jdE0b9YyYJg4HRu4wgCodtwpBMlV04jltCmHsRLv61AbC3ySxGmiIHQTrQFwaVyTBXWCf5ZIZOEiFBnakcj1DQ==",
+      "path": "aelf.kernel.proposal/1.6.0",
+      "hashPath": "aelf.kernel.proposal.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.SmartContract/1.2.3": {
+    "AElf.Kernel.SmartContract/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ejLdWJDISuteXV5V2xOyerefRxL5hrgRs+u3RiXsdf27PlK7mWuFiqi4sgRSK5NMaqTLHaRfa4GUQuKfPOHa/A==",
-      "path": "aelf.kernel.smartcontract/1.2.3",
-      "hashPath": "aelf.kernel.smartcontract.1.2.3.nupkg.sha512"
+      "sha512": "sha512-dOp5VUAwOS8VNBzeO5ILQ4ouDpYF0HGmdKEnyjqYKp/bNwWUqJfT/QF92mE4F41Q9q8vNj/4qzlDyK23HrB7tg==",
+      "path": "aelf.kernel.smartcontract/1.6.0",
+      "hashPath": "aelf.kernel.smartcontract.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold/1.2.3": {
+    "AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TqrcHG5/MPhTQfcbqf7RkD3adl8TW/4tiedJOXgNeA7adTgtcMPxN4O8q8mjJpZWuO44gqNQBKe6P+8pJB6H6w==",
-      "path": "aelf.kernel.smartcontract.executionpluginforcallthreshold/1.2.3",
-      "hashPath": "aelf.kernel.smartcontract.executionpluginforcallthreshold.1.2.3.nupkg.sha512"
+      "sha512": "sha512-1fCwFMGojEwATf3bTGTTLOIE9XXQXvCecp64boFX5r7UgbRWlx2lSPaG7ocDl1J0O+CadGFh6MX7d1hvBQKgHg==",
+      "path": "aelf.kernel.smartcontract.executionpluginforcallthreshold/1.6.0",
+      "hashPath": "aelf.kernel.smartcontract.executionpluginforcallthreshold.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.SmartContract.ExecutionPluginForMethodFee/1.2.3": {
+    "AElf.Kernel.SmartContract.ExecutionPluginForMethodFee/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4XAFw97U3jfMyXYPmZFD0M22xDv1nTwMnJrSMqofxDqRUksEjc68y0pShjri25DNomdudwHCRThkroRhg9sYAw==",
-      "path": "aelf.kernel.smartcontract.executionpluginformethodfee/1.2.3",
-      "hashPath": "aelf.kernel.smartcontract.executionpluginformethodfee.1.2.3.nupkg.sha512"
+      "sha512": "sha512-yuCijnzlFFrncgWcQWDvyS8WK7zMGyNaK0/kxDksxA5ikfCLinSvTrS8DhebFXoqr6Of4ugp99h3DjRhRw3LNg==",
+      "path": "aelf.kernel.smartcontract.executionpluginformethodfee/1.6.0",
+      "hashPath": "aelf.kernel.smartcontract.executionpluginformethodfee.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.SmartContract.ExecutionPluginForResourceFee/1.2.3": {
+    "AElf.Kernel.SmartContract.ExecutionPluginForResourceFee/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EdrGNSHkdporBRyl7uGSptfIJJacBdj2ohjcD7pBPHWYSyvBD0ZnKxTCHZG/ki81NuK1QA3xnLOdz1eYbWqeuw==",
-      "path": "aelf.kernel.smartcontract.executionpluginforresourcefee/1.2.3",
-      "hashPath": "aelf.kernel.smartcontract.executionpluginforresourcefee.1.2.3.nupkg.sha512"
+      "sha512": "sha512-r+sdoAgtpuZvg4ZiqDF1KwLNYp5FKAR0yJKewOjnUZBLrYulFsjnzROrniNg0Ylmd2B5SrRPuyUsjwjHVAbc4A==",
+      "path": "aelf.kernel.smartcontract.executionpluginforresourcefee/1.6.0",
+      "hashPath": "aelf.kernel.smartcontract.executionpluginforresourcefee.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.SmartContract.Shared/1.2.3": {
+    "AElf.Kernel.SmartContract.Shared/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rOk29cdTrYYDWDgk3K2wxyfUwkLI0e6dl/rRYZPStZ6qpVNoB/S2Iz1NKYsklF9j7rRlT4kdjighkHdejSzwfw==",
-      "path": "aelf.kernel.smartcontract.shared/1.2.3",
-      "hashPath": "aelf.kernel.smartcontract.shared.1.2.3.nupkg.sha512"
+      "sha512": "sha512-kTlrxsDB40IIq4AzSeh+lHxxQ9LvQGEm4FSYNIG6ztCcAnb6W3Qjsb+AawDKjO8udb02LX4HUeG3z4cgCLgDJw==",
+      "path": "aelf.kernel.smartcontract.shared/1.6.0",
+      "hashPath": "aelf.kernel.smartcontract.shared.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.SmartContractExecution/1.2.3": {
+    "AElf.Kernel.SmartContractExecution/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bSq4YpNiKpWvvQSYAwykF8TB2Er7DB6coOCkam8NMCU7lk+Vedu+VTZPz8KaIcdu912yRNd3niNPYVy6EkOFDA==",
-      "path": "aelf.kernel.smartcontractexecution/1.2.3",
-      "hashPath": "aelf.kernel.smartcontractexecution.1.2.3.nupkg.sha512"
+      "sha512": "sha512-13atO6A8KoWGftTqbt04fZSSoSHUHyyBCmdAUaForjjO6yknYbN7ITY/0uY0iZ6trR5rLIR9TSkhezvGpGjatw==",
+      "path": "aelf.kernel.smartcontractexecution/1.6.0",
+      "hashPath": "aelf.kernel.smartcontractexecution.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Token/1.2.3": {
+    "AElf.Kernel.Token/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pQ3pJ8lBZ85jDwskhqVqfeW1RPExiZnKe/l5MomXyY+5uuQcqdUJWrs7/0I6QyB7gEwSliMVNhpYkost4t//HQ==",
-      "path": "aelf.kernel.token/1.2.3",
-      "hashPath": "aelf.kernel.token.1.2.3.nupkg.sha512"
+      "sha512": "sha512-0DERpzf9KG4q/fYipCo4x0QPr6GBDwgsbLn5vzKTmksdsQ9fjVOCKXCV2rJFQKwXha8MfD4YZJ/RgssvHE4qBg==",
+      "path": "aelf.kernel.token/1.6.0",
+      "hashPath": "aelf.kernel.token.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.TransactionPool/1.2.3": {
+    "AElf.Kernel.TransactionPool/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pv25CTxZzLn6rO99ANhDiq3AvHC/gvbZocLvy6CLGtZpblFYTy0KOOTsjezQzcGLkRUl5aKh8nf0F5QV14Y06A==",
-      "path": "aelf.kernel.transactionpool/1.2.3",
-      "hashPath": "aelf.kernel.transactionpool.1.2.3.nupkg.sha512"
+      "sha512": "sha512-vtey2kcDuHlRYjIYLXuvVWcjVlZvoGoCZmPK4kwmmAXIfvzDYF5U1VKU5kK6RSNSRx4pb06LmwI/ipdwVGd5cg==",
+      "path": "aelf.kernel.transactionpool/1.6.0",
+      "hashPath": "aelf.kernel.transactionpool.1.6.0.nupkg.sha512"
     },
-    "AElf.Kernel.Types/1.2.3": {
+    "AElf.Kernel.Types/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FpVX2bfokauIWeidCNSEH2i+lvoZbI+sU1ZX0Uy9Y9gCPoZo8vziUwKhxmSI5NqXAdTifohaCr3Y5+HOtfntFQ==",
-      "path": "aelf.kernel.types/1.2.3",
-      "hashPath": "aelf.kernel.types.1.2.3.nupkg.sha512"
+      "sha512": "sha512-018/ccUf9zZmBScBZeR51hEeTB/8trAKRBlOoY7qbQRLpkfLCl3QVqOqmRiRVQPPrBKago3jcxYbQ2vJP19ZCg==",
+      "path": "aelf.kernel.types/1.6.0",
+      "hashPath": "aelf.kernel.types.1.6.0.nupkg.sha512"
     },
-    "AElf.OS.Core/1.2.3": {
+    "AElf.OS.Core/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Yhx22CP3W3c8Tw+MR1d/pCKLtyI9hn2NjoR7CSJ7rMaKOqGq1ZH22elVBH9VpiYb+Dy9EnTZqVA0rPYFDLOfhw==",
-      "path": "aelf.os.core/1.2.3",
-      "hashPath": "aelf.os.core.1.2.3.nupkg.sha512"
+      "sha512": "sha512-vUOxO4vI5zri4ceEoWiqRDnus0P858PeMB0iB8XahwQY/unlgD/Fd1amJWoDtdAA7ftKWk/wj3+qfYX2S1e/7g==",
+      "path": "aelf.os.core/1.6.0",
+      "hashPath": "aelf.os.core.1.6.0.nupkg.sha512"
     },
-    "AElf.Runtime.CSharp/1.2.3": {
+    "AElf.Runtime.CSharp/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4FXdgjENldkRLRJqwwTICCxF7lsxIqZFNeFdRdidU+hZEeefGzCK86ueFFabgK/QoC0VK/RnmBuawcGv4UXvyQ==",
-      "path": "aelf.runtime.csharp/1.2.3",
-      "hashPath": "aelf.runtime.csharp.1.2.3.nupkg.sha512"
+      "sha512": "sha512-TAIzqTBxyWgda0pd7vpD1xtBQI3uavJtKu1lwxhx/rTWNzH8UHnw+Z0i4o0qYCUFEKoK+4UsRl8oLznz/KUf9Q==",
+      "path": "aelf.runtime.csharp/1.6.0",
+      "hashPath": "aelf.runtime.csharp.1.6.0.nupkg.sha512"
     },
-    "AElf.Runtime.CSharp.Core/1.2.3": {
+    "AElf.Runtime.CSharp.Core/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/D8eoiHaKbrO46oSxmcWdH4WlQkmr3IIQjGZzRayaEQBAyZ+7f6F3/K+WDN70jtpR7hhAz1EMz45cCkVKHUFFw==",
-      "path": "aelf.runtime.csharp.core/1.2.3",
-      "hashPath": "aelf.runtime.csharp.core.1.2.3.nupkg.sha512"
+      "sha512": "sha512-wK7ae5Uqkg+aI5T6MU5G2d9h3Gam8KxFrPIdidcnooXkbvE56/ixOAj3t9j0AgttlIJVFDthNbk/oz1aGBCx1w==",
+      "path": "aelf.runtime.csharp.core/1.6.0",
+      "hashPath": "aelf.runtime.csharp.core.1.6.0.nupkg.sha512"
     },
-    "AElf.Sdk.CSharp/1.2.3": {
+    "AElf.Sdk.CSharp/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UQVTeJgKMHXxkfFSyQUOBBT3LitiBhpzx3PDxYfKK7Yh8lZrjEufjmQQxaFtvl934bsvmCcL8emq7Xz/Qx3v0g==",
-      "path": "aelf.sdk.csharp/1.2.3",
-      "hashPath": "aelf.sdk.csharp.1.2.3.nupkg.sha512"
+      "sha512": "sha512-RabEjqSr7MRzwEfYM/sRUOBmObVnqwhMrCK0xvOaReHdFIVhw6QHzR+MYOB4wm5RrtH2xMK/zzEgyxjLrlqTcg==",
+      "path": "aelf.sdk.csharp/1.6.0",
+      "hashPath": "aelf.sdk.csharp.1.6.0.nupkg.sha512"
     },
-    "AElf.Types/1.2.3": {
+    "AElf.Types/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PG1l9DI1hZkkGY5GNLv+zeQxOhM1DHd4wa6halWFapt9sP2EMQW1mj1BvaIKJKyzZUoCY5ZujhaZm1pkOH2T+g==",
-      "path": "aelf.types/1.2.3",
-      "hashPath": "aelf.types.1.2.3.nupkg.sha512"
+      "sha512": "sha512-xDMGT5fVLI/jp+RarB5i3woLuIwC5dcOUqEYeRFj7Uvl683Jlw5vatqw2qI5HxCeUSx5wc04rezMcdTSdNYZ1g==",
+      "path": "aelf.types/1.6.0",
+      "hashPath": "aelf.types.1.6.0.nupkg.sha512"
     },
     "Autofac/6.3.0": {
       "type": "package",
@@ -3212,6 +3294,13 @@
       "sha512": "sha512-Z86ZX33qYZ09xhdnYEyD/xilGUQBiITSAdHVZw59Qb+bN+tN/WFVDBZGQZZnI3+l8+hdjM2zWdcK4sgUEavRzw==",
       "path": "autofac.extras.dynamicproxy/6.0.0",
       "hashPath": "autofac.extras.dynamicproxy.6.0.0.nupkg.sha512"
+    },
+    "Basic.Reference.Assemblies.Net60/1.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WysJzntzUCxVdq0AjDHHRMvP7eVo+xliN2iqkpYBIcrZI/wZD8grd7VW1yDkF7IxDJX4wsDhColArLJEhmDdEw==",
+      "path": "basic.reference.assemblies.net60/1.4.1",
+      "hashPath": "basic.reference.assemblies.net60.1.4.1.nupkg.sha512"
     },
     "Castle.Core/4.4.1": {
       "type": "package",
@@ -3268,6 +3357,20 @@
       "sha512": "sha512-UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
       "path": "microsoft.bcl.asyncinterfaces/6.0.0",
       "hashPath": "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.Analyzers/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ojG5pGAhTPmjxRGTNvuszO3H8XPZqksDwr9xLd4Ae/JBjZZdl6GuoLk7uLMf+o7yl5wO0TAqoWcEKkEWqrZE5g==",
+      "path": "microsoft.codeanalysis.analyzers/3.0.0",
+      "hashPath": "microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.Common/3.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HiWjF7PNIEngmFg2Xk8cZ/83lRIRkk9v+5ibbY5B7VvjNGdClGAMuWtZER9F5rGRR41VbJLco9ah73jFTh4vPw==",
+      "path": "microsoft.codeanalysis.common/3.9.0",
+      "hashPath": "microsoft.codeanalysis.common.3.9.0.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/16.3.0": {
       "type": "package",
@@ -3472,12 +3575,12 @@
       "path": "microsoft.netcore.jit/1.0.2",
       "hashPath": "microsoft.netcore.jit.1.0.2.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/1.1.0": {
+    "Microsoft.NETCore.Platforms/2.1.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
-      "path": "microsoft.netcore.platforms/1.1.0",
-      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+      "sha512": "sha512-mOJy3M0UN+LUG21dLGMxaWZEP6xYpQEpLuvuEQBaownaX4YuhH6NmNUlN9si+vNkAS6dwJ//N1O4DmLf2CikVg==",
+      "path": "microsoft.netcore.platforms/2.1.2",
+      "hashPath": "microsoft.netcore.platforms.2.1.2.nupkg.sha512"
     },
     "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
       "type": "package",
@@ -3731,12 +3834,12 @@
       "path": "secp256k1.native/0.1.24-alpha",
       "hashPath": "secp256k1.native.0.1.24-alpha.nupkg.sha512"
     },
-    "Secp256k1.Net/1.0.0-alpha": {
+    "Secp256k1.Net/1.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-CD1beMaTCxQ6USXoywYnN5UlNJHsNaLwNJ3ht04bkTo4WWphEt3x1rONFa+b+IgkUivmTpFu26yPVYSbYVqykQ==",
-      "path": "secp256k1.net/1.0.0-alpha",
-      "hashPath": "secp256k1.net.1.0.0-alpha.nupkg.sha512"
+      "sha512": "sha512-eoztYXUWtRdsd2cAJWRDcl7Caq3Qx88+GIN8jxM6wjC9Mi6I42k8XOjxt7jjhj8lCAgMHV7w0Vhg14RYgPDuzw==",
+      "path": "secp256k1.net/1.2.0",
+      "hashPath": "secp256k1.net.1.2.0.nupkg.sha512"
     },
     "Shouldly/3.0.2": {
       "type": "package",
@@ -3955,6 +4058,13 @@
       "path": "system.linq.queryable/4.3.0",
       "hashPath": "system.linq.queryable.4.3.0.nupkg.sha512"
     },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
+    },
     "System.Net.Http/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4024,6 +4134,13 @@
       "sha512": "sha512-rJkrJD3kBI5B712aRu4DpSIiHRtr6QlfZSQsb0hYHrDCZORXCFjQfoipo2LaMUHoT9i1B7j7MnfaEKWDFmFQNQ==",
       "path": "system.reflection.extensions/4.3.0",
       "hashPath": "system.reflection.extensions.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.Metadata/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5NecZgXktdGg34rh1OenY1rFNDCI8xSjFr+Z4OU4cU06AQHUdRnIIEeWENu3Wl4YowbzkymAIMvi3WyK9U53pQ==",
+      "path": "system.reflection.metadata/5.0.0",
+      "hashPath": "system.reflection.metadata.5.0.0.nupkg.sha512"
     },
     "System.Reflection.Primitives/4.3.0": {
       "type": "package",
@@ -4158,6 +4275,13 @@
       "path": "system.text.encoding/4.3.0",
       "hashPath": "system.text.encoding.4.3.0.nupkg.sha512"
     },
+    "System.Text.Encoding.CodePages/4.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4J2JQXbftjPMppIHJ7IC+VXQ9XfEagN92vZZNoG12i+zReYlim5dMoXFC1Zzg7tsnKDM7JPo5bYfFK4Jheq44w==",
+      "path": "system.text.encoding.codepages/4.5.1",
+      "hashPath": "system.text.encoding.codepages.4.5.1.nupkg.sha512"
+    },
     "System.Text.Encoding.Extensions/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4207,12 +4331,12 @@
       "path": "system.threading.tasks.dataflow/4.11.1",
       "hashPath": "system.threading.tasks.dataflow.4.11.1.nupkg.sha512"
     },
-    "System.Threading.Tasks.Extensions/4.5.1": {
+    "System.Threading.Tasks.Extensions/4.5.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WSKUTtLhPR8gllzIWO2x6l4lmAIfbyMAiTlyXAis4QBDonXK4b4S6F8zGARX4/P8wH3DH+sLdhamCiHn+fTU1A==",
-      "path": "system.threading.tasks.extensions/4.5.1",
-      "hashPath": "system.threading.tasks.extensions.4.5.1.nupkg.sha512"
+      "sha512": "sha512-zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
     },
     "System.Threading.Timer/4.3.0": {
       "type": "package",
