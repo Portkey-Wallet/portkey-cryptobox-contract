@@ -39,6 +39,10 @@
     <ContractStub Include="..\..\protobuf\acs0.proto">
       <Link>Protobuf\Proto\acs0.proto</Link>
     </ContractStub>
+
+    <ContractStub Include="..\..\protobuf\token_contract.proto">
+      <Link>Protobuf\Proto\token_contract.proto</Link>
+    </ContractStub>
     
   </ItemGroup>
 

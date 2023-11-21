@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AElf;
 using AElf.Contracts.MultiToken;
 using AElf.Sdk.CSharp;
@@ -9,6 +10,16 @@ namespace Portkey.Contracts.RedPacket
 {
     public partial class RedPacketContract : RedPacketContractContainer.RedPacketContractBase
     {
+        public override Empty Initialize(InitializeInput input)
+        {
+            Assert(!State.Initialized.Value, "Already initialized.");
+            State.Admin.Value = input.ContractAdmin ?? Context.Sender;
+            State.TokenContract.Value =
+                Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
+            State.Initialized.Value = true;
+            return new Empty();
+        }
+
         public override Empty CreateRedPacket(CreateRedPacketInput input)
         {
             Assert(input.RedPacketId != null, "RedPacketId should not be null.");
@@ -16,7 +27,6 @@ namespace Portkey.Contracts.RedPacket
             Assert(input.TotalAmount > 0, "TotalAmount should be greater than 0.");
             Assert(input.TotalCount is > 0 and < RedPacketContractConstants.MaxRedPacketCount,
                 "TotalCount should be greater than 0.");
-            //verify min * count < total
             Assert(input.MinAmount > 0, "MinAmount should be greater than 0.");
             Assert(input.RedPacketSymbol != null, "RedPacketSymbol should not be null.");
             Assert(input.TotalAmount > input.MinAmount * input.TotalCount,
@@ -24,24 +34,35 @@ namespace Portkey.Contracts.RedPacket
             Assert(input.ExpirationTime > Context.CurrentBlockTime.Seconds, "ExpiredTime should be greater than now.");
             Assert(input.FromSender != null, "FromSender should not be null.");
             Assert(input.PublicKey != null, "PublicKey should not be null.");
-            Assert(input.RedPacketType != null, "RedPacketType should not be null.");
-
             var message = $"{input.RedPacketSymbol}-{input.MinAmount}-{input.TotalCount}";
             var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
-            var signature = ByteString.FromBase64(input.RedPacketSignature).ToByteArray();
-            var recoverPublicKey = Context.RecoverPublicKey(signature, messageBytes);
-            Assert(ByteString.FromBase64(input.PublicKey).ToByteArray() == recoverPublicKey, "Invalid signature.");
 
-            var virtualAddress = Address.FromBase58(HashHelper.ComputeFrom(input.RedPacketId).ToHex());
-            Context.SendVirtualInline(Hash.LoadFromHex(input.FromSender.ToBase58()), virtualAddress,
-                nameof(State.TokenContract.Transfer),
-                new TransferInput
-                {
-                    To = virtualAddress,
-                    Amount = input.TotalAmount,
-                    Symbol = input.RedPacketSymbol,
-                    Memo = "CreateRedPacket"
-                }.ToByteString());
+            var signature = ByteStringHelper.FromHexString(input.RedPacketSignature);
+
+            var recoverPublicKey = Context.RecoverPublicKey(signature.ToByteArray(), messageBytes).ToHex();
+            var bytes = ByteStringHelper.FromHexString(input.PublicKey).ToByteArray().ToHex();
+            Assert(bytes == recoverPublicKey, "Invalid signature.");
+
+            var virtualAddress =
+                Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(input.RedPacketId));
+
+            State.TokenContract.TransferFrom.Send(new TransferFromInput
+            {
+                From = Context.Sender,
+                To = Context.Self,
+                Amount = input.TotalAmount,
+                Symbol = input.RedPacketSymbol,
+                Memo = "RedPacket"
+            });
+
+            State.TokenContract.Transfer.Send(new TransferInput
+            {
+                To = virtualAddress,
+                Amount = input.TotalAmount,
+                Symbol = input.RedPacketSymbol,
+                Memo = "RedPacket"
+            });
+
             var redPacket = new RedPacketInfo
             {
                 RedPacketId = input.RedPacketId,
@@ -74,18 +95,23 @@ namespace Portkey.Contracts.RedPacket
             var inputs = input.TransferRedPacketInputs;
             Assert(inputs != null && input.RedPacketId != null, "Invalidate Input");
             var redPacket = State.RedPacketInfoMap[input.RedPacketId];
-
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
             foreach (var transferRedPacketInput in inputs!)
             {
+                var list = State.AlreadySnatchedList[transferRedPacketInput.RedPacketId];
+                if (list.Contains(transferRedPacketInput.ReceiverAddress))
+                {
+                    continue;
+                }
+
                 var message =
                     $"{redPacket.RedPacketId}-{transferRedPacketInput.ReceiverAddress}-{transferRedPacketInput.Amount}";
                 var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
-                var signature = ByteString.FromBase64(transferRedPacketInput.RedPacketSignature).ToByteArray();
+                var signature = ByteStringHelper.FromHexString(transferRedPacketInput.RedPacketSignature).ToByteArray();
                 var recoverPublicKey = Context.RecoverPublicKey(signature, messageBytes);
                 if (ByteString.FromBase64(redPacket.PublicKey).ToByteArray() == recoverPublicKey)
                 {
-                    Context.SendVirtualInline(virtualAddressHash, transferRedPacketInput.ReceiverAddress,
+                    Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
                         nameof(State.TokenContract.Transfer),
                         new TransferInput
                         {
@@ -102,6 +128,9 @@ namespace Portkey.Contracts.RedPacket
                         FromSender = redPacket.FromSender,
                         IsSuccess = true
                     });
+                    var alreadySnatchedList = new List<Address>();
+                    alreadySnatchedList.Add(transferRedPacketInput.ReceiverAddress);
+                    State.AlreadySnatchedList[input.RedPacketId] = alreadySnatchedList;
                 }
                 else
                 {
@@ -117,6 +146,23 @@ namespace Portkey.Contracts.RedPacket
             }
 
             return new Empty();
+        }
+
+        public override RedPacketOutput GetRedPacketInfo(GetRedPacketInput input)
+        {
+            var packetInfo = State.RedPacketInfoMap[input.RedPacketId];
+            Assert(packetInfo != null, "RedPacketId not exists.");
+            return new RedPacketOutput
+            {
+                RedPacketId = input.RedPacketId,
+                RedPacketType = packetInfo.RedPacketType,
+                RedPacketSymbol = packetInfo.RedPacketSymbol,
+                TotalCount = packetInfo.TotalCount,
+                TotalAmount = packetInfo.TotalAmount,
+                MinAmount = packetInfo.MinAmount,
+                ExpirationTime = packetInfo.ExpirationTime,
+                PublicKey = packetInfo.PublicKey,
+            };
         }
     }
 }

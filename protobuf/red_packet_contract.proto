@@ -14,9 +14,13 @@ service RedPacketContract {
 
     option (aelf.csharp_state) = "Portkey.Contracts.RedPacket.RedPacketContractState";
 
+    rpc Initialize(InitializeInput) returns (google.protobuf.Empty){}
+
     rpc CreateRedPacket (CreateRedPacketInput) returns (google.protobuf.Empty) {}
 
     rpc TransferRedPacket (TransferRedPacketBatchInput) returns (google.protobuf.Empty) {}
+    
+    rpc GetRedPacketInfo (GetRedPacketInput) returns (RedPacketOutput) {}
 }
 
 
@@ -85,6 +89,27 @@ message RedPacketReceived{
     int64 amount = 4;
     aelf.Address receiver_address = 5;
     bool is_success = 6;
+}
+
+message InitializeInput{
+    aelf.Address contract_admin = 1;
+}
+
+message RedPacketOutput {
+    string red_packet_id = 1;
+    string red_packet_symbol = 2;
+    int64 total_amount = 3;
+    int64 min_amount = 4;
+    int64 expiration_time = 5;
+    int64 total_count = 6;
+    string red_packet_signature = 7;
+    string public_key = 8;
+    RedPacketType red_packet_type = 9;
+    aelf.Address from_sender = 10;
+}
+
+message GetRedPacketInput {
+    string red_packet_id = 1;
 }
 
 

@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using AElf;
+using AElf.Contracts.MultiToken;
 using AElf.Cryptography;
 using Xunit;
 
@@ -15,11 +16,19 @@ namespace Portkey.Contracts.RedPacket
             var publicKey = ecKeyPair.PublicKey.ToHex();
             var privateKey = ecKeyPair.PrivateKey.ToHex();
 
+           await TokenContractStub.Approve.SendAsync(new ApproveInput
+            {
+                Spender = DAppContractAddress,
+                Symbol = "ELF",
+                Amount = 1000
+            });
+
             var message = $"{"ELF"}-{10}-{10}";
             var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
             var signature =
-                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray).ToHex();
-            var id = Guid.NewGuid().ToString();
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
+                    .ToHex();
+            var id = Guid.NewGuid().ToString().Replace("-","");
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
             {
