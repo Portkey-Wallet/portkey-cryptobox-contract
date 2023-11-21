@@ -531,3 +531,4 @@
 /Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/test/Portkey.Contracts.RedPacket.Tests/bin/Debug/net6.0/tr/Microsoft.CodeAnalysis.resources.dll
 /Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/test/Portkey.Contracts.RedPacket.Tests/bin/Debug/net6.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
 /Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/test/Portkey.Contracts.RedPacket.Tests/bin/Debug/net6.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/test/Portkey.Contracts.RedPacket.Tests/bin/Debug/net6.0/CoverletSourceRootsMapping_Portkey.Contracts.RedPacket.Tests

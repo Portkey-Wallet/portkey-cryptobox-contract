@@ -16,6 +16,7 @@
           "Microsoft.NET.Test.Sdk": "16.3.0",
           "Portkey.Contracts.RedPacket": "1.0.0",
           "Shouldly": "3.0.2",
+          "coverlet.collector": "6.0.0",
           "coverlet.msbuild": "2.5.1",
           "xunit": "2.4.1",
           "xunit.runner.console": "2.4.1",
@@ -765,6 +766,7 @@
           }
         }
       },
+      "coverlet.collector/6.0.0": {},
       "coverlet.msbuild/2.5.1": {},
       "Google.Protobuf/3.19.4": {
         "runtime": {
@@ -3380,6 +3382,13 @@
       "sha512": "sha512-eco2HlKQBY4Joz9odHigzGpVzv6pjsXnY5lziioMveQxr+i2Z7xYcIOMeZTgYiqnMtMAbXMXsVhrNfWO5vJS8Q==",
       "path": "commandlineparser/2.8.0",
       "hashPath": "commandlineparser.2.8.0.nupkg.sha512"
+    },
+    "coverlet.collector/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tW3lsNS+dAEII6YGUX/VMoJjBS1QvsxqJeqLaJXub08y1FSjasFPtQ4UBUsudE9PNrzLjooClMsPtY2cZLdXpQ==",
+      "path": "coverlet.collector/6.0.0",
+      "hashPath": "coverlet.collector.6.0.0.nupkg.sha512"
     },
     "coverlet.msbuild/2.5.1": {
       "type": "package",

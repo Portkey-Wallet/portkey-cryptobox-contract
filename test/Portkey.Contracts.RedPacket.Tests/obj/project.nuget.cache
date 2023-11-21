@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mb3WEYtk/sg5eQ9VwFT1WBkznpF9vMPMW4j6R6uKfBa55t72wGwdgatEeRi/gArd5DK5GT6OBI+5fG8Exl0vYg==",
+  "dgSpecHash": "3LcnI4czmV92a909ad18mXzt/TfDubi3aNxSpoWXSICEwdNTjvdtoGtUdFRBAudHSdMgKRDH00BCN7GZpFFYoA==",
   "success": true,
   "projectFilePath": "/Users/wangyue/Desktop/red_packet/portkey-redpackage-contract/test/Portkey.Contracts.RedPacket.Tests/Portkey.Contracts.RedPacket.Tests.csproj",
   "expectedPackageFiles": [
@@ -63,6 +63,7 @@
     "/Users/wangyue/.nuget/packages/castle.core/4.4.1/castle.core.4.4.1.nupkg.sha512",
     "/Users/wangyue/.nuget/packages/castle.core.asyncinterceptor/2.0.0/castle.core.asyncinterceptor.2.0.0.nupkg.sha512",
     "/Users/wangyue/.nuget/packages/commandlineparser/2.8.0/commandlineparser.2.8.0.nupkg.sha512",
+    "/Users/wangyue/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/Users/wangyue/.nuget/packages/coverlet.msbuild/2.5.1/coverlet.msbuild.2.5.1.nupkg.sha512",
     "/Users/wangyue/.nuget/packages/google.protobuf/3.19.4/google.protobuf.3.19.4.nupkg.sha512",
     "/Users/wangyue/.nuget/packages/jetbrains.annotations/2021.2.0/jetbrains.annotations.2021.2.0.nupkg.sha512",

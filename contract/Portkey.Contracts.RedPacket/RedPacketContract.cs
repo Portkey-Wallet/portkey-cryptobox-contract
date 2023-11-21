@@ -33,7 +33,8 @@ namespace Portkey.Contracts.RedPacket
             Assert(ByteString.FromBase64(input.PublicKey).ToByteArray() == recoverPublicKey, "Invalid signature.");
 
             var virtualAddress = Address.FromBase58(HashHelper.ComputeFrom(input.RedPacketId).ToHex());
-            Context.SendVirtualInline(input.FromSender, virtualAddress, nameof(State.TokenContract.Transfer),
+            Context.SendVirtualInline(Hash.LoadFromHex(input.FromSender.ToBase58()), virtualAddress,
+                nameof(State.TokenContract.Transfer),
                 new TransferInput
                 {
                     To = virtualAddress,

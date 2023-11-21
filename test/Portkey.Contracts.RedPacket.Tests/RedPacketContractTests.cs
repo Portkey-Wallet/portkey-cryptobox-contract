@@ -1,10 +1,7 @@
-using System.Linq;
+using System;
 using System.Threading.Tasks;
-using AElf.ContractTestBase.ContractTestKit;
-using AElf.Types;
-using Google.Protobuf;
-using Google.Protobuf.WellKnownTypes;
-using Shouldly;
+using AElf;
+using AElf.Cryptography;
 using Xunit;
 
 namespace Portkey.Contracts.RedPacket
@@ -12,20 +9,31 @@ namespace Portkey.Contracts.RedPacket
     public class RedPacketContractTests : RedPacketContractTestBase
     {
         [Fact]
-        public async Task Test()
+        public async Task CreateRedPacketTest()
         {
-            // Get a stub for testing.
-            var keyPair = SampleAccount.Accounts.First().KeyPair;
-            var stub = GetRedPacketContractStub(keyPair);
+            var ecKeyPair = CryptoHelper.GenerateKeyPair();
+            var publicKey = ecKeyPair.PublicKey.ToHex();
+            var privateKey = ecKeyPair.PrivateKey.ToHex();
 
-            // Use CallAsync or SendAsync method of this stub to test.
-            // await stub.Hello.SendAsync(new Empty())
-
-            // Or maybe you want to get its return value.
-            // var output = (await stub.Hello.SendAsync(new Empty())).Output;
-
-            // Or transaction result.
-            // var transactionResult = (await stub.Hello.SendAsync(new Empty())).TransactionResult;
+            var message = $"{"ELF"}-{10}-{10}";
+            var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
+            var signature =
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray).ToHex();
+            var id = Guid.NewGuid().ToString();
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
+            {
+                RedPacketSymbol  = "ELF",
+                TotalAmount = 1000,
+                TotalCount = 10,
+                MinAmount = 10,
+                FromSender = DefaultAddress,
+                PublicKey = publicKey,
+                RedPacketType = RedPacketType.QuickTransfer,
+                ExpirationTime = timeSeconds + 1000,
+                RedPacketSignature = signature,
+                RedPacketId = id
+            });
         }
     }
 }
