@@ -61,6 +61,7 @@ message RedPacketInfo {
     int64 total_count = 6;
     string RedPacketType = 7;
     string public_key = 8;
+    aelf.Hash from_sender = 9;
 }
 
 message RedPacketCreated{
@@ -74,4 +75,16 @@ message RedPacketCreated{
 
 
 }
+
+message RedPacketReceived{
+    option (aelf.is_event) = true;
+    aelf.Hash from_sender = 1;
+    string red_packet_id = 2;
+    string red_packet_symbol = 3;
+    int64 amount = 4;
+    aelf.Address receiver_address = 5;
+    bool is_success = 6;
+}
+
+
 

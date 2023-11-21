@@ -1,5 +1,6 @@
 using AElf;
 using AElf.Contracts.MultiToken;
+using AElf.Cryptography;
 using AElf.Sdk.CSharp;
 using AElf.Types;
 using Google.Protobuf;
@@ -14,7 +15,8 @@ namespace Portkey.Contracts.RedPacket
             Assert(input.RedPacketId != null, "RedPacketId should not be null.");
             Assert(State.RedPacketInfoMap[input.RedPacketId] == null, "RedPacketId already exists.");
             Assert(input.TotalAmount > 0, "TotalAmount should be greater than 0.");
-            Assert(input.TotalCount > 0 && input.TotalCount < RedPacketContractConstants.MaxRedPacketCount, "TotalCount should be greater than 0.");
+            Assert(input.TotalCount is > 0 and < RedPacketContractConstants.MaxRedPacketCount,
+                "TotalCount should be greater than 0.");
             //verify min * count < total
             Assert(input.MinAmount > 0, "MinAmount should be greater than 0.");
             Assert(input.RedPacketSymbol != null, "RedPacketSymbol should not be null.");
@@ -24,6 +26,13 @@ namespace Portkey.Contracts.RedPacket
             Assert(input.FromSender != null, "FromSender should not be null.");
             Assert(input.PublicKey != null, "PublicKey should not be null.");
             Assert(input.RedPacketType != null, "RedPacketType should not be null.");
+
+            var message = $"{input.RedPacketSymbol}-{input.MinAmount}-{input.TotalCount}";
+            var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
+            var signature = ByteString.FromBase64(input.RedPacketSignature).ToByteArray();
+            var recoverPublicKey = Context.RecoverPublicKey(signature, messageBytes);
+            Assert(ByteString.FromBase64(input.PublicKey).ToByteArray() == recoverPublicKey, "Invalid signature.");
+
             var virtualAddress = Address.FromBase58(HashHelper.ComputeFrom(input.RedPacketId).ToHex());
             Context.SendVirtualInline(input.FromSender, virtualAddress, nameof(State.TokenContract.Transfer),
                 new TransferInput
@@ -59,29 +68,55 @@ namespace Portkey.Contracts.RedPacket
             return new Empty();
         }
 
+
         public override Empty TransferRedPacket(TransferRedPacketBatchInput input)
         {
             var inputs = input.TransferRedPacketInputs;
             Assert(inputs != null && input.RedPacketId != null, "Invalidate Input");
             var redPacket = State.RedPacketInfoMap[input.RedPacketId];
+
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
             foreach (var transferRedPacketInput in inputs!)
             {
-                Context.SendVirtualInline(virtualAddressHash, transferRedPacketInput.ReceiverAddress,
-                    nameof(State.TokenContract.Transfer),
-                    new TransferInput
+                var message =
+                    $"{redPacket.RedPacketId}-{transferRedPacketInput.ReceiverAddress}-{transferRedPacketInput.Amount}";
+                var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
+                var signature = ByteString.FromBase64(transferRedPacketInput.RedPacketSignature).ToByteArray();
+                var recoverPublicKey = Context.RecoverPublicKey(signature, messageBytes);
+                if (ByteString.FromBase64(redPacket.PublicKey).ToByteArray() == recoverPublicKey)
+                {
+                    Context.SendVirtualInline(virtualAddressHash, transferRedPacketInput.ReceiverAddress,
+                        nameof(State.TokenContract.Transfer),
+                        new TransferInput
+                        {
+                            To = transferRedPacketInput.ReceiverAddress,
+                            Amount = transferRedPacketInput.Amount,
+                            Symbol = redPacket.RedPacketSymbol,
+                            Memo = "TransferToReceiver"
+                        }.ToByteString());
+                    Context.Fire(new RedPacketReceived
                     {
-                        To = transferRedPacketInput.ReceiverAddress,
+                        RedPacketId = redPacket.RedPacketId,
+                        ReceiverAddress = transferRedPacketInput.ReceiverAddress,
                         Amount = transferRedPacketInput.Amount,
-                        Symbol = redPacket.RedPacketSymbol,
-                        Memo = "TransferToReceiver"
-                    }.ToByteString());
+                        FromSender = redPacket.FromSender,
+                        IsSuccess = true
+                    });
+                }
+                else
+                {
+                    Context.Fire(new RedPacketReceived
+                    {
+                        RedPacketId = redPacket.RedPacketId,
+                        ReceiverAddress = transferRedPacketInput.ReceiverAddress,
+                        Amount = transferRedPacketInput.Amount,
+                        FromSender = redPacket.FromSender,
+                        IsSuccess = false
+                    });
+                }
             }
 
             return new Empty();
         }
     }
-    
-    
-    
 }

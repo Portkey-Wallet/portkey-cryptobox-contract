@@ -37,6 +37,29 @@ namespace Portkey.Contracts.RedPacket {
     }
   }
 
+  internal partial class RedPacketReceived : aelf::IEvent<RedPacketReceived>
+  {
+    public global::System.Collections.Generic.IEnumerable<RedPacketReceived> GetIndexed()
+    {
+      return new List<RedPacketReceived>
+      {
+      };
+    }
+
+    public RedPacketReceived GetNonIndexed()
+    {
+      return new RedPacketReceived
+      {
+        FromSender = FromSender,
+        RedPacketId = RedPacketId,
+        RedPacketSymbol = RedPacketSymbol,
+        Amount = Amount,
+        ReceiverAddress = ReceiverAddress,
+        IsSuccess = IsSuccess,
+      };
+    }
+  }
+
   #endregion
   internal static partial class RedPacketContractContainer
   {

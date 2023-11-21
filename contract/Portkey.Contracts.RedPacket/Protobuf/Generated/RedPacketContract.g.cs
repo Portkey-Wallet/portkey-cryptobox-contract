@@ -37,31 +37,37 @@ namespace Portkey.Contracts.RedPacket {
             "IAEoCzINLmFlbGYuQWRkcmVzcxIcChRyZWRfcGFja2V0X3NpZ25hdHVyZRgE",
             "IAEoCSJxChtUcmFuc2ZlclJlZFBhY2tldEJhdGNoSW5wdXQSFQoNcmVkX3Bh",
             "Y2tldF9pZBgBIAEoCRI7Chp0cmFuc2Zlcl9yZWRfcGFja2V0X2lucHV0cxgC",
-            "IAMoCzIXLlRyYW5zZmVyUmVkUGFja2V0SW5wdXQixAEKDVJlZFBhY2tldElu",
+            "IAMoCzIXLlRyYW5zZmVyUmVkUGFja2V0SW5wdXQi5QEKDVJlZFBhY2tldElu",
             "Zm8SFQoNcmVkX3BhY2tldF9pZBgBIAEoCRIZChFyZWRfcGFja2V0X3N5bWJv",
             "bBgCIAEoCRIUCgx0b3RhbF9hbW91bnQYAyABKAMSEgoKbWluX2Ftb3VudBgE",
             "IAEoAxIXCg9leHBpcmF0aW9uX3RpbWUYBSABKAMSEwoLdG90YWxfY291bnQY",
             "BiABKAMSFQoNUmVkUGFja2V0VHlwZRgHIAEoCRISCgpwdWJsaWNfa2V5GAgg",
-            "ASgJIq0BChBSZWRQYWNrZXRDcmVhdGVkEh8KC2Zyb21fc2VuZGVyGAEgASgL",
-            "MgouYWVsZi5IYXNoEhUKDXJlZF9wYWNrZXRfaWQYAiABKAkSGQoRcmVkX3Bh",
-            "Y2tldF9zeW1ib2wYAyABKAkSFAoMdG90YWxfYW1vdW50GAQgASgDEhMKC3Rv",
-            "dGFsX2NvdW50GAUgASgDEhUKDVJlZFBhY2tldFR5cGUYBiABKAk6BKC7GAEq",
-            "RwoNUmVkUGFja2V0VHlwZRILCgdVTktOT1dOEAASCQoFRklYRUQQARIKCgZS",
-            "QU5ET00QAhISCg5RVUlDS19UUkFOU0ZFUhADMt0BChFSZWRQYWNrZXRDb250",
-            "cmFjdBJCCg9DcmVhdGVSZWRQYWNrZXQSFS5DcmVhdGVSZWRQYWNrZXRJbnB1",
-            "dBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIAEksKEVRyYW5zZmVyUmVkUGFj",
-            "a2V0EhwuVHJhbnNmZXJSZWRQYWNrZXRCYXRjaElucHV0GhYuZ29vZ2xlLnBy",
-            "b3RvYnVmLkVtcHR5IgAaN7LM9gEyUG9ydGtleS5Db250cmFjdHMuUmVkUGFj",
-            "a2V0LlJlZFBhY2tldENvbnRyYWN0U3RhdGVCHqoCG1BvcnRrZXkuQ29udHJh",
-            "Y3RzLlJlZFBhY2tldGIGcHJvdG8z"));
+            "ASgJEh8KC2Zyb21fc2VuZGVyGAkgASgLMgouYWVsZi5IYXNoIq0BChBSZWRQ",
+            "YWNrZXRDcmVhdGVkEh8KC2Zyb21fc2VuZGVyGAEgASgLMgouYWVsZi5IYXNo",
+            "EhUKDXJlZF9wYWNrZXRfaWQYAiABKAkSGQoRcmVkX3BhY2tldF9zeW1ib2wY",
+            "AyABKAkSFAoMdG90YWxfYW1vdW50GAQgASgDEhMKC3RvdGFsX2NvdW50GAUg",
+            "ASgDEhUKDVJlZFBhY2tldFR5cGUYBiABKAk6BKC7GAEiuQEKEVJlZFBhY2tl",
+            "dFJlY2VpdmVkEh8KC2Zyb21fc2VuZGVyGAEgASgLMgouYWVsZi5IYXNoEhUK",
+            "DXJlZF9wYWNrZXRfaWQYAiABKAkSGQoRcmVkX3BhY2tldF9zeW1ib2wYAyAB",
+            "KAkSDgoGYW1vdW50GAQgASgDEicKEHJlY2VpdmVyX2FkZHJlc3MYBSABKAsy",
+            "DS5hZWxmLkFkZHJlc3MSEgoKaXNfc3VjY2VzcxgGIAEoCDoEoLsYASpHCg1S",
+            "ZWRQYWNrZXRUeXBlEgsKB1VOS05PV04QABIJCgVGSVhFRBABEgoKBlJBTkRP",
+            "TRACEhIKDlFVSUNLX1RSQU5TRkVSEAMy3QEKEVJlZFBhY2tldENvbnRyYWN0",
+            "EkIKD0NyZWF0ZVJlZFBhY2tldBIVLkNyZWF0ZVJlZFBhY2tldElucHV0GhYu",
+            "Z29vZ2xlLnByb3RvYnVmLkVtcHR5IgASSwoRVHJhbnNmZXJSZWRQYWNrZXQS",
+            "HC5UcmFuc2ZlclJlZFBhY2tldEJhdGNoSW5wdXQaFi5nb29nbGUucHJvdG9i",
+            "dWYuRW1wdHkiABo3ssz2ATJQb3J0a2V5LkNvbnRyYWN0cy5SZWRQYWNrZXQu",
+            "UmVkUGFja2V0Q29udHJhY3RTdGF0ZUIeqgIbUG9ydGtleS5Db250cmFjdHMu",
+            "UmVkUGFja2V0YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::AElf.Types.CoreReflection.Descriptor, global::AElf.OptionsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Portkey.Contracts.RedPacket.RedPacketType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.CreateRedPacketInput), global::Portkey.Contracts.RedPacket.CreateRedPacketInput.Parser, new[]{ "RedPacketId", "RedPacketSymbol", "TotalAmount", "MinAmount", "ExpirationTime", "TotalCount", "RedPacketType", "PublicKey", "RedPacketSignature", "FromSender" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.TransferRedPacketInput), global::Portkey.Contracts.RedPacket.TransferRedPacketInput.Parser, new[]{ "RedPacketId", "Amount", "ReceiverAddress", "RedPacketSignature" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.TransferRedPacketBatchInput), global::Portkey.Contracts.RedPacket.TransferRedPacketBatchInput.Parser, new[]{ "RedPacketId", "TransferRedPacketInputs" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.RedPacketInfo), global::Portkey.Contracts.RedPacket.RedPacketInfo.Parser, new[]{ "RedPacketId", "RedPacketSymbol", "TotalAmount", "MinAmount", "ExpirationTime", "TotalCount", "RedPacketType", "PublicKey" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.RedPacketCreated), global::Portkey.Contracts.RedPacket.RedPacketCreated.Parser, new[]{ "FromSender", "RedPacketId", "RedPacketSymbol", "TotalAmount", "TotalCount", "RedPacketType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.RedPacketInfo), global::Portkey.Contracts.RedPacket.RedPacketInfo.Parser, new[]{ "RedPacketId", "RedPacketSymbol", "TotalAmount", "MinAmount", "ExpirationTime", "TotalCount", "RedPacketType", "PublicKey", "FromSender" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.RedPacketCreated), global::Portkey.Contracts.RedPacket.RedPacketCreated.Parser, new[]{ "FromSender", "RedPacketId", "RedPacketSymbol", "TotalAmount", "TotalCount", "RedPacketType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Portkey.Contracts.RedPacket.RedPacketReceived), global::Portkey.Contracts.RedPacket.RedPacketReceived.Parser, new[]{ "FromSender", "RedPacketId", "RedPacketSymbol", "Amount", "ReceiverAddress", "IsSuccess" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1175,6 +1181,7 @@ namespace Portkey.Contracts.RedPacket {
       totalCount_ = other.totalCount_;
       redPacketType_ = other.redPacketType_;
       publicKey_ = other.publicKey_;
+      fromSender_ = other.fromSender_ != null ? other.fromSender_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1280,6 +1287,18 @@ namespace Portkey.Contracts.RedPacket {
       }
     }
 
+    /// <summary>Field number for the "from_sender" field.</summary>
+    public const int FromSenderFieldNumber = 9;
+    private global::AElf.Types.Hash fromSender_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::AElf.Types.Hash FromSender {
+      get { return fromSender_; }
+      set {
+        fromSender_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1303,6 +1322,7 @@ namespace Portkey.Contracts.RedPacket {
       if (TotalCount != other.TotalCount) return false;
       if (RedPacketType != other.RedPacketType) return false;
       if (PublicKey != other.PublicKey) return false;
+      if (!object.Equals(FromSender, other.FromSender)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1318,6 +1338,7 @@ namespace Portkey.Contracts.RedPacket {
       if (TotalCount != 0L) hash ^= TotalCount.GetHashCode();
       if (RedPacketType.Length != 0) hash ^= RedPacketType.GetHashCode();
       if (PublicKey.Length != 0) hash ^= PublicKey.GetHashCode();
+      if (fromSender_ != null) hash ^= FromSender.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1368,6 +1389,10 @@ namespace Portkey.Contracts.RedPacket {
         output.WriteRawTag(66);
         output.WriteString(PublicKey);
       }
+      if (fromSender_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(FromSender);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1410,6 +1435,10 @@ namespace Portkey.Contracts.RedPacket {
         output.WriteRawTag(66);
         output.WriteString(PublicKey);
       }
+      if (fromSender_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(FromSender);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1443,6 +1472,9 @@ namespace Portkey.Contracts.RedPacket {
       }
       if (PublicKey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PublicKey);
+      }
+      if (fromSender_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FromSender);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1479,6 +1511,12 @@ namespace Portkey.Contracts.RedPacket {
       }
       if (other.PublicKey.Length != 0) {
         PublicKey = other.PublicKey;
+      }
+      if (other.fromSender_ != null) {
+        if (fromSender_ == null) {
+          FromSender = new global::AElf.Types.Hash();
+        }
+        FromSender.MergeFrom(other.FromSender);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1527,6 +1565,13 @@ namespace Portkey.Contracts.RedPacket {
             PublicKey = input.ReadString();
             break;
           }
+          case 74: {
+            if (fromSender_ == null) {
+              FromSender = new global::AElf.Types.Hash();
+            }
+            input.ReadMessage(FromSender);
+            break;
+          }
         }
       }
     #endif
@@ -1572,6 +1617,13 @@ namespace Portkey.Contracts.RedPacket {
           }
           case 66: {
             PublicKey = input.ReadString();
+            break;
+          }
+          case 74: {
+            if (fromSender_ == null) {
+              FromSender = new global::AElf.Types.Hash();
+            }
+            input.ReadMessage(FromSender);
             break;
           }
         }
@@ -1955,6 +2007,398 @@ namespace Portkey.Contracts.RedPacket {
           }
           case 50: {
             RedPacketType = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class RedPacketReceived : pb::IMessage<RedPacketReceived>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<RedPacketReceived> _parser = new pb::MessageParser<RedPacketReceived>(() => new RedPacketReceived());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<RedPacketReceived> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Portkey.Contracts.RedPacket.RedPacketContractReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RedPacketReceived() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RedPacketReceived(RedPacketReceived other) : this() {
+      fromSender_ = other.fromSender_ != null ? other.fromSender_.Clone() : null;
+      redPacketId_ = other.redPacketId_;
+      redPacketSymbol_ = other.redPacketSymbol_;
+      amount_ = other.amount_;
+      receiverAddress_ = other.receiverAddress_ != null ? other.receiverAddress_.Clone() : null;
+      isSuccess_ = other.isSuccess_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RedPacketReceived Clone() {
+      return new RedPacketReceived(this);
+    }
+
+    /// <summary>Field number for the "from_sender" field.</summary>
+    public const int FromSenderFieldNumber = 1;
+    private global::AElf.Types.Hash fromSender_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::AElf.Types.Hash FromSender {
+      get { return fromSender_; }
+      set {
+        fromSender_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "red_packet_id" field.</summary>
+    public const int RedPacketIdFieldNumber = 2;
+    private string redPacketId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RedPacketId {
+      get { return redPacketId_; }
+      set {
+        redPacketId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "red_packet_symbol" field.</summary>
+    public const int RedPacketSymbolFieldNumber = 3;
+    private string redPacketSymbol_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RedPacketSymbol {
+      get { return redPacketSymbol_; }
+      set {
+        redPacketSymbol_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "amount" field.</summary>
+    public const int AmountFieldNumber = 4;
+    private long amount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Amount {
+      get { return amount_; }
+      set {
+        amount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "receiver_address" field.</summary>
+    public const int ReceiverAddressFieldNumber = 5;
+    private global::AElf.Types.Address receiverAddress_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::AElf.Types.Address ReceiverAddress {
+      get { return receiverAddress_; }
+      set {
+        receiverAddress_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_success" field.</summary>
+    public const int IsSuccessFieldNumber = 6;
+    private bool isSuccess_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsSuccess {
+      get { return isSuccess_; }
+      set {
+        isSuccess_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as RedPacketReceived);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(RedPacketReceived other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(FromSender, other.FromSender)) return false;
+      if (RedPacketId != other.RedPacketId) return false;
+      if (RedPacketSymbol != other.RedPacketSymbol) return false;
+      if (Amount != other.Amount) return false;
+      if (!object.Equals(ReceiverAddress, other.ReceiverAddress)) return false;
+      if (IsSuccess != other.IsSuccess) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (fromSender_ != null) hash ^= FromSender.GetHashCode();
+      if (RedPacketId.Length != 0) hash ^= RedPacketId.GetHashCode();
+      if (RedPacketSymbol.Length != 0) hash ^= RedPacketSymbol.GetHashCode();
+      if (Amount != 0L) hash ^= Amount.GetHashCode();
+      if (receiverAddress_ != null) hash ^= ReceiverAddress.GetHashCode();
+      if (IsSuccess != false) hash ^= IsSuccess.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (fromSender_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(FromSender);
+      }
+      if (RedPacketId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(RedPacketId);
+      }
+      if (RedPacketSymbol.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RedPacketSymbol);
+      }
+      if (Amount != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Amount);
+      }
+      if (receiverAddress_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ReceiverAddress);
+      }
+      if (IsSuccess != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IsSuccess);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (fromSender_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(FromSender);
+      }
+      if (RedPacketId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(RedPacketId);
+      }
+      if (RedPacketSymbol.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RedPacketSymbol);
+      }
+      if (Amount != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Amount);
+      }
+      if (receiverAddress_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ReceiverAddress);
+      }
+      if (IsSuccess != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IsSuccess);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (fromSender_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FromSender);
+      }
+      if (RedPacketId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RedPacketId);
+      }
+      if (RedPacketSymbol.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RedPacketSymbol);
+      }
+      if (Amount != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Amount);
+      }
+      if (receiverAddress_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReceiverAddress);
+      }
+      if (IsSuccess != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(RedPacketReceived other) {
+      if (other == null) {
+        return;
+      }
+      if (other.fromSender_ != null) {
+        if (fromSender_ == null) {
+          FromSender = new global::AElf.Types.Hash();
+        }
+        FromSender.MergeFrom(other.FromSender);
+      }
+      if (other.RedPacketId.Length != 0) {
+        RedPacketId = other.RedPacketId;
+      }
+      if (other.RedPacketSymbol.Length != 0) {
+        RedPacketSymbol = other.RedPacketSymbol;
+      }
+      if (other.Amount != 0L) {
+        Amount = other.Amount;
+      }
+      if (other.receiverAddress_ != null) {
+        if (receiverAddress_ == null) {
+          ReceiverAddress = new global::AElf.Types.Address();
+        }
+        ReceiverAddress.MergeFrom(other.ReceiverAddress);
+      }
+      if (other.IsSuccess != false) {
+        IsSuccess = other.IsSuccess;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (fromSender_ == null) {
+              FromSender = new global::AElf.Types.Hash();
+            }
+            input.ReadMessage(FromSender);
+            break;
+          }
+          case 18: {
+            RedPacketId = input.ReadString();
+            break;
+          }
+          case 26: {
+            RedPacketSymbol = input.ReadString();
+            break;
+          }
+          case 32: {
+            Amount = input.ReadInt64();
+            break;
+          }
+          case 42: {
+            if (receiverAddress_ == null) {
+              ReceiverAddress = new global::AElf.Types.Address();
+            }
+            input.ReadMessage(ReceiverAddress);
+            break;
+          }
+          case 48: {
+            IsSuccess = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (fromSender_ == null) {
+              FromSender = new global::AElf.Types.Hash();
+            }
+            input.ReadMessage(FromSender);
+            break;
+          }
+          case 18: {
+            RedPacketId = input.ReadString();
+            break;
+          }
+          case 26: {
+            RedPacketSymbol = input.ReadString();
+            break;
+          }
+          case 32: {
+            Amount = input.ReadInt64();
+            break;
+          }
+          case 42: {
+            if (receiverAddress_ == null) {
+              ReceiverAddress = new global::AElf.Types.Address();
+            }
+            input.ReadMessage(ReceiverAddress);
+            break;
+          }
+          case 48: {
+            IsSuccess = input.ReadBool();
             break;
           }
         }
