@@ -22,6 +22,8 @@ namespace Portkey.Contracts.RedPacket
 
         public override Empty CreateRedPacket(CreateRedPacketInput input)
         {
+            State.TokenContract.Value =
+                Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
             Assert(input.RedPacketId != null, "RedPacketId should not be null.");
             Assert(State.RedPacketInfoMap[input.RedPacketId] == null, "RedPacketId already exists.");
             Assert(input.TotalAmount > 0, "TotalAmount should be greater than 0.");
@@ -95,21 +97,23 @@ namespace Portkey.Contracts.RedPacket
             var inputs = input.TransferRedPacketInputs;
             Assert(inputs != null && input.RedPacketId != null, "Invalidate Input");
             var redPacket = State.RedPacketInfoMap[input.RedPacketId];
+            Assert(redPacket != null, "RedPacket not exists.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
             foreach (var transferRedPacketInput in inputs!)
             {
-                var list = State.AlreadySnatchedList[transferRedPacketInput.RedPacketId];
+                var list = State.AlreadySnatchedList[transferRedPacketInput.RedPacketId] != null?
+                    State.AlreadySnatchedList[transferRedPacketInput.RedPacketId] : new List<Address>();
                 if (list.Contains(transferRedPacketInput.ReceiverAddress))
                 {
                     continue;
                 }
-
                 var message =
                     $"{redPacket.RedPacketId}-{transferRedPacketInput.ReceiverAddress}-{transferRedPacketInput.Amount}";
                 var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
                 var signature = ByteStringHelper.FromHexString(transferRedPacketInput.RedPacketSignature).ToByteArray();
-                var recoverPublicKey = Context.RecoverPublicKey(signature, messageBytes);
-                if (ByteString.FromBase64(redPacket.PublicKey).ToByteArray() == recoverPublicKey)
+                var recoverPublicKey = Context.RecoverPublicKey(signature, messageBytes).ToHex();
+                var pubBytes = ByteStringHelper.FromHexString(redPacket.PublicKey).ToByteArray().ToHex();
+                if (recoverPublicKey == pubBytes)
                 {
                     Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
                         nameof(State.TokenContract.Transfer),
@@ -128,9 +132,7 @@ namespace Portkey.Contracts.RedPacket
                         FromSender = redPacket.FromSender,
                         IsSuccess = true
                     });
-                    var alreadySnatchedList = new List<Address>();
-                    alreadySnatchedList.Add(transferRedPacketInput.ReceiverAddress);
-                    State.AlreadySnatchedList[input.RedPacketId] = alreadySnatchedList;
+                    list.Add(transferRedPacketInput.ReceiverAddress);
                 }
                 else
                 {

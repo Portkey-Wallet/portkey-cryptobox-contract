@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AElf;
 using AElf.Contracts.MultiToken;
@@ -43,6 +44,32 @@ namespace Portkey.Contracts.RedPacket
                 RedPacketSignature = signature,
                 RedPacketId = id
             });
+
+            var receiveAddress = DefaultAddress;
+            var signatureStr =
+                $"{id}-{DefaultAddress}-{10}";
+            
+            var byteArray = HashHelper.ComputeFrom(signatureStr).ToByteArray();
+            var receiveSignature =
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), byteArray)
+                    .ToHex();
+            
+            var list = new List<TransferRedPacketInput>
+            {
+                  new TransferRedPacketInput
+                    {
+                        Amount = 10,
+                        RedPacketId = id,
+                        ReceiverAddress = receiveAddress,
+                        RedPacketSignature = receiveSignature
+                    }   
+            };
+            var batchInput = new TransferRedPacketBatchInput
+            {
+                RedPacketId = id,
+                TransferRedPacketInputs = {list}
+            };
+            var batchResult = await RedPacketContractStub.TransferRedPacket.SendAsync(batchInput);
         }
     }
 }
