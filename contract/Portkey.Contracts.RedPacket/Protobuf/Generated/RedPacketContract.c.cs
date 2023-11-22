@@ -72,6 +72,8 @@ namespace Portkey.Contracts.RedPacket {
     static readonly aelf::Marshaller<global::Portkey.Contracts.RedPacket.TransferRedPacketBatchInput> __Marshaller_TransferRedPacketBatchInput = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Portkey.Contracts.RedPacket.TransferRedPacketBatchInput.Parser.ParseFrom);
     static readonly aelf::Marshaller<global::Portkey.Contracts.RedPacket.GetRedPacketInput> __Marshaller_GetRedPacketInput = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Portkey.Contracts.RedPacket.GetRedPacketInput.Parser.ParseFrom);
     static readonly aelf::Marshaller<global::Portkey.Contracts.RedPacket.RedPacketOutput> __Marshaller_RedPacketOutput = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Portkey.Contracts.RedPacket.RedPacketOutput.Parser.ParseFrom);
+    static readonly aelf::Marshaller<global::Portkey.Contracts.RedPacket.RedPacketMaxCountOutput> __Marshaller_RedPacketMaxCountOutput = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Portkey.Contracts.RedPacket.RedPacketMaxCountOutput.Parser.ParseFrom);
+    static readonly aelf::Marshaller<global::Portkey.Contracts.RedPacket.SetRedPacketMaxCountInput> __Marshaller_SetRedPacketMaxCountInput = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Portkey.Contracts.RedPacket.SetRedPacketMaxCountInput.Parser.ParseFrom);
     #endregion
 
     #region Methods
@@ -102,6 +104,20 @@ namespace Portkey.Contracts.RedPacket {
         "GetRedPacketInfo",
         __Marshaller_GetRedPacketInput,
         __Marshaller_RedPacketOutput);
+
+    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Portkey.Contracts.RedPacket.RedPacketMaxCountOutput> __Method_GetRedPacketMaxCount = new aelf::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Portkey.Contracts.RedPacket.RedPacketMaxCountOutput>(
+        aelf::MethodType.Action,
+        __ServiceName,
+        "GetRedPacketMaxCount",
+        __Marshaller_google_protobuf_Empty,
+        __Marshaller_RedPacketMaxCountOutput);
+
+    static readonly aelf::Method<global::Portkey.Contracts.RedPacket.SetRedPacketMaxCountInput, global::Google.Protobuf.WellKnownTypes.Empty> __Method_SetRedPacketMaxCount = new aelf::Method<global::Portkey.Contracts.RedPacket.SetRedPacketMaxCountInput, global::Google.Protobuf.WellKnownTypes.Empty>(
+        aelf::MethodType.Action,
+        __ServiceName,
+        "SetRedPacketMaxCount",
+        __Marshaller_SetRedPacketMaxCountInput,
+        __Marshaller_google_protobuf_Empty);
 
     #endregion
 
@@ -146,6 +162,16 @@ namespace Portkey.Contracts.RedPacket {
         throw new global::System.NotImplementedException();
       }
 
+      public virtual global::Portkey.Contracts.RedPacket.RedPacketMaxCountOutput GetRedPacketMaxCount(global::Google.Protobuf.WellKnownTypes.Empty input)
+      {
+        throw new global::System.NotImplementedException();
+      }
+
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty SetRedPacketMaxCount(global::Portkey.Contracts.RedPacket.SetRedPacketMaxCountInput input)
+      {
+        throw new global::System.NotImplementedException();
+      }
+
     }
 
     public static aelf::ServerServiceDefinition BindService(RedPacketContractBase serviceImpl)
@@ -155,7 +181,9 @@ namespace Portkey.Contracts.RedPacket {
           .AddMethod(__Method_Initialize, serviceImpl.Initialize)
           .AddMethod(__Method_CreateRedPacket, serviceImpl.CreateRedPacket)
           .AddMethod(__Method_TransferRedPacket, serviceImpl.TransferRedPacket)
-          .AddMethod(__Method_GetRedPacketInfo, serviceImpl.GetRedPacketInfo).Build();
+          .AddMethod(__Method_GetRedPacketInfo, serviceImpl.GetRedPacketInfo)
+          .AddMethod(__Method_GetRedPacketMaxCount, serviceImpl.GetRedPacketMaxCount)
+          .AddMethod(__Method_SetRedPacketMaxCount, serviceImpl.SetRedPacketMaxCount).Build();
     }
 
   }

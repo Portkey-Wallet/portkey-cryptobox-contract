@@ -21,6 +21,12 @@ service RedPacketContract {
     rpc TransferRedPacket (TransferRedPacketBatchInput) returns (google.protobuf.Empty) {}
     
     rpc GetRedPacketInfo (GetRedPacketInput) returns (RedPacketOutput) {}
+    
+    rpc GetRedPacketMaxCount (google.protobuf.Empty) returns (RedPacketMaxCountOutput) {}
+    
+    rpc SetRedPacketMaxCount (SetRedPacketMaxCountInput) returns (google.protobuf.Empty) {}
+    
+    
 }
 
 
@@ -93,6 +99,8 @@ message RedPacketReceived{
 
 message InitializeInput{
     aelf.Address contract_admin = 1;
+    int64 max_count = 2;
+    
 }
 
 message RedPacketOutput {
@@ -111,6 +119,17 @@ message RedPacketOutput {
 message GetRedPacketInput {
     string red_packet_id = 1;
 }
+
+message RedPacketMaxCountOutput {
+    int64 max_count = 1;
+}
+
+message SetRedPacketMaxCountInput {
+    int64 max_count = 1;
+}
+
+
+
 
 
 

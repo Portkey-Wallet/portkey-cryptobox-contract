@@ -14,6 +14,7 @@ namespace Portkey.Contracts.RedPacket
         {
             Assert(!State.Initialized.Value, "Already initialized.");
             State.Admin.Value = input.ContractAdmin ?? Context.Sender;
+            State.RedPacketMaxCount.Value = input.MaxCount;
             State.TokenContract.Value =
                 Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
             State.Initialized.Value = true;
@@ -25,8 +26,10 @@ namespace Portkey.Contracts.RedPacket
             Assert(input.RedPacketId != null, "RedPacketId should not be null.");
             Assert(State.RedPacketInfoMap[input.RedPacketId] == null, "RedPacketId already exists.");
             Assert(input.TotalAmount > 0, "TotalAmount should be greater than 0.");
-            Assert(input.TotalCount is > 0 and < RedPacketContractConstants.MaxRedPacketCount,
+            Assert(input.TotalCount is > 0,
                 "TotalCount should be greater than 0.");
+            Assert(State.RedPacketMaxCount.Value >= input.TotalCount,
+                "TotalCount should be less than or equal to MaxCount.");
             Assert(input.MinAmount > 0, "MinAmount should be greater than 0.");
             Assert(input.RedPacketSymbol != null, "RedPacketSymbol should not be null.");
             Assert(input.TotalAmount > input.MinAmount * input.TotalCount,
@@ -166,5 +169,24 @@ namespace Portkey.Contracts.RedPacket
                 PublicKey = packetInfo.PublicKey,
             };
         }
+
+        public override Empty SetRedPacketMaxCount(SetRedPacketMaxCountInput input)
+        {
+            Assert(Context.Sender == State.Admin.Value, "No permission.");
+            Assert(input.MaxCount > 0, "MaxCount should be greater than 0.");
+            State.RedPacketMaxCount.Value = input.MaxCount;
+            return new Empty();
+        }
+
+        
+        public override RedPacketMaxCountOutput GetRedPacketMaxCount(Empty input)
+        {
+            return new RedPacketMaxCountOutput
+            {
+                MaxCount = State.RedPacketMaxCount.Value
+            };
+        }
     }
+    
+    
 }
