@@ -22,8 +22,6 @@ namespace Portkey.Contracts.RedPacket
 
         public override Empty CreateRedPacket(CreateRedPacketInput input)
         {
-            State.TokenContract.Value =
-                Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
             Assert(input.RedPacketId != null, "RedPacketId should not be null.");
             Assert(State.RedPacketInfoMap[input.RedPacketId] == null, "RedPacketId already exists.");
             Assert(input.TotalAmount > 0, "TotalAmount should be greater than 0.");
@@ -101,12 +99,14 @@ namespace Portkey.Contracts.RedPacket
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
             foreach (var transferRedPacketInput in inputs!)
             {
-                var list = State.AlreadySnatchedList[transferRedPacketInput.RedPacketId] != null?
-                    State.AlreadySnatchedList[transferRedPacketInput.RedPacketId] : new List<Address>();
+                var list = State.AlreadySnatchedList[transferRedPacketInput.RedPacketId] != null
+                    ? State.AlreadySnatchedList[transferRedPacketInput.RedPacketId]
+                    : new List<Address>();
                 if (list.Contains(transferRedPacketInput.ReceiverAddress))
                 {
                     continue;
                 }
+
                 var message =
                     $"{redPacket.RedPacketId}-{transferRedPacketInput.ReceiverAddress}-{transferRedPacketInput.Amount}";
                 var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
