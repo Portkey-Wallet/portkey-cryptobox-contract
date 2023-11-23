@@ -26,8 +26,7 @@ namespace Portkey.Contracts.RedPacket
             Assert(input.RedPacketId != null, "RedPacketId should not be null.");
             Assert(State.RedPacketInfoMap[input.RedPacketId] == null, "RedPacketId already exists.");
             Assert(input.TotalAmount > 0, "TotalAmount should be greater than 0.");
-            Assert(input.TotalCount is > 0,
-                "TotalCount should be greater than 0.");
+            Assert(input.TotalCount > 0, "TotalCount should be greater than 0.");
             Assert(State.RedPacketMaxCount.Value >= input.TotalCount,
                 "TotalCount should be less than or equal to MaxCount.");
             Assert(input.MinAmount > 0, "MinAmount should be greater than 0.");
@@ -37,18 +36,18 @@ namespace Portkey.Contracts.RedPacket
             Assert(input.ExpirationTime > Context.CurrentBlockTime.Seconds, "ExpiredTime should be greater than now.");
             Assert(input.FromSender != null, "FromSender should not be null.");
             Assert(input.PublicKey != null, "PublicKey should not be null.");
-            var message = $"{input.RedPacketSymbol}-{input.MinAmount}-{input.TotalCount}";
+
+            var maxCount = State.RedPacketMaxCount.Value;
+
+            var message = $"{input.RedPacketSymbol}-{input.MinAmount}-{maxCount}";
             var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
-
             var signature = ByteStringHelper.FromHexString(input.RedPacketSignature);
-
             var recoverPublicKey = Context.RecoverPublicKey(signature.ToByteArray(), messageBytes).ToHex();
             var bytes = ByteStringHelper.FromHexString(input.PublicKey).ToByteArray().ToHex();
-            Assert(bytes == recoverPublicKey, "Invalid signature.");
 
+            Assert(bytes == recoverPublicKey, "Invalid signature.");
             var virtualAddress =
                 Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(input.RedPacketId));
-
             State.TokenContract.TransferFrom.Send(new TransferFromInput
             {
                 From = Context.Sender,
@@ -178,7 +177,7 @@ namespace Portkey.Contracts.RedPacket
             return new Empty();
         }
 
-        
+
         public override RedPacketMaxCountOutput GetRedPacketMaxCount(Empty input)
         {
             return new RedPacketMaxCountOutput
@@ -187,6 +186,4 @@ namespace Portkey.Contracts.RedPacket
             };
         }
     }
-    
-    
 }
