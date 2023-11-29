@@ -41,7 +41,7 @@ namespace Portkey.Contracts.RedPacket
 
             var maxCount = State.RedPacketMaxCount.Value;
 
-            var message = $"{input.RedPacketSymbol}-{input.MinAmount}-{maxCount}";
+            var message = $"{input.RedPacketId}-{input.RedPacketSymbol}-{input.MinAmount}-{maxCount}";
             var verifySignature = VerifySignature(input.PublicKey, input.RedPacketSignature, message);
 
             Assert(verifySignature, "Invalid signature.");
@@ -72,7 +72,8 @@ namespace Portkey.Contracts.RedPacket
                 TotalCount = input.TotalCount,
                 TotalAmount = input.TotalAmount,
                 ExpirationTime = input.ExpirationTime,
-                PublicKey = input.PublicKey
+                PublicKey = input.PublicKey,
+                SenderAddress = Context.Sender
             };
             State.RedPacketInfoMap[input.RedPacketId] = redPacket;
             Context.Fire(
