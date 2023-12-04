@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AElf;
 using AElf.Contracts.MultiToken;
 using AElf.Cryptography;
+using AElf.CSharp.Core.Extension;
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
 using Shouldly;
@@ -73,7 +75,7 @@ namespace Portkey.Contracts.RedPacket
             var signature =
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
-            
+
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
             {
@@ -113,8 +115,8 @@ namespace Portkey.Contracts.RedPacket
                 TransferRedPacketInputs = { list }
             };
             var batchResult = await RedPacketContractStub.TransferRedPacket.SendAsync(batchInput);
+            batchResult.TransactionResult.Status.ShouldBe(TransactionResultStatus.Mined);
         }
-
 
 
         [Fact]
@@ -176,8 +178,8 @@ namespace Portkey.Contracts.RedPacket
                     RedPacketId = ""
                 });
             redPacketIdResult.TransactionResult.Error.ShouldContain("RedPacketId should not be null.");
-            
-            
+
+
             var redPacketSymbolResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
                 new CreateRedPacketInput
                 {
@@ -193,8 +195,8 @@ namespace Portkey.Contracts.RedPacket
                     RedPacketId = id
                 });
             redPacketSymbolResult.TransactionResult.Error.ShouldContain("Symbol should not be null.");
-            
-            
+
+
             var redPacketTotalAmountResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
                 new CreateRedPacketInput
                 {
@@ -210,7 +212,7 @@ namespace Portkey.Contracts.RedPacket
                     RedPacketId = id
                 });
             redPacketTotalAmountResult.TransactionResult.Error.ShouldContain("TotalAmount should be greater than 0.");
-            
+
             var totalCountResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
                 new CreateRedPacketInput
                 {
@@ -226,7 +228,7 @@ namespace Portkey.Contracts.RedPacket
                     RedPacketId = id
                 });
             totalCountResult.TransactionResult.Error.ShouldContain("TotalCount should be greater than 0.");
-            
+
             var totalCountErrorResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
                 new CreateRedPacketInput
                 {
@@ -241,8 +243,9 @@ namespace Portkey.Contracts.RedPacket
                     RedPacketSignature = signature,
                     RedPacketId = id
                 });
-            totalCountErrorResult.TransactionResult.Error.ShouldContain("TotalCount should be less than or equal to MaxCount.");
-            
+            totalCountErrorResult.TransactionResult.Error.ShouldContain(
+                "TotalCount should be less than or equal to MaxCount.");
+
             var expireTimeResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
                 new CreateRedPacketInput
                 {
@@ -258,8 +261,8 @@ namespace Portkey.Contracts.RedPacket
                     RedPacketId = id
                 });
             expireTimeResult.TransactionResult.Error.ShouldContain("ExpiredTime should be greater than now.");
-            
-            
+
+
             var pubkeyResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
                 new CreateRedPacketInput
                 {
@@ -276,8 +279,8 @@ namespace Portkey.Contracts.RedPacket
                 });
             pubkeyResult.TransactionResult.Error.ShouldContain("PublicKey should not be null.");
         }
-        
-        
+
+
         [Fact]
         public async Task SetGetRedPacketMaxCount_Test()
         {
@@ -295,8 +298,8 @@ namespace Portkey.Contracts.RedPacket
             var maxCountOutput = await RedPacketContractStub.GetRedPacketMaxCount.CallAsync(new Empty());
             maxCountOutput.MaxCount.ShouldBe(500);
         }
-        
-        
+
+
         [Fact]
         public async Task GetRedPacketInfo_Test()
         {
@@ -323,7 +326,7 @@ namespace Portkey.Contracts.RedPacket
             var signature =
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
-            
+
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
             {
@@ -346,10 +349,202 @@ namespace Portkey.Contracts.RedPacket
             redPacketInfo.RedPacketInfo.RedPacketId.ShouldBe(id);
             redPacketInfo.RedPacketInfo.SenderAddress.ShouldBe(DefaultAddress);
             redPacketInfo.RedPacketInfo.PublicKey.ShouldBe(publicKey);
+        }
+
+        [Fact]
+        public async Task Refund_RedPacket_Invalidate_Param_Test()
+        {
+            var refundInputWithoutId = new RefundRedPacketInput
+            {
+                RedPacketId = "",
+                Amount = 100,
+                RedPacketSignature = "",
+                RefundAddress = DefaultAddress
+            };
+            var refundResultWithoutId =
+                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithoutId);
+            refundResultWithoutId.TransactionResult.Error.ShouldContain("RedPacketId should not be null.");
+
+            var refundInputWithErrorId = new RefundRedPacketInput
+            {
+                RedPacketId = "test",
+                Amount = 100,
+                RedPacketSignature = "",
+                RefundAddress = DefaultAddress
+            };
+            var refundResultWithErrorId =
+                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithErrorId);
+            refundResultWithErrorId.TransactionResult.Error.ShouldContain("RedPacket not exists.");
+
+            var ecKeyPair = CryptoHelper.GenerateKeyPair();
+            var publicKey = ecKeyPair.PublicKey.ToHex();
+            var privateKey = ecKeyPair.PrivateKey.ToHex();
+
+            var redPacket = await CreateRedPacket(publicKey, privateKey);
+
+            var refundInputWithErrorExpireTime = new RefundRedPacketInput
+            {
+                RedPacketId = redPacket.RedPacketId,
+                Amount = 100,
+                RedPacketSignature = "",
+                RefundAddress = DefaultAddress
+            };
+            var refundInputWithErrorExpireTimeResult =
+                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithErrorExpireTime);
+            refundInputWithErrorExpireTimeResult.TransactionResult.Error.ShouldContain("RedPacket not expired.");
+        }
+
+        [Fact]
+        public async Task Refund_RedPacket_Test()
+        {
+            var ecKeyPair = CryptoHelper.GenerateKeyPair();
+            var publicKey = ecKeyPair.PublicKey.ToHex();
+            var privateKey = ecKeyPair.PrivateKey.ToHex();
+            var redPacket = await CreateRedPacketExpired(publicKey, privateKey);
+            Thread.Sleep(2);
+            var message =
+                $"{redPacket.RedPacketId}-{redPacket.SenderAddress}-{redPacket.TotalAmount}";
+            var message1 =
+                $"{redPacket.RedPacketId}-{redPacket.SenderAddress}-{10000}";
+            blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(200));
+
+            var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
+            var signature =
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
+                    .ToHex();
+
+            var hashByteArray1 = HashHelper.ComputeFrom(message1).ToByteArray();
+            var signature1 =
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray1)
+                    .ToHex();
+
+            var refundInputInvalidateSignature = new RefundRedPacketInput
+            {
+                RedPacketId = redPacket.RedPacketId,
+                Amount = 100,
+                RedPacketSignature = signature1,
+                RefundAddress = DefaultAddress
+            };
+            blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(20000));
+            Thread.Sleep(2000);
+            var refundSuccessResult =
+                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputInvalidateSignature);
+            refundSuccessResult.TransactionResult.Error.ShouldContain("Invalid signature.");
+           
+            
+            var message3 =
+                $"{redPacket.RedPacketId}-{DefaultAddress}-{100}";
+            var hashByteArray3 = HashHelper.ComputeFrom(message3).ToByteArray();
+            var signature3 =
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray3)
+                    .ToHex();
+            var refundInput = new RefundRedPacketInput
+            {
+                RedPacketId = redPacket.RedPacketId,
+                Amount = 100,
+                RedPacketSignature = signature3,
+                RefundAddress = DefaultAddress
+            };
+            blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(20000));
+            var resultSuccess =
+                await RedPacketContractStub.RefundRedPacket.SendAsync(refundInput);
+            resultSuccess.TransactionResult.Error.ShouldBe("");
+            
+            
             
         }
 
-        
-        
+
+        private async Task<RedPacketInfo> CreateRedPacket(string pubkey, string privateKey)
+        {
+            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            {
+                ContractAdmin = DefaultAddress,
+                MaxCount = 10
+            });
+
+
+            await TokenContractStub.Approve.SendAsync(new ApproveInput
+            {
+                Spender = DAppContractAddress,
+                Symbol = "ELF",
+                Amount = 1000
+            });
+
+            var id = Guid.NewGuid().ToString().Replace("-", "");
+            var message = $"{id}-ELF-{10}-{10}";
+            var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
+            var signature =
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
+                    .ToHex();
+
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
+            {
+                RedPacketSymbol = "ELF",
+                TotalAmount = 1000,
+                TotalCount = 10,
+                MinAmount = 10,
+                SenderAddress = DefaultAddress,
+                PublicKey = pubkey,
+                RedPacketType = RedPacketType.QuickTransfer,
+                ExpirationTime = timeSeconds + 1000,
+                RedPacketSignature = signature,
+                RedPacketId = id
+            });
+            return new RedPacketInfo
+            {
+                RedPacketId = id,
+                SenderAddress = DefaultAddress,
+                TotalAmount = 1000
+            };
+        }
+
+
+        private async Task<RedPacketInfo> CreateRedPacketExpired(string pubkey, string privateKey)
+        {
+            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            {
+                ContractAdmin = DefaultAddress,
+                MaxCount = 10
+            });
+
+
+            await TokenContractStub.Approve.SendAsync(new ApproveInput
+            {
+                Spender = DAppContractAddress,
+                Symbol = "ELF",
+                Amount = 1000
+            });
+
+            var id = Guid.NewGuid().ToString().Replace("-", "");
+            var message = $"{id}-ELF-{10}-{10}";
+            var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
+            var signature =
+                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
+                    .ToHex();
+
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds()+1;
+            blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(-2));
+            var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
+            {
+                RedPacketSymbol = "ELF",
+                TotalAmount = 1000,
+                TotalCount = 10,
+                MinAmount = 10,
+                SenderAddress = DefaultAddress,
+                PublicKey = pubkey,
+                RedPacketType = RedPacketType.QuickTransfer,
+                ExpirationTime = timeSeconds,
+                RedPacketSignature = signature,
+                RedPacketId = id
+            });
+            return new RedPacketInfo
+            {
+                RedPacketId = id,
+                SenderAddress = DefaultAddress,
+                TotalAmount = 1000
+            };
+        }
     }
 }

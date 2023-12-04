@@ -84,7 +84,8 @@ namespace Portkey.Contracts.RedPacket
                     RedPacketType = input.RedPacketType,
                     RedPacketSymbol = input.RedPacketSymbol,
                     TotalCount = input.TotalCount,
-                    TotalAmount = input.TotalAmount
+                    TotalAmount = input.TotalAmount,
+                    ReceiverAddress = virtualAddress
                 }
             );
             return new Empty();
@@ -133,6 +134,39 @@ namespace Portkey.Contracts.RedPacket
                 list.Add(transferRedPacketInput.ReceiverAddress);
             }
 
+            return new Empty();
+        }
+
+        public override Empty RefundRedPacket(RefundRedPacketInput input)
+        {
+            Assert(!string.IsNullOrEmpty(input.RedPacketId), "RedPacketId should not be null.");
+            var redPacket = State.RedPacketInfoMap[input.RedPacketId];
+            Assert(redPacket != null, "RedPacket not exists.");
+            Assert(redPacket?.ExpirationTime < Context.CurrentBlockTime.Seconds, "RedPacket not expired.");
+            var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
+            var message =
+                $"{redPacket.RedPacketId}-{input.RefundAddress}-{input.Amount}";
+            var verifySignature = VerifySignature(redPacket.PublicKey, input.RedPacketSignature,
+                message);
+            Assert(verifySignature, "Invalid signature.");
+            Assert(input.RefundAddress == redPacket.SenderAddress, "Only sender can refund.");
+            Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
+                nameof(State.TokenContract.Transfer),
+                new TransferInput
+                {
+                    To = input.RefundAddress,
+                    Amount = input.Amount,
+                    Symbol = redPacket.RedPacketSymbol,
+                    Memo = "RefundRedPacket"
+                }.ToByteString());
+            Context.Fire(new RedPacketRefunded
+            {
+                RedPacketId = redPacket.RedPacketId,
+                RefundAddress = input.RefundAddress,
+                Amount = input.Amount,
+                RedPacketSymbol = redPacket.RedPacketSymbol
+            });
+            
             return new Empty();
         }
 

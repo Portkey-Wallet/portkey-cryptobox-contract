@@ -1,10 +1,12 @@
 using AElf.Boilerplate.TestBase;
 using AElf.Contracts.MultiToken;
+using AElf.ContractTestBase.ContractTestKit;
 using AElf.Cryptography.ECDSA;
 using AElf.Kernel;
 using AElf.Standards.ACS0;
 using AElf.Types;
 using Google.Protobuf;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Threading;
 
 namespace Portkey.Contracts.RedPacket
@@ -22,6 +24,10 @@ namespace Portkey.Contracts.RedPacket
         protected Address DefaultAddress => Accounts[0].Address;
 
         protected ECKeyPair DefaultKeyPair => Accounts[0].KeyPair;
+        
+        protected IBlockTimeProvider blockTimeProvider =>
+            Application.ServiceProvider.GetRequiredService<IBlockTimeProvider>();
+
 
 
         protected RedPacketContractTestBase()

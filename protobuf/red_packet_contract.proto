@@ -26,6 +26,8 @@ service RedPacketContract {
     
     rpc SetRedPacketMaxCount (SetRedPacketMaxCountInput) returns (google.protobuf.Empty) {}
     
+    rpc RefundRedPacket (RefundRedPacketInput) returns (google.protobuf.Empty) {}
+    
 }
 
 
@@ -43,9 +45,9 @@ message CreateRedPacketInput{
 }
 
 message TransferRedPacketInput{
-    int64 amount = 2;
-    aelf.Address receiver_address = 3;
-    string red_packet_signature = 4;
+    int64 amount = 1;
+    aelf.Address receiver_address = 2;
+    string red_packet_signature = 3;
 }
 
 message TransferRedPacketBatchInput{
@@ -79,7 +81,7 @@ message RedPacketCreated{
     int64 total_amount = 4;
     int64 total_count = 5;
     RedPacketType red_packet_type = 6;
-
+    aelf.Address receiver_address = 7;
 
 }
 
@@ -115,6 +117,20 @@ message SetRedPacketMaxCountInput {
     int64 max_count = 1;
 }
 
+message RefundRedPacketInput{
+    string red_packet_id = 1;
+    int64 amount = 2;
+    aelf.Address refund_address = 3;
+    string red_packet_signature = 4;
+}
+
+message RedPacketRefunded{
+    option (aelf.is_event) = true;
+    string red_packet_id = 1;
+    aelf.Address refund_address = 2;
+    string red_packet_symbol = 3;
+    int64 amount = 4;
+}
 
 
 
