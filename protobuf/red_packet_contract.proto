@@ -85,6 +85,10 @@ message RedPacketCreated{
 
 }
 
+message AddressList{
+    repeated aelf.Address addresses = 1;
+}
+
 message RedPacketReceived{
     option (aelf.is_event) = true;
     aelf.Address sender_address = 1;

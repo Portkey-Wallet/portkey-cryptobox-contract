@@ -16,7 +16,7 @@ namespace Portkey.Contracts.RedPacket
         
         public SingletonState<bool> Initialized { get; set; }
         
-        public MappedState<string,List<Address>> AlreadySnatchedList{ get; set; }
+        public MappedState<string,AddressList> AlreadySnatchedList{ get; set; }
         
         public SingletonState<long> RedPacketMaxCount{ get; set; }
 
