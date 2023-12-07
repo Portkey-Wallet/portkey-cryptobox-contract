@@ -39,6 +39,7 @@ namespace Portkey.Contracts.RedPacket
                 "TotalAmount should be greater than MinAmount * TotalCount.");
             Assert(input.ExpirationTime > Context.CurrentBlockTime.Seconds, "ExpiredTime should be greater than now.");
             Assert(input.SenderAddress != null, "SenderAddress should not be null.");
+            Assert(!string.IsNullOrWhiteSpace(input.RedPacketSignature), "signature should not be null");
             Assert(!string.IsNullOrEmpty(input.PublicKey), "PublicKey should not be null.");
 
             var maxCount = State.RedPacketMaxCount.Value;
