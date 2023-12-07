@@ -124,8 +124,7 @@ message SetRedPacketMaxCountInput {
 message RefundRedPacketInput{
     string red_packet_id = 1;
     int64 amount = 2;
-    aelf.Address refund_address = 3;
-    string red_packet_signature = 4;
+    string red_packet_signature = 3;
 }
 
 message RedPacketRefunded{

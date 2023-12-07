@@ -144,16 +144,15 @@ namespace Portkey.Contracts.RedPacket
             Assert(redPacket?.ExpirationTime < Context.CurrentBlockTime.Seconds, "RedPacket not expired.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
             var message =
-                $"{redPacket.RedPacketId}-{input.RefundAddress}-{input.Amount}";
+                $"{redPacket.RedPacketId}-{input.Amount}";
             var verifySignature = VerifySignature(redPacket.PublicKey, input.RedPacketSignature,
                 message);
             Assert(verifySignature, "Invalid signature.");
-            Assert(input.RefundAddress == redPacket.SenderAddress, "Only sender can refund.");
             Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
                 nameof(State.TokenContract.Transfer),
                 new TransferInput
                 {
-                    To = input.RefundAddress,
+                    To = redPacket.SenderAddress,
                     Amount = input.Amount,
                     Symbol = redPacket.RedPacketSymbol,
                     Memo = "RefundRedPacket"
@@ -161,7 +160,7 @@ namespace Portkey.Contracts.RedPacket
             Context.Fire(new RedPacketRefunded
             {
                 RedPacketId = redPacket.RedPacketId,
-                RefundAddress = input.RefundAddress,
+                RefundAddress = redPacket.SenderAddress,
                 Amount = input.Amount,
                 RedPacketSymbol = redPacket.RedPacketSymbol
             });

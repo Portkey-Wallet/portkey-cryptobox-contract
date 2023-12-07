@@ -7,6 +7,7 @@ using AElf.Contracts.MultiToken;
 using AElf.Cryptography;
 using AElf.CSharp.Core.Extension;
 using AElf.Types;
+using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Shouldly;
 using Xunit;
@@ -48,6 +49,34 @@ namespace Portkey.Contracts.RedPacket
             result.TransactionResult.Error.ShouldContain("MaxCount should be greater than 0.");
         }
 
+        [Fact]
+        public async Task Test()
+        {
+            Address ad = Address.FromBase58("26MWta7rdxAVo8eYLPYfa1U442TWc7q834yGJZUJMkjDcAfvNZ");
+            var amount = 1000;
+            var str = $"{ad.ToBase58()}-{amount}";
+            var message =
+                "3f0c022f-b90c-4883-9c91-dc0bb6c2a430-26MWta7rdxAVo8eYLPYfa1U442TWc7q834yGJZUJMkjDcAfvNZ-10000000";
+            var sig =
+                "d57c93ab02dcf8fad9e9928495fcc1b1988d5cab71409ed9f342d6e2c7f3b9686137c7cb4c40070c5522fb6b8f430b47e35e55d956a0a9f274b154927fabd7f300";
+            var pub =
+                "04a05adebea2df2c26dc1f8e009b3b3015da765a2bf44de6b6880f32619d310b0825e22fc2fdaf983ff4475fdd2439ec343a082fedd98f87008541a81a1f9377ec";
+            var result = VerifySignature(pub, sig, message);
+        }
+
+        private bool VerifySignature(string publicKey, string signature, string message)
+        {
+            var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
+            var signatureBytes = ByteStringHelper.FromHexString(signature).ToByteArray();
+            CryptoHelper.RecoverPublicKey(signatureBytes, messageBytes, out var recoverPublicKey);
+            var recoverKey = recoverPublicKey.ToHex();
+            return recoverPublicKey.ToHex() == publicKey;
+        }
+        
+        // var dataHash = HashHelper.ComputeFrom(rawData).ToByteArray();
+        // var publicKeyByte = ByteArrayHelper.HexStringToByteArray(publicKey);
+        // var signByte = ByteString.FromBase64(signature);
+        //     return CryptoHelper.VerifySignature(signByte.ToByteArray(), dataHash, publicKeyByte);
 
         [Fact]
         public async Task CreateRedPacketTest()
@@ -358,8 +387,7 @@ namespace Portkey.Contracts.RedPacket
             {
                 RedPacketId = "",
                 Amount = 100,
-                RedPacketSignature = "",
-                RefundAddress = DefaultAddress
+                RedPacketSignature = ""
             };
             var refundResultWithoutId =
                 await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithoutId);
@@ -369,8 +397,7 @@ namespace Portkey.Contracts.RedPacket
             {
                 RedPacketId = "test",
                 Amount = 100,
-                RedPacketSignature = "",
-                RefundAddress = DefaultAddress
+                RedPacketSignature = ""
             };
             var refundResultWithErrorId =
                 await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithErrorId);
@@ -386,8 +413,7 @@ namespace Portkey.Contracts.RedPacket
             {
                 RedPacketId = redPacket.RedPacketId,
                 Amount = 100,
-                RedPacketSignature = "",
-                RefundAddress = DefaultAddress
+                RedPacketSignature = ""
             };
             var refundInputWithErrorExpireTimeResult =
                 await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithErrorExpireTime);
@@ -422,8 +448,7 @@ namespace Portkey.Contracts.RedPacket
             {
                 RedPacketId = redPacket.RedPacketId,
                 Amount = 100,
-                RedPacketSignature = signature1,
-                RefundAddress = DefaultAddress
+                RedPacketSignature = signature1
             };
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(20000));
             Thread.Sleep(2000);
@@ -442,8 +467,7 @@ namespace Portkey.Contracts.RedPacket
             {
                 RedPacketId = redPacket.RedPacketId,
                 Amount = 100,
-                RedPacketSignature = signature3,
-                RefundAddress = DefaultAddress
+                RedPacketSignature = signature3
             };
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(20000));
             var resultSuccess =
