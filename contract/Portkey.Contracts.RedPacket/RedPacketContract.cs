@@ -37,11 +37,12 @@ namespace Portkey.Contracts.RedPacket
                 !string.IsNullOrEmpty(input.RedPacketSymbol), "RedPacketSymbol should not be null.");
             Assert(input.TotalAmount >= input.MinAmount * input.TotalCount,
                 "TotalAmount should be greater than MinAmount * TotalCount.");
-            Assert(input.ExpirationTime > Context.CurrentBlockTime.Seconds, "ExpiredTime should be greater than now.");
+            Assert(input.ExpirationTime > Context.CurrentBlockTime.Seconds * 1000,
+                "ExpiredTime should be greater than now.");
             Assert(input.SenderAddress != null, "SenderAddress should not be null.");
             Assert(!string.IsNullOrWhiteSpace(input.RedPacketSignature), "signature should not be null");
             Assert(!string.IsNullOrEmpty(input.PublicKey), "PublicKey should not be null.");
-
+            Assert(!string.IsNullOrEmpty(input.RedPacketSignature), "RedPacketSignature should not be null.");
             var maxCount = State.RedPacketMaxCount.Value;
 
             var message = $"{input.RedPacketId}-{input.RedPacketSymbol}-{input.MinAmount}-{maxCount}";
@@ -98,7 +99,8 @@ namespace Portkey.Contracts.RedPacket
         public override Empty TransferRedPacket(TransferRedPacketBatchInput input)
         {
             var inputs = input.TransferRedPacketInputs;
-            Assert(inputs != null && input.TransferRedPacketInputs.Count > 0 && input.RedPacketId != null, "Invalidate Input");
+            Assert(inputs != null && input.TransferRedPacketInputs.Count > 0 && input.RedPacketId != null,
+                "Invalidate Input");
             var redPacket = State.RedPacketInfoMap[input.RedPacketId];
             Assert(redPacket != null, "RedPacket not exists.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
@@ -106,7 +108,9 @@ namespace Portkey.Contracts.RedPacket
             foreach (var transferRedPacketInput in inputs!)
             {
                 Assert(!transferRedPacketInput.ReceiverAddress.Value.IsNullOrEmpty(), "ReceiverAddress is empty");
-                Assert(list.Addresses.FirstOrDefault(c => c.Value == transferRedPacketInput.ReceiverAddress.Value) == null, "ReceiverAddress " + transferRedPacketInput.ReceiverAddress + " already receive.");
+                Assert(
+                    list.Addresses.FirstOrDefault(c => c.Value == transferRedPacketInput.ReceiverAddress.Value) == null,
+                    "ReceiverAddress " + transferRedPacketInput.ReceiverAddress + " already receive.");
 
                 var message =
                     $"{redPacket.RedPacketId}-{transferRedPacketInput.ReceiverAddress}-{transferRedPacketInput.Amount}";
@@ -132,6 +136,7 @@ namespace Portkey.Contracts.RedPacket
                 });
                 list.Addresses.Add(transferRedPacketInput.ReceiverAddress);
             }
+
             State.AlreadySnatchedList[input.RedPacketId] = list;
 
             return new Empty();
@@ -142,7 +147,7 @@ namespace Portkey.Contracts.RedPacket
             Assert(!string.IsNullOrEmpty(input.RedPacketId), "RedPacketId should not be null.");
             var redPacket = State.RedPacketInfoMap[input.RedPacketId];
             Assert(redPacket != null, "RedPacket not exists.");
-            Assert(redPacket?.ExpirationTime < Context.CurrentBlockTime.Seconds, "RedPacket not expired.");
+            Assert(redPacket?.ExpirationTime < Context.CurrentBlockTime.Seconds * 1000, "RedPacket not expired.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
             var message =
                 $"{redPacket.RedPacketId}-{input.Amount}";
@@ -165,7 +170,7 @@ namespace Portkey.Contracts.RedPacket
                 Amount = input.Amount,
                 RedPacketSymbol = redPacket.RedPacketSymbol
             });
-            
+
             return new Empty();
         }
 

@@ -7,7 +7,6 @@ using AElf.Contracts.MultiToken;
 using AElf.Cryptography;
 using AElf.CSharp.Core.Extension;
 using AElf.Types;
-using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Shouldly;
 using Xunit;
@@ -72,7 +71,7 @@ namespace Portkey.Contracts.RedPacket
             var recoverKey = recoverPublicKey.ToHex();
             return recoverPublicKey.ToHex() == publicKey;
         }
-        
+
         // var dataHash = HashHelper.ComputeFrom(rawData).ToByteArray();
         // var publicKeyByte = ByteArrayHelper.HexStringToByteArray(publicKey);
         // var signByte = ByteString.FromBase64(signature);
@@ -105,7 +104,7 @@ namespace Portkey.Contracts.RedPacket
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
 
-            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
             var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
             {
                 RedPacketSymbol = "ELF",
@@ -174,7 +173,7 @@ namespace Portkey.Contracts.RedPacket
             var signature =
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
-            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             var invalidateTotalCountResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
                 new CreateRedPacketInput
                 {
@@ -356,7 +355,7 @@ namespace Portkey.Contracts.RedPacket
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
 
-            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
             var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
             {
                 RedPacketSymbol = "ELF",
@@ -429,9 +428,9 @@ namespace Portkey.Contracts.RedPacket
             var redPacket = await CreateRedPacketExpired(publicKey, privateKey);
             Thread.Sleep(2);
             var message =
-                $"{redPacket.RedPacketId}-{redPacket.SenderAddress}-{redPacket.TotalAmount}";
+                $"{redPacket.RedPacketId}-{redPacket.TotalAmount}";
             var message1 =
-                $"{redPacket.RedPacketId}-{redPacket.SenderAddress}-{10000}";
+                $"{redPacket.RedPacketId}-{10000}";
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(200));
 
             var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
@@ -455,10 +454,10 @@ namespace Portkey.Contracts.RedPacket
             var refundSuccessResult =
                 await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputInvalidateSignature);
             refundSuccessResult.TransactionResult.Error.ShouldContain("Invalid signature.");
-           
-            
+
+
             var message3 =
-                $"{redPacket.RedPacketId}-{DefaultAddress}-{100}";
+                $"{redPacket.RedPacketId}-{100}";
             var hashByteArray3 = HashHelper.ComputeFrom(message3).ToByteArray();
             var signature3 =
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray3)
@@ -473,9 +472,6 @@ namespace Portkey.Contracts.RedPacket
             var resultSuccess =
                 await RedPacketContractStub.RefundRedPacket.SendAsync(refundInput);
             resultSuccess.TransactionResult.Error.ShouldBe("");
-            
-            
-            
         }
 
 
@@ -502,7 +498,7 @@ namespace Portkey.Contracts.RedPacket
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
 
-            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
             {
                 RedPacketSymbol = "ELF",
@@ -548,7 +544,7 @@ namespace Portkey.Contracts.RedPacket
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
 
-            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds()+1;
+            var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + 1;
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(-2));
             var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
             {
