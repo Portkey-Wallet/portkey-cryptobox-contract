@@ -21,7 +21,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 1000
             });
             var admin = await CryptoBoxContractStub.GetCryptoBoxMaxCount.CallAsync(new Empty());
@@ -32,7 +32,7 @@ namespace Portkey.Contracts.CryptoBox
 
             var result = await CryptoBoxContractStub.Initialize.SendWithExceptionAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 1000
             });
             result.TransactionResult.Error.ShouldContain("Already initialized.");
@@ -43,7 +43,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             var result = await CryptoBoxContractStub.Initialize.SendWithExceptionAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 0
             });
             result.TransactionResult.Error.ShouldContain("MaxCount should be greater than 0.");
@@ -83,7 +83,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 10
             });
 
@@ -112,7 +112,7 @@ namespace Portkey.Contracts.CryptoBox
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
-                SenderAddress = DefaultAddress,
+                Sender = DefaultAddress,
                 PublicKey = publicKey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
@@ -134,7 +134,7 @@ namespace Portkey.Contracts.CryptoBox
                 new TransferCryptoBoxInput
                 {
                     Amount = 10,
-                    ReceiverAddress = receiveAddress,
+                    Receiver = receiveAddress,
                     CryptoBoxSignature = receiveSignature
                 }
             };
@@ -143,7 +143,7 @@ namespace Portkey.Contracts.CryptoBox
                 CryptoBoxId = id,
                 TransferCryptoBoxInputs = { list }
             };
-            var batchResult = await CryptoBoxContractStub.TransferCryptoBox.SendAsync(batchInput);
+            var batchResult = await CryptoBoxContractStub.TransferCryptoBoxBatch.SendAsync(batchInput);
             batchResult.TransactionResult.Status.ShouldBe(TransactionResultStatus.Mined);
         }
 
@@ -153,7 +153,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 1000
             });
 
@@ -182,7 +182,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 1000,
                     TotalCount = 1000,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
@@ -199,7 +199,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
@@ -216,7 +216,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
@@ -233,7 +233,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 0,
                     TotalCount = 100,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
@@ -249,7 +249,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 1000,
                     TotalCount = 0,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
@@ -265,7 +265,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 1000,
                     TotalCount = 10000,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
@@ -282,7 +282,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds - 1000,
@@ -299,7 +299,7 @@ namespace Portkey.Contracts.CryptoBox
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
-                    SenderAddress = DefaultAddress,
+                    Sender = DefaultAddress,
                     PublicKey = "",
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
@@ -315,7 +315,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 1000
             });
             var result = await CryptoBoxContractStub.GetCryptoBoxMaxCount.CallAsync(new Empty());
@@ -334,7 +334,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 10
             });
 
@@ -363,7 +363,7 @@ namespace Portkey.Contracts.CryptoBox
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
-                SenderAddress = DefaultAddress,
+                Sender = DefaultAddress,
                 PublicKey = publicKey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
@@ -376,7 +376,7 @@ namespace Portkey.Contracts.CryptoBox
                 CryptoBoxId = id
             });
             CryptoBoxInfo.CryptoBoxInfo.CryptoBoxId.ShouldBe(id);
-            CryptoBoxInfo.CryptoBoxInfo.SenderAddress.ShouldBe(DefaultAddress);
+            CryptoBoxInfo.CryptoBoxInfo.Sender.ShouldBe(DefaultAddress);
             CryptoBoxInfo.CryptoBoxInfo.PublicKey.ShouldBe(publicKey);
         }
 
@@ -480,7 +480,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 10
             });
 
@@ -506,7 +506,7 @@ namespace Portkey.Contracts.CryptoBox
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
-                SenderAddress = DefaultAddress,
+                Sender = DefaultAddress,
                 PublicKey = pubkey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
@@ -516,7 +516,7 @@ namespace Portkey.Contracts.CryptoBox
             return new CryptoBoxInfo
             {
                 CryptoBoxId = id,
-                SenderAddress = DefaultAddress,
+                Sender = DefaultAddress,
                 TotalAmount = 1000
             };
         }
@@ -526,7 +526,7 @@ namespace Portkey.Contracts.CryptoBox
         {
             await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
-                ContractAdmin = DefaultAddress,
+                Admin = DefaultAddress,
                 MaxCount = 10
             });
 
@@ -553,7 +553,7 @@ namespace Portkey.Contracts.CryptoBox
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
-                SenderAddress = DefaultAddress,
+                Sender = DefaultAddress,
                 PublicKey = pubkey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds,
@@ -563,7 +563,7 @@ namespace Portkey.Contracts.CryptoBox
             return new CryptoBoxInfo
             {
                 CryptoBoxId = id,
-                SenderAddress = DefaultAddress,
+                Sender = DefaultAddress,
                 TotalAmount = 1000
             };
         }
