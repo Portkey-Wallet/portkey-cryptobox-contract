@@ -11,7 +11,7 @@ using AElf.Types;
 using Google.Protobuf;
 using Microsoft.Extensions.Options;
 
-namespace AElf.Boilerplate.RedPacketContract.Launcher
+namespace AElf.Boilerplate.CryptoBoxContract.Launcher
 {
     public class DeployContractsSystemTransactionGenerator : ISystemTransactionGenerator
     {

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 
-namespace AElf.Boilerplate.RedPacketContract.Launcher
+namespace AElf.Boilerplate.CryptoBoxContract.Launcher
 {
     public class Startup
     {
