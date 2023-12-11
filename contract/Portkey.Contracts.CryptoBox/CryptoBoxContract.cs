@@ -118,8 +118,8 @@ namespace Portkey.Contracts.CryptoBox
             Assert(input != null && input.TransferCryptoBoxInputs.Count > 0 && input.CryptoBoxId != null,
                 "Invalidate Input");
             Assert(State.TransferControllers.Value.Controllers.Contains(Context.Sender), "No permission");
-            var CryptoBox = State.CryptoBoxInfoMap[input.CryptoBoxId];
-            Assert(CryptoBox != null, "CryptoBox not exists.");
+            var cryptoBox = State.CryptoBoxInfoMap[input.CryptoBoxId];
+            Assert(cryptoBox != null, "CryptoBox not exists.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.CryptoBoxId);
             var list = State.AlreadySnatchedList[input.CryptoBoxId] ?? new AddressList();
             foreach (var transferCryptoBoxInput in input.TransferCryptoBoxInputs)
@@ -130,8 +130,8 @@ namespace Portkey.Contracts.CryptoBox
                     "ReceiverAddress " + transferCryptoBoxInput.Receiver + " already receive.");
 
                 var message =
-                    $"{CryptoBox.CryptoBoxId}-{transferCryptoBoxInput.Receiver}-{transferCryptoBoxInput.Amount}";
-                var verifySignature = VerifySignature(CryptoBox.PublicKey, transferCryptoBoxInput.CryptoBoxSignature,
+                    $"{cryptoBox.CryptoBoxId}-{transferCryptoBoxInput.Receiver}-{transferCryptoBoxInput.Amount}";
+                var verifySignature = VerifySignature(cryptoBox.PublicKey, transferCryptoBoxInput.CryptoBoxSignature,
                     message);
                 Assert(verifySignature, "Signature fail:" + message);
                 Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
@@ -140,15 +140,15 @@ namespace Portkey.Contracts.CryptoBox
                     {
                         To = transferCryptoBoxInput.Receiver,
                         Amount = transferCryptoBoxInput.Amount,
-                        Symbol = CryptoBox.CryptoBoxSymbol,
+                        Symbol = cryptoBox.CryptoBoxSymbol,
                         Memo = "TransferToReceiver"
                     }.ToByteString());
                 Context.Fire(new CryptoBoxReceived
                 {
-                    CryptoBoxId = CryptoBox.CryptoBoxId,
+                    CryptoBoxId = cryptoBox.CryptoBoxId,
                     Receiver = transferCryptoBoxInput.Receiver,
                     Amount = transferCryptoBoxInput.Amount,
-                    Sender = CryptoBox.Sender,
+                    Sender = cryptoBox.Sender,
                     IsSuccess = true
                 });
                 list.Addresses.Add(transferCryptoBoxInput.Receiver);
