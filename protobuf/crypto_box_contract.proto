@@ -63,14 +63,14 @@ message TransferCryptoBoxBatchInput{
   repeated TransferCryptoBoxInput transfer_crypto_box_inputs = 2;
 }
 
-enum CryptoBoxType {
+enum CryptoBoxType{
   UNKNOWN = 0;
   FIXED = 1;
   RANDOM = 2;
   QUICK_TRANSFER = 3;
 }
 
-message CryptoBoxInfo {
+message CryptoBoxInfo{
   string crypto_box_id = 1;
   string crypto_box_symbol = 2;
   int64 total_amount = 3;
@@ -113,19 +113,19 @@ message InitializeInput{
 
 }
 
-message GetCryptoBoxOutput {
+message GetCryptoBoxOutput{
   CryptoBoxInfo crypto_box_info = 1;
 }
 
-message GetCryptoBoxInput {
+message GetCryptoBoxInput{
   string crypto_box_id = 1;
 }
 
-message GetCryptoBoxMaxCountOutput {
+message GetCryptoBoxMaxCountOutput{
   int64 max_count = 1;
 }
 
-message SetCryptoBoxMaxCountInput {
+message SetCryptoBoxMaxCountInput{
   int64 max_count = 1;
 }
 
