@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Portkey.Contracts.RedPacket</RootNamespace>
+    <RootNamespace>Portkey.Contracts.CryptoBox</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -32,8 +32,8 @@
     </ContractMessage>
   </ItemGroup>
   <ItemGroup>
-    <ContractStub Include="..\..\protobuf\red_packet_contract.proto">
-      <Link>Protobuf\Proto\red_packet_contract.proto</Link>
+    <ContractStub Include="..\..\protobuf\crypto_box_contract.proto">
+      <Link>Protobuf\Proto\crypto_box_contract.proto</Link>
     </ContractStub>
 
     <ContractStub Include="..\..\protobuf\acs0.proto">
@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\contract\Portkey.Contracts.RedPacket\Portkey.Contracts.RedPacket.csproj" />
+    <ProjectReference Include="..\..\contract\Portkey.Contracts.CryptoBox\Portkey.Contracts.CryptoBox.csproj" />
     <ProjectReference Include="..\..\src\AElf.Boilerplate.TestBase\AElf.Boilerplate.TestBase.csproj" />
   </ItemGroup>
 

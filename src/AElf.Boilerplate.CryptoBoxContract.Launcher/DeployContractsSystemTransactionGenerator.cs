@@ -49,7 +49,7 @@ namespace AElf.Boilerplate.RedPacketContract.Launcher
         private byte[] GetContractCodes()
         {
             return ContractsDeployer.GetContractCodes<DeployContractsSystemTransactionGenerator>(_contractOptions
-                .GenesisContractDir)["Portkey.Contracts.RedPacket"];
+                .GenesisContractDir)["Portkey.Contracts.CryptoBox"];
         }
     }
 }

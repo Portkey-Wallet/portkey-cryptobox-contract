@@ -8,28 +8,29 @@ using AElf.Cryptography;
 using AElf.CSharp.Core.Extension;
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
+using Portkey.Contracts.CryptoBox;
 using Shouldly;
 using Xunit;
 
-namespace Portkey.Contracts.RedPacket
+namespace Portkey.Contracts.CryptoBox
 {
-    public class RedPacketContractTests : RedPacketContractTestBase
+    public class CryptoBoxContractTests : CryptoBoxContractTestBase
     {
         [Fact]
         public async Task InitializeTest()
         {
-            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 1000
             });
-            var admin = await RedPacketContractStub.GetRedPacketMaxCount.CallAsync(new Empty());
+            var admin = await CryptoBoxContractStub.GetCryptoBoxMaxCount.CallAsync(new Empty());
             Assert.Equal(1000, admin.MaxCount);
 
-            var maxCount = await RedPacketContractStub.GetRedPacketMaxCount.CallAsync(new Empty());
+            var maxCount = await CryptoBoxContractStub.GetCryptoBoxMaxCount.CallAsync(new Empty());
             Assert.Equal(1000, maxCount.MaxCount);
 
-            var result = await RedPacketContractStub.Initialize.SendWithExceptionAsync(new InitializeInput
+            var result = await CryptoBoxContractStub.Initialize.SendWithExceptionAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 1000
@@ -40,7 +41,7 @@ namespace Portkey.Contracts.RedPacket
         [Fact]
         public async Task Initialize_WithInvalidateParam_Test()
         {
-            var result = await RedPacketContractStub.Initialize.SendWithExceptionAsync(new InitializeInput
+            var result = await CryptoBoxContractStub.Initialize.SendWithExceptionAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 0
@@ -78,9 +79,9 @@ namespace Portkey.Contracts.RedPacket
         //     return CryptoHelper.VerifySignature(signByte.ToByteArray(), dataHash, publicKeyByte);
 
         [Fact]
-        public async Task CreateRedPacketTest()
+        public async Task CreateCryptoBoxTest()
         {
-            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 10
@@ -105,18 +106,18 @@ namespace Portkey.Contracts.RedPacket
                     .ToHex();
 
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
-            var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
+            var txResult = await CryptoBoxContractStub.CreateCryptoBox.SendAsync(new CreateCryptoBoxInput
             {
-                RedPacketSymbol = "ELF",
+                CryptoBoxSymbol = "ELF",
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
                 SenderAddress = DefaultAddress,
                 PublicKey = publicKey,
-                RedPacketType = RedPacketType.QuickTransfer,
+                CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
-                RedPacketSignature = signature,
-                RedPacketId = id
+                CryptoBoxSignature = signature,
+                CryptoBoxId = id
             });
 
             var receiveAddress = DefaultAddress;
@@ -128,29 +129,29 @@ namespace Portkey.Contracts.RedPacket
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), byteArray)
                     .ToHex();
 
-            var list = new List<TransferRedPacketInput>
+            var list = new List<TransferCryptoBoxInput>
             {
-                new TransferRedPacketInput
+                new TransferCryptoBoxInput
                 {
                     Amount = 10,
                     ReceiverAddress = receiveAddress,
-                    RedPacketSignature = receiveSignature
+                    CryptoBoxSignature = receiveSignature
                 }
             };
-            var batchInput = new TransferRedPacketBatchInput
+            var batchInput = new TransferCryptoBoxBatchInput
             {
-                RedPacketId = id,
-                TransferRedPacketInputs = { list }
+                CryptoBoxId = id,
+                TransferCryptoBoxInputs = { list }
             };
-            var batchResult = await RedPacketContractStub.TransferRedPacket.SendAsync(batchInput);
+            var batchResult = await CryptoBoxContractStub.TransferCryptoBox.SendAsync(batchInput);
             batchResult.TransactionResult.Status.ShouldBe(TransactionResultStatus.Mined);
         }
 
 
         [Fact]
-        public async Task CreateRedPacket_Invalidate_Input_Test()
+        public async Task CreateCryptoBox_Invalidate_Input_Test()
         {
-            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 1000
@@ -174,164 +175,164 @@ namespace Portkey.Contracts.RedPacket
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
                     .ToHex();
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            var invalidateTotalCountResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var invalidateTotalCountResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "ELF",
+                    CryptoBoxSymbol = "ELF",
                     TotalAmount = 1000,
                     TotalCount = 1000,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = publicKey,
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = id
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = id
                 });
             invalidateTotalCountResult.TransactionResult.Error.ShouldContain(
                 "TotalAmount should be greater than MinAmount * TotalCount.");
 
-            var redPacketIdResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var CryptoBoxIdResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "ELF",
+                    CryptoBoxSymbol = "ELF",
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = publicKey,
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = ""
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = ""
                 });
-            redPacketIdResult.TransactionResult.Error.ShouldContain("RedPacketId should not be null.");
+            CryptoBoxIdResult.TransactionResult.Error.ShouldContain("CryptoBoxId should not be null.");
 
 
-            var redPacketSymbolResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var CryptoBoxSymbolResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "",
+                    CryptoBoxSymbol = "",
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = publicKey,
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = id
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = id
                 });
-            redPacketSymbolResult.TransactionResult.Error.ShouldContain("Symbol should not be null.");
+            CryptoBoxSymbolResult.TransactionResult.Error.ShouldContain("Symbol should not be null.");
 
 
-            var redPacketTotalAmountResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var CryptoBoxTotalAmountResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "ELF",
+                    CryptoBoxSymbol = "ELF",
                     TotalAmount = 0,
                     TotalCount = 100,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = publicKey,
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = id
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = id
                 });
-            redPacketTotalAmountResult.TransactionResult.Error.ShouldContain("TotalAmount should be greater than 0.");
+            CryptoBoxTotalAmountResult.TransactionResult.Error.ShouldContain("TotalAmount should be greater than 0.");
 
-            var totalCountResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var totalCountResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "ELF",
+                    CryptoBoxSymbol = "ELF",
                     TotalAmount = 1000,
                     TotalCount = 0,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = publicKey,
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = id
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = id
                 });
             totalCountResult.TransactionResult.Error.ShouldContain("TotalCount should be greater than 0.");
 
-            var totalCountErrorResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var totalCountErrorResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "ELF",
+                    CryptoBoxSymbol = "ELF",
                     TotalAmount = 1000,
                     TotalCount = 10000,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = publicKey,
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = id
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = id
                 });
             totalCountErrorResult.TransactionResult.Error.ShouldContain(
                 "TotalCount should be less than or equal to MaxCount.");
 
-            var expireTimeResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var expireTimeResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "ELF",
+                    CryptoBoxSymbol = "ELF",
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = publicKey,
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds - 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = id
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = id
                 });
             expireTimeResult.TransactionResult.Error.ShouldContain("ExpiredTime should be greater than now.");
 
 
-            var pubkeyResult = await RedPacketContractStub.CreateRedPacket.SendWithExceptionAsync(
-                new CreateRedPacketInput
+            var pubkeyResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+                new CreateCryptoBoxInput
                 {
-                    RedPacketSymbol = "ELF",
+                    CryptoBoxSymbol = "ELF",
                     TotalAmount = 1000,
                     TotalCount = 100,
                     MinAmount = 10,
                     SenderAddress = DefaultAddress,
                     PublicKey = "",
-                    RedPacketType = RedPacketType.QuickTransfer,
+                    CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    RedPacketSignature = signature,
-                    RedPacketId = id
+                    CryptoBoxSignature = signature,
+                    CryptoBoxId = id
                 });
             pubkeyResult.TransactionResult.Error.ShouldContain("PublicKey should not be null.");
         }
 
 
         [Fact]
-        public async Task SetGetRedPacketMaxCount_Test()
+        public async Task SetGetCryptoBoxMaxCount_Test()
         {
-            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 1000
             });
-            var result = await RedPacketContractStub.GetRedPacketMaxCount.CallAsync(new Empty());
+            var result = await CryptoBoxContractStub.GetCryptoBoxMaxCount.CallAsync(new Empty());
             result.MaxCount.ShouldBe(1000);
-            var maxCount = await RedPacketContractStub.SetRedPacketMaxCount.SendAsync(new SetRedPacketMaxCountInput
+            var maxCount = await CryptoBoxContractStub.SetCryptoBoxMaxCount.SendAsync(new SetCryptoBoxMaxCountInput
             {
                 MaxCount = 500
             });
-            var maxCountOutput = await RedPacketContractStub.GetRedPacketMaxCount.CallAsync(new Empty());
+            var maxCountOutput = await CryptoBoxContractStub.GetCryptoBoxMaxCount.CallAsync(new Empty());
             maxCountOutput.MaxCount.ShouldBe(500);
         }
 
 
         [Fact]
-        public async Task GetRedPacketInfo_Test()
+        public async Task GetCryptoBoxInfo_Test()
         {
-            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 10
@@ -356,81 +357,81 @@ namespace Portkey.Contracts.RedPacket
                     .ToHex();
 
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
-            var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
+            var txResult = await CryptoBoxContractStub.CreateCryptoBox.SendAsync(new CreateCryptoBoxInput
             {
-                RedPacketSymbol = "ELF",
+                CryptoBoxSymbol = "ELF",
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
                 SenderAddress = DefaultAddress,
                 PublicKey = publicKey,
-                RedPacketType = RedPacketType.QuickTransfer,
+                CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
-                RedPacketSignature = signature,
-                RedPacketId = id
+                CryptoBoxSignature = signature,
+                CryptoBoxId = id
             });
             txResult.TransactionResult.Status.ShouldBe(TransactionResultStatus.Mined);
-            var redPacketInfo = await RedPacketContractStub.GetRedPacketInfo.CallAsync(new GetRedPacketInput
+            var CryptoBoxInfo = await CryptoBoxContractStub.GetCryptoBoxInfo.CallAsync(new GetCryptoBoxInput
             {
-                RedPacketId = id
+                CryptoBoxId = id
             });
-            redPacketInfo.RedPacketInfo.RedPacketId.ShouldBe(id);
-            redPacketInfo.RedPacketInfo.SenderAddress.ShouldBe(DefaultAddress);
-            redPacketInfo.RedPacketInfo.PublicKey.ShouldBe(publicKey);
+            CryptoBoxInfo.CryptoBoxInfo.CryptoBoxId.ShouldBe(id);
+            CryptoBoxInfo.CryptoBoxInfo.SenderAddress.ShouldBe(DefaultAddress);
+            CryptoBoxInfo.CryptoBoxInfo.PublicKey.ShouldBe(publicKey);
         }
 
         [Fact]
-        public async Task Refund_RedPacket_Invalidate_Param_Test()
+        public async Task Refund_CryptoBox_Invalidate_Param_Test()
         {
-            var refundInputWithoutId = new RefundRedPacketInput
+            var refundInputWithoutId = new RefundCryptoBoxInput
             {
-                RedPacketId = "",
+                CryptoBoxId = "",
                 Amount = 100,
-                RedPacketSignature = ""
+                CryptoBoxSignature = ""
             };
             var refundResultWithoutId =
-                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithoutId);
-            refundResultWithoutId.TransactionResult.Error.ShouldContain("RedPacketId should not be null.");
+                await CryptoBoxContractStub.RefundCryptoBox.SendWithExceptionAsync(refundInputWithoutId);
+            refundResultWithoutId.TransactionResult.Error.ShouldContain("CryptoBoxId should not be null.");
 
-            var refundInputWithErrorId = new RefundRedPacketInput
+            var refundInputWithErrorId = new RefundCryptoBoxInput
             {
-                RedPacketId = "test",
+                CryptoBoxId = "test",
                 Amount = 100,
-                RedPacketSignature = ""
+                CryptoBoxSignature = ""
             };
             var refundResultWithErrorId =
-                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithErrorId);
-            refundResultWithErrorId.TransactionResult.Error.ShouldContain("RedPacket not exists.");
+                await CryptoBoxContractStub.RefundCryptoBox.SendWithExceptionAsync(refundInputWithErrorId);
+            refundResultWithErrorId.TransactionResult.Error.ShouldContain("CryptoBox not exists.");
 
             var ecKeyPair = CryptoHelper.GenerateKeyPair();
             var publicKey = ecKeyPair.PublicKey.ToHex();
             var privateKey = ecKeyPair.PrivateKey.ToHex();
 
-            var redPacket = await CreateRedPacket(publicKey, privateKey);
+            var CryptoBox = await CreateCryptoBox(publicKey, privateKey);
 
-            var refundInputWithErrorExpireTime = new RefundRedPacketInput
+            var refundInputWithErrorExpireTime = new RefundCryptoBoxInput
             {
-                RedPacketId = redPacket.RedPacketId,
+                CryptoBoxId = CryptoBox.CryptoBoxId,
                 Amount = 100,
-                RedPacketSignature = ""
+                CryptoBoxSignature = ""
             };
             var refundInputWithErrorExpireTimeResult =
-                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputWithErrorExpireTime);
-            refundInputWithErrorExpireTimeResult.TransactionResult.Error.ShouldContain("RedPacket not expired.");
+                await CryptoBoxContractStub.RefundCryptoBox.SendWithExceptionAsync(refundInputWithErrorExpireTime);
+            refundInputWithErrorExpireTimeResult.TransactionResult.Error.ShouldContain("CryptoBox not expired.");
         }
 
         [Fact]
-        public async Task Refund_RedPacket_Test()
+        public async Task Refund_CryptoBox_Test()
         {
             var ecKeyPair = CryptoHelper.GenerateKeyPair();
             var publicKey = ecKeyPair.PublicKey.ToHex();
             var privateKey = ecKeyPair.PrivateKey.ToHex();
-            var redPacket = await CreateRedPacketExpired(publicKey, privateKey);
+            var CryptoBox = await CreateCryptoBoxExpired(publicKey, privateKey);
             Thread.Sleep(2);
             var message =
-                $"{redPacket.RedPacketId}-{redPacket.TotalAmount}";
+                $"{CryptoBox.CryptoBoxId}-{CryptoBox.TotalAmount}";
             var message1 =
-                $"{redPacket.RedPacketId}-{10000}";
+                $"{CryptoBox.CryptoBoxId}-{10000}";
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(200));
 
             var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
@@ -443,41 +444,41 @@ namespace Portkey.Contracts.RedPacket
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray1)
                     .ToHex();
 
-            var refundInputInvalidateSignature = new RefundRedPacketInput
+            var refundInputInvalidateSignature = new RefundCryptoBoxInput
             {
-                RedPacketId = redPacket.RedPacketId,
+                CryptoBoxId = CryptoBox.CryptoBoxId,
                 Amount = 100,
-                RedPacketSignature = signature1
+                CryptoBoxSignature = signature1
             };
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(20000));
             Thread.Sleep(2000);
             var refundSuccessResult =
-                await RedPacketContractStub.RefundRedPacket.SendWithExceptionAsync(refundInputInvalidateSignature);
+                await CryptoBoxContractStub.RefundCryptoBox.SendWithExceptionAsync(refundInputInvalidateSignature);
             refundSuccessResult.TransactionResult.Error.ShouldContain("Invalid signature.");
 
 
             var message3 =
-                $"{redPacket.RedPacketId}-{100}";
+                $"{CryptoBox.CryptoBoxId}-{100}";
             var hashByteArray3 = HashHelper.ComputeFrom(message3).ToByteArray();
             var signature3 =
                 CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray3)
                     .ToHex();
-            var refundInput = new RefundRedPacketInput
+            var refundInput = new RefundCryptoBoxInput
             {
-                RedPacketId = redPacket.RedPacketId,
+                CryptoBoxId = CryptoBox.CryptoBoxId,
                 Amount = 100,
-                RedPacketSignature = signature3
+                CryptoBoxSignature = signature3
             };
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(20000));
             var resultSuccess =
-                await RedPacketContractStub.RefundRedPacket.SendAsync(refundInput);
+                await CryptoBoxContractStub.RefundCryptoBox.SendAsync(refundInput);
             resultSuccess.TransactionResult.Error.ShouldBe("");
         }
 
 
-        private async Task<RedPacketInfo> CreateRedPacket(string pubkey, string privateKey)
+        private async Task<CryptoBoxInfo> CreateCryptoBox(string pubkey, string privateKey)
         {
-            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 10
@@ -499,31 +500,31 @@ namespace Portkey.Contracts.RedPacket
                     .ToHex();
 
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
+            var txResult = await CryptoBoxContractStub.CreateCryptoBox.SendAsync(new CreateCryptoBoxInput
             {
-                RedPacketSymbol = "ELF",
+                CryptoBoxSymbol = "ELF",
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
                 SenderAddress = DefaultAddress,
                 PublicKey = pubkey,
-                RedPacketType = RedPacketType.QuickTransfer,
+                CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
-                RedPacketSignature = signature,
-                RedPacketId = id
+                CryptoBoxSignature = signature,
+                CryptoBoxId = id
             });
-            return new RedPacketInfo
+            return new CryptoBoxInfo
             {
-                RedPacketId = id,
+                CryptoBoxId = id,
                 SenderAddress = DefaultAddress,
                 TotalAmount = 1000
             };
         }
 
 
-        private async Task<RedPacketInfo> CreateRedPacketExpired(string pubkey, string privateKey)
+        private async Task<CryptoBoxInfo> CreateCryptoBoxExpired(string pubkey, string privateKey)
         {
-            await RedPacketContractStub.Initialize.SendAsync(new InitializeInput
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
             {
                 ContractAdmin = DefaultAddress,
                 MaxCount = 10
@@ -546,22 +547,22 @@ namespace Portkey.Contracts.RedPacket
 
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + 1;
             blockTimeProvider.SetBlockTime(DateTime.UtcNow.ToTimestamp().AddMilliseconds(-2));
-            var txResult = await RedPacketContractStub.CreateRedPacket.SendAsync(new CreateRedPacketInput
+            var txResult = await CryptoBoxContractStub.CreateCryptoBox.SendAsync(new CreateCryptoBoxInput
             {
-                RedPacketSymbol = "ELF",
+                CryptoBoxSymbol = "ELF",
                 TotalAmount = 1000,
                 TotalCount = 10,
                 MinAmount = 10,
                 SenderAddress = DefaultAddress,
                 PublicKey = pubkey,
-                RedPacketType = RedPacketType.QuickTransfer,
+                CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds,
-                RedPacketSignature = signature,
-                RedPacketId = id
+                CryptoBoxSignature = signature,
+                CryptoBoxId = id
             });
-            return new RedPacketInfo
+            return new CryptoBoxInfo
             {
-                RedPacketId = id,
+                CryptoBoxId = id,
                 SenderAddress = DefaultAddress,
                 TotalAmount = 1000
             };

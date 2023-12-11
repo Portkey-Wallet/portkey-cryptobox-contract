@@ -7,16 +7,17 @@ using AElf.Standards.ACS0;
 using AElf.Types;
 using Google.Protobuf;
 using Microsoft.Extensions.DependencyInjection;
+using Portkey.Contracts.CryptoBox;
 using Volo.Abp.Threading;
 
-namespace Portkey.Contracts.RedPacket
+namespace Portkey.Contracts.CryptoBox
 {
-    public class RedPacketContractTestBase : DAppContractTestBase<RedPacketContractTestModule>
+    public class CryptoBoxContractTestBase : DAppContractTestBase<CryptoBoxContractTestModule>
     {
         // You can get address of any contract via GetAddress method, for example:
         // internal Address DAppContractAddress => GetAddress(DAppSmartContractAddressNameProvider.StringName);
 
-        internal RedPacketContractContainer.RedPacketContractStub RedPacketContractStub { get; set; }
+        internal CryptoBoxContractContainer.CryptoBoxContractStub CryptoBoxContractStub { get; set; }
 
         internal TokenContractContainer.TokenContractStub TokenContractStub { get; set; }
 
@@ -30,16 +31,16 @@ namespace Portkey.Contracts.RedPacket
 
 
 
-        protected RedPacketContractTestBase()
+        protected CryptoBoxContractTestBase()
         {
-            RedPacketContractStub = GetRedPacketContractStub(DefaultKeyPair);
+            CryptoBoxContractStub = GetRedPacketContractStub(DefaultKeyPair);
             TokenContractStub = GetTokenContractStub(DefaultKeyPair);
         }
 
 
-        internal RedPacketContractContainer.RedPacketContractStub GetRedPacketContractStub(ECKeyPair keyPair)
+        internal CryptoBoxContractContainer.CryptoBoxContractStub GetRedPacketContractStub(ECKeyPair keyPair)
         {
-            return GetTester<RedPacketContractContainer.RedPacketContractStub>(DAppContractAddress,
+            return GetTester<CryptoBoxContractContainer.CryptoBoxContractStub>(DAppContractAddress,
                 keyPair);
         }
 

@@ -3,9 +3,9 @@ using AElf.Boilerplate.TestBase;
 using AElf.Kernel.SmartContract.Application;
 using AElf.Types;
 
-namespace Portkey.Contracts.RedPacket
+namespace Portkey.Contracts.CryptoBox
 {
-    public class RedPacketContractInitializationProvider : IContractInitializationProvider
+    public class CryptoBoxContractInitializationProvider : IContractInitializationProvider
     {
         public List<ContractInitializationMethodCall> GetInitializeMethodList(byte[] contractCode)
         {
@@ -13,6 +13,6 @@ namespace Portkey.Contracts.RedPacket
         }
 
         public Hash SystemSmartContractName { get; } = DAppSmartContractAddressNameProvider.Name;
-        public string ContractCodeName { get; } = "Portkey.Contracts.RedPacket";
+        public string ContractCodeName { get; } = "Portkey.Contracts.CryptoBox";
     }
 }

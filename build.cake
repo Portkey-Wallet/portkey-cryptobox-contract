@@ -7,7 +7,7 @@ var rootPath     = "./";
 var srcPath      = rootPath + "src/";
 var contractPath = rootPath + "contract/";
 var testPath     = rootPath + "test/";
-var solution     = rootPath + "Portkey.Contracts.RedPacket.sln";
+var solution     = rootPath + "Portkey.Contracts.CryptoBox.sln";
 
 Task("Clean")
     .Description("clean up project cache")

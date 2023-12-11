@@ -3,6 +3,7 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
         <ServerGarbageCollection>true</ServerGarbageCollection>
+        <RootNamespace>AElf.Boilerplate.RedPacketContract.Launcher</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\contract\Portkey.Contracts.RedPacket\Portkey.Contracts.RedPacket.csproj">
+        <ProjectReference Include="..\..\contract\Portkey.Contracts.CryptoBox\Portkey.Contracts.CryptoBox.csproj">
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
             <OutputItemType>Contract</OutputItemType>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
