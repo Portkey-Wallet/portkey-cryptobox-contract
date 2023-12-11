@@ -33,12 +33,12 @@ namespace Portkey.Contracts.CryptoBox
 
         protected CryptoBoxContractTestBase()
         {
-            CryptoBoxContractStub = GetRedPacketContractStub(DefaultKeyPair);
+            CryptoBoxContractStub = GetCryptoBoxContractStub(DefaultKeyPair);
             TokenContractStub = GetTokenContractStub(DefaultKeyPair);
         }
 
 
-        internal CryptoBoxContractContainer.CryptoBoxContractStub GetRedPacketContractStub(ECKeyPair keyPair)
+        internal CryptoBoxContractContainer.CryptoBoxContractStub GetCryptoBoxContractStub(ECKeyPair keyPair)
         {
             return GetTester<CryptoBoxContractContainer.CryptoBoxContractStub>(DAppContractAddress,
                 keyPair);

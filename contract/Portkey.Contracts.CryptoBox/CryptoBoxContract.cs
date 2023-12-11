@@ -16,8 +16,22 @@ namespace Portkey.Contracts.CryptoBox
         public override Empty Initialize(InitializeInput input)
         {
             Assert(!State.Initialized.Value, "Already initialized.");
+
+            // The main chain uses the audit deployment, does not verify the Author
+            if (Context.ChainId != MainChainId)
+            {
+                AssertContractAuthor();
+            }
+
+            Assert(input != null, "Invalid input");
+            if (input.Admin != null)
+            {
+                Assert(!input.Admin.Value.IsNullOrEmpty(), "Invalid admin address");
+            }
+
             Assert(input.MaxCount > 0, "MaxCount should be greater than 0.");
-            State.Admin.Value = input.ContractAdmin ?? Context.Sender;
+            State.Admin.Value = input.Admin ?? Context.Sender;
+            State.TransferControllers.Value = new ControllerList { Controllers = { input.Admin ?? Context.Sender } };
             State.CryptoBoxMaxCount.Value = input.MaxCount;
             State.TokenContract.Value =
                 Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
@@ -27,6 +41,7 @@ namespace Portkey.Contracts.CryptoBox
 
         public override Empty CreateCryptoBox(CreateCryptoBoxInput input)
         {
+            AssertContractInitialize();
             Assert(!string.IsNullOrEmpty(input.CryptoBoxId), "CryptoBoxId should not be null.");
             Assert(State.CryptoBoxInfoMap[input.CryptoBoxId] == null, "CryptoBoxId already exists.");
             Assert(input.TotalAmount > 0, "TotalAmount should be greater than 0.");
@@ -40,7 +55,7 @@ namespace Portkey.Contracts.CryptoBox
                 "TotalAmount should be greater than MinAmount * TotalCount.");
             Assert(input.ExpirationTime > Context.CurrentBlockTime.Seconds * 1000,
                 "ExpiredTime should be greater than now.");
-            Assert(input.SenderAddress != null, "SenderAddress should not be null.");
+            Assert(input.Sender != null, "SenderAddress should not be null.");
             Assert(!string.IsNullOrWhiteSpace(input.CryptoBoxSignature), "signature should not be null");
             Assert(!string.IsNullOrEmpty(input.PublicKey), "PublicKey should not be null.");
             Assert(!string.IsNullOrEmpty(input.CryptoBoxSignature), "CryptoBoxSignature should not be null.");
@@ -69,7 +84,7 @@ namespace Portkey.Contracts.CryptoBox
                 Memo = "CryptoBox"
             });
 
-            var CryptoBox = new CryptoBoxInfo
+            var cryptoBox = new CryptoBoxInfo
             {
                 CryptoBoxId = input.CryptoBoxId,
                 CryptoBoxType = input.CryptoBoxType,
@@ -78,43 +93,44 @@ namespace Portkey.Contracts.CryptoBox
                 TotalAmount = input.TotalAmount,
                 ExpirationTime = input.ExpirationTime,
                 PublicKey = input.PublicKey,
-                SenderAddress = Context.Sender
+                Sender = Context.Sender
             };
-            State.CryptoBoxInfoMap[input.CryptoBoxId] = CryptoBox;
+            State.CryptoBoxInfoMap[input.CryptoBoxId] = cryptoBox;
             Context.Fire(
                 new CryptoBoxCreated
                 {
-                    SenderAddress = input.SenderAddress,
+                    Sender = input.Sender,
                     CryptoBoxId = input.CryptoBoxId,
                     CryptoBoxType = input.CryptoBoxType,
                     CryptoBoxSymbol = input.CryptoBoxSymbol,
                     TotalCount = input.TotalCount,
                     TotalAmount = input.TotalAmount,
-                    ReceiverAddress = virtualAddress
+                    Receiver = virtualAddress
                 }
             );
             return new Empty();
         }
 
 
-        public override Empty TransferCryptoBox(TransferCryptoBoxBatchInput input)
+        public override Empty TransferCryptoBoxBatch(TransferCryptoBoxBatchInput input)
         {
-            var inputs = input.TransferCryptoBoxInputs;
-            Assert(inputs != null && input.TransferCryptoBoxInputs.Count > 0 && input.CryptoBoxId != null,
+            AssertContractInitialize();
+            Assert(input != null && input.TransferCryptoBoxInputs.Count > 0 && input.CryptoBoxId != null,
                 "Invalidate Input");
+            Assert(State.TransferControllers.Value.Controllers.Contains(Context.Sender), "No permission");
             var CryptoBox = State.CryptoBoxInfoMap[input.CryptoBoxId];
             Assert(CryptoBox != null, "CryptoBox not exists.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.CryptoBoxId);
             var list = State.AlreadySnatchedList[input.CryptoBoxId] ?? new AddressList();
-            foreach (var transferCryptoBoxInput in inputs!)
+            foreach (var transferCryptoBoxInput in input.TransferCryptoBoxInputs)
             {
-                Assert(!transferCryptoBoxInput.ReceiverAddress.Value.IsNullOrEmpty(), "ReceiverAddress is empty");
+                Assert(!transferCryptoBoxInput.Receiver.Value.IsNullOrEmpty(), "ReceiverAddress is empty");
                 Assert(
-                    list.Addresses.FirstOrDefault(c => c.Value == transferCryptoBoxInput.ReceiverAddress.Value) == null,
-                    "ReceiverAddress " + transferCryptoBoxInput.ReceiverAddress + " already receive.");
+                    list.Addresses.FirstOrDefault(c => c.Value == transferCryptoBoxInput.Receiver.Value) == null,
+                    "ReceiverAddress " + transferCryptoBoxInput.Receiver + " already receive.");
 
                 var message =
-                    $"{CryptoBox.CryptoBoxId}-{transferCryptoBoxInput.ReceiverAddress}-{transferCryptoBoxInput.Amount}";
+                    $"{CryptoBox.CryptoBoxId}-{transferCryptoBoxInput.Receiver}-{transferCryptoBoxInput.Amount}";
                 var verifySignature = VerifySignature(CryptoBox.PublicKey, transferCryptoBoxInput.CryptoBoxSignature,
                     message);
                 Assert(verifySignature, "Signature fail:" + message);
@@ -122,7 +138,7 @@ namespace Portkey.Contracts.CryptoBox
                     nameof(State.TokenContract.Transfer),
                     new TransferInput
                     {
-                        To = transferCryptoBoxInput.ReceiverAddress,
+                        To = transferCryptoBoxInput.Receiver,
                         Amount = transferCryptoBoxInput.Amount,
                         Symbol = CryptoBox.CryptoBoxSymbol,
                         Memo = "TransferToReceiver"
@@ -130,12 +146,12 @@ namespace Portkey.Contracts.CryptoBox
                 Context.Fire(new CryptoBoxReceived
                 {
                     CryptoBoxId = CryptoBox.CryptoBoxId,
-                    ReceiverAddress = transferCryptoBoxInput.ReceiverAddress,
+                    Receiver = transferCryptoBoxInput.Receiver,
                     Amount = transferCryptoBoxInput.Amount,
-                    SenderAddress = CryptoBox.SenderAddress,
+                    Sender = CryptoBox.Sender,
                     IsSuccess = true
                 });
-                list.Addresses.Add(transferCryptoBoxInput.ReceiverAddress);
+                list.Addresses.Add(transferCryptoBoxInput.Receiver);
             }
 
             State.AlreadySnatchedList[input.CryptoBoxId] = list;
@@ -145,41 +161,42 @@ namespace Portkey.Contracts.CryptoBox
 
         public override Empty RefundCryptoBox(RefundCryptoBoxInput input)
         {
+            AssertContractInitialize();
             Assert(!string.IsNullOrEmpty(input.CryptoBoxId), "CryptoBoxId should not be null.");
-            var CryptoBox = State.CryptoBoxInfoMap[input.CryptoBoxId];
-            Assert(CryptoBox != null, "CryptoBox not exists.");
-            Assert(CryptoBox?.ExpirationTime < Context.CurrentBlockTime.Seconds * 1000, "CryptoBox not expired.");
+            var cryptoBox = State.CryptoBoxInfoMap[input.CryptoBoxId];
+            Assert(cryptoBox != null, "CryptoBox not exists.");
+            Assert(cryptoBox?.ExpirationTime < Context.CurrentBlockTime.Seconds * 1000, "CryptoBox not expired.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.CryptoBoxId);
             var message =
-                $"{CryptoBox.CryptoBoxId}-{input.Amount}";
-            var verifySignature = VerifySignature(CryptoBox.PublicKey, input.CryptoBoxSignature,
+                $"{cryptoBox.CryptoBoxId}-{input.Amount}";
+            var verifySignature = VerifySignature(cryptoBox.PublicKey, input.CryptoBoxSignature,
                 message);
             Assert(verifySignature, "Invalid signature.");
             Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
                 nameof(State.TokenContract.Transfer),
                 new TransferInput
                 {
-                    To = CryptoBox.SenderAddress,
+                    To = cryptoBox.Sender,
                     Amount = input.Amount,
-                    Symbol = CryptoBox.CryptoBoxSymbol,
+                    Symbol = cryptoBox.CryptoBoxSymbol,
                     Memo = "RefundCryptoBox"
                 }.ToByteString());
             Context.Fire(new CryptoBoxRefunded
             {
-                CryptoBoxId = CryptoBox.CryptoBoxId,
-                RefundAddress = CryptoBox.SenderAddress,
+                CryptoBoxId = cryptoBox.CryptoBoxId,
+                RefundAddress = cryptoBox.Sender,
                 Amount = input.Amount,
-                CryptoBoxSymbol = CryptoBox.CryptoBoxSymbol
+                CryptoBoxSymbol = cryptoBox.CryptoBoxSymbol
             });
 
             return new Empty();
         }
 
-        public override CryptoBoxOutput GetCryptoBoxInfo(GetCryptoBoxInput input)
+        public override GetCryptoBoxOutput GetCryptoBoxInfo(GetCryptoBoxInput input)
         {
             var packetInfo = State.CryptoBoxInfoMap[input.CryptoBoxId];
             Assert(packetInfo != null, "CryptoBoxId not exists.");
-            return new CryptoBoxOutput
+            return new GetCryptoBoxOutput
             {
                 CryptoBoxInfo = packetInfo
             };
@@ -187,15 +204,16 @@ namespace Portkey.Contracts.CryptoBox
 
         public override Empty SetCryptoBoxMaxCount(SetCryptoBoxMaxCountInput input)
         {
+            AssertContractInitialize();
             Assert(Context.Sender == State.Admin.Value, "No permission.");
             Assert(input.MaxCount > 0, "MaxCount should be greater than 0.");
             State.CryptoBoxMaxCount.Value = input.MaxCount;
             return new Empty();
         }
 
-        public override CryptoBoxMaxCountOutput GetCryptoBoxMaxCount(Empty input)
+        public override GetCryptoBoxMaxCountOutput GetCryptoBoxMaxCount(Empty input)
         {
-            return new CryptoBoxMaxCountOutput
+            return new GetCryptoBoxMaxCountOutput
             {
                 MaxCount = State.CryptoBoxMaxCount.Value
             };

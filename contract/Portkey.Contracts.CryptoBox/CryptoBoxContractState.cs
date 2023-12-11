@@ -19,6 +19,8 @@ namespace Portkey.Contracts.CryptoBox
         public MappedState<string,AddressList> AlreadySnatchedList{ get; set; }
         
         public SingletonState<long> CryptoBoxMaxCount{ get; set; }
+        
+        public SingletonState<ControllerList> TransferControllers { get; set; }
 
 
     }
