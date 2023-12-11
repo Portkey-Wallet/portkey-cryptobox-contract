@@ -1,12 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
-using AElf;
 using AElf.Contracts.MultiToken;
-using AElf.Cryptography;
 using AElf.Sdk.CSharp;
-using AElf.Types;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
+using System.Linq;
+using AElf;
 
 namespace Portkey.Contracts.RedPacket
 {
@@ -98,21 +95,22 @@ namespace Portkey.Contracts.RedPacket
         public override Empty TransferRedPacket(TransferRedPacketBatchInput input)
         {
             var inputs = input.TransferRedPacketInputs;
-            Assert(inputs != null && input.TransferRedPacketInputs.Count > 0 && input.RedPacketId != null, "Invalidate Input");
+            Assert(inputs != null && input.TransferRedPacketInputs.Count > 0 && input.RedPacketId != null, "Invalidate Input.");
             var redPacket = State.RedPacketInfoMap[input.RedPacketId];
             Assert(redPacket != null, "RedPacket not exists.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.RedPacketId);
-            var list = State.AlreadySnatchedList[input.RedPacketId] ?? new AddressList();
+            var snatchedList = State.AlreadySnatchedList[input.RedPacketId]
+                       ?? new AddressList();
             foreach (var transferRedPacketInput in inputs!)
             {
-                Assert(!transferRedPacketInput.ReceiverAddress.Value.IsNullOrEmpty(), "ReceiverAddress is empty");
-                Assert(list.Addresses.FirstOrDefault(c => c.Value == transferRedPacketInput.ReceiverAddress.Value) == null, "ReceiverAddress " + transferRedPacketInput.ReceiverAddress + " already receive.");
+                Assert(!transferRedPacketInput.ReceiverAddress.Value.IsNullOrEmpty(), "ReceiverAddress is empty.");
+                Assert(snatchedList.Addresses.FirstOrDefault(c => c.Value == transferRedPacketInput.ReceiverAddress.Value) == null, "ReceiverAddress " + transferRedPacketInput.ReceiverAddress + " already received.");
 
                 var message =
                     $"{redPacket.RedPacketId}-{transferRedPacketInput.ReceiverAddress}-{transferRedPacketInput.Amount}";
                 var verifySignature = VerifySignature(redPacket.PublicKey, transferRedPacketInput.RedPacketSignature,
                     message);
-                Assert(verifySignature, "Signature fail:" + message);
+                Assert(verifySignature, "Invalid signature.");
                 Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
                     nameof(State.TokenContract.Transfer),
                     new TransferInput
@@ -130,9 +128,9 @@ namespace Portkey.Contracts.RedPacket
                     SenderAddress = redPacket.SenderAddress,
                     IsSuccess = true
                 });
-                list.Addresses.Add(transferRedPacketInput.ReceiverAddress);
+                snatchedList.Addresses.Add(transferRedPacketInput.ReceiverAddress);
             }
-            State.AlreadySnatchedList[input.RedPacketId] = list;
+            State.AlreadySnatchedList[input.RedPacketId] = snatchedList;
 
             return new Empty();
         }
