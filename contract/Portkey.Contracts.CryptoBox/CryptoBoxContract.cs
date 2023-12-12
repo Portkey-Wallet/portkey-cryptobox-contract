@@ -117,12 +117,14 @@ namespace Portkey.Contracts.CryptoBox
             Assert(cryptoBox != null, "CryptoBox not exists.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.CryptoBoxId);
             var list = State.AlreadySnatchedList[input.CryptoBoxId] ?? new AddressList();
+            var transferCount = 0;
             foreach (var transferCryptoBoxInput in input.TransferCryptoBoxInputs)
             {
                 Assert(!transferCryptoBoxInput.Receiver.Value.IsNullOrEmpty(), "ReceiverAddress is empty");
-                Assert(
-                    list.Addresses.FirstOrDefault(c => c.Value == transferCryptoBoxInput.Receiver.Value) == null,
-                    "ReceiverAddress " + transferCryptoBoxInput.Receiver + " already receive.");
+                if (list.Addresses.FirstOrDefault(c => c.Value == transferCryptoBoxInput.Receiver.Value) == null)
+                {
+                    continue;
+                }
 
                 var message =
                     $"{cryptoBox.CryptoBoxId}-{transferCryptoBoxInput.Receiver}-{transferCryptoBoxInput.Amount}";
@@ -146,8 +148,9 @@ namespace Portkey.Contracts.CryptoBox
                     IsSuccess = true
                 });
                 list.Addresses.Add(transferCryptoBoxInput.Receiver);
+                transferCount++;
             }
-
+            Assert(transferCount > 0, "All receivedAddress already received.");
             State.AlreadySnatchedList[input.CryptoBoxId] = list;
 
             return new Empty();
