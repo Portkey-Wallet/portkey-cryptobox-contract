@@ -1,13 +1,9 @@
-using System.Collections.Generic;
 using System.Linq;
 using AElf;
 using AElf.Contracts.MultiToken;
-using AElf.Cryptography;
 using AElf.Sdk.CSharp;
-using AElf.Types;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
-using Portkey.Contracts.CryptoBox;
 
 namespace Portkey.Contracts.CryptoBox
 {
@@ -62,9 +58,8 @@ namespace Portkey.Contracts.CryptoBox
             var maxCount = State.CryptoBoxMaxCount.Value;
 
             var message = $"{input.CryptoBoxId}-{input.CryptoBoxSymbol}-{input.MinAmount}-{maxCount}";
-            var verifySignature = VerifySignature(input.PublicKey, input.CryptoBoxSignature, message);
+            VerifySignature(input.PublicKey, input.CryptoBoxSignature, message);
 
-            Assert(verifySignature, "Invalid signature.");
             var virtualAddress =
                 Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(input.CryptoBoxId));
             State.TokenContract.TransferFrom.Send(new TransferFromInput
@@ -131,9 +126,8 @@ namespace Portkey.Contracts.CryptoBox
 
                 var message =
                     $"{cryptoBox.CryptoBoxId}-{transferCryptoBoxInput.Receiver}-{transferCryptoBoxInput.Amount}";
-                var verifySignature = VerifySignature(cryptoBox.PublicKey, transferCryptoBoxInput.CryptoBoxSignature,
+                VerifySignature(cryptoBox.PublicKey, transferCryptoBoxInput.CryptoBoxSignature,
                     message);
-                Assert(verifySignature, "Signature fail:" + message);
                 Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
                     nameof(State.TokenContract.Transfer),
                     new TransferInput
@@ -162,6 +156,7 @@ namespace Portkey.Contracts.CryptoBox
         public override Empty RefundCryptoBox(RefundCryptoBoxInput input)
         {
             AssertContractInitialize();
+            Assert(State.TransferControllers.Value.Controllers.Contains(Context.Sender), "No permission");
             Assert(!string.IsNullOrEmpty(input.CryptoBoxId), "CryptoBoxId should not be null.");
             var cryptoBox = State.CryptoBoxInfoMap[input.CryptoBoxId];
             Assert(cryptoBox != null, "CryptoBox not exists.");
@@ -169,9 +164,8 @@ namespace Portkey.Contracts.CryptoBox
             var virtualAddressHash = HashHelper.ComputeFrom(input.CryptoBoxId);
             var message =
                 $"{cryptoBox.CryptoBoxId}-{input.Amount}";
-            var verifySignature = VerifySignature(cryptoBox.PublicKey, input.CryptoBoxSignature,
+            VerifySignature(cryptoBox.PublicKey, input.CryptoBoxSignature,
                 message);
-            Assert(verifySignature, "Invalid signature.");
             Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
                 nameof(State.TokenContract.Transfer),
                 new TransferInput
@@ -219,12 +213,12 @@ namespace Portkey.Contracts.CryptoBox
             };
         }
 
-        private bool VerifySignature(string publicKey, string signature, string message)
+        private void VerifySignature(string publicKey, string signature, string message)
         {
             var messageBytes = HashHelper.ComputeFrom(message).ToByteArray();
             var signatureBytes = ByteStringHelper.FromHexString(signature).ToByteArray();
             var recoverPublicKey = Context.RecoverPublicKey(signatureBytes, messageBytes).ToHex();
-            return recoverPublicKey == publicKey;
+            Assert(recoverPublicKey == publicKey, "Invalid signature.");
         }
     }
 }

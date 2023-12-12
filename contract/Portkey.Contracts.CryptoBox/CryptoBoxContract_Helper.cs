@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using AElf.Contracts.MultiToken;
-using AElf.Types;
 
 namespace Portkey.Contracts.CryptoBox
 {
