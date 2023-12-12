@@ -11,6 +11,8 @@ namespace Portkey.Contracts.CryptoBox
             Assert(State.Admin.Value == Context.Sender, "No permission");
             Assert(input != null && input.Address != null, "Invalid input");
 
+            State.TransferControllers.Value ??= new ControllerList();
+
             var controller = State.TransferControllers.Value.Controllers.FirstOrDefault(c => c == input!.Address);
             if (controller != null)
             {
