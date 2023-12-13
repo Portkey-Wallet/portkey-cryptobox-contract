@@ -30,6 +30,10 @@ service CryptoBoxContract {
 
   rpc RefundCryptoBox (RefundCryptoBoxInput) returns (google.protobuf.Empty) {}
 
+  rpc ChangeAdmin (AdminInput) returns (google.protobuf.Empty) {}
+
+  rpc GetAdmin (google.protobuf.Empty) returns (AdminOutput) {option (aelf.is_view) = true;}
+
 }
 
 
@@ -132,4 +136,18 @@ message CryptoBoxRefunded{
   string crypto_box_symbol = 3;
   int64 amount = 4;
 }
+
+message AdminInput{
+  aelf.Address address = 1;
+}
+
+message AdminChanged {
+  option (aelf.is_event) = true;
+  aelf.Address address = 1 [(aelf.is_indexed) = true];
+}
+
+message AdminOutput{
+  aelf.Address address = 1;
+}
+
 

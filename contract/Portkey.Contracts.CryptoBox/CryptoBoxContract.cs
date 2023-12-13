@@ -154,15 +154,14 @@ namespace Portkey.Contracts.CryptoBox
                 $"{cryptoBox.CryptoBoxId}-{input.Amount}";
             VerifySignature(cryptoBox.PublicKey, input.CryptoBoxSignature,
                 message);
-            Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
-                nameof(State.TokenContract.Transfer),
-                new TransferInput
-                {
-                    To = cryptoBox.Sender,
-                    Amount = input.Amount,
-                    Symbol = cryptoBox.CryptoBoxSymbol,
-                    Memo = "RefundCryptoBox"
-                }.ToByteString());
+            State.TokenContract.Transfer.VirtualSend(virtualAddressHash, new TransferInput
+            {
+                To = cryptoBox.Sender,
+                Amount = input.Amount,
+                Symbol = cryptoBox.CryptoBoxSymbol,
+                Memo = "RefundCryptoBox"
+            });
+
             Context.Fire(new CryptoBoxRefunded
             {
                 CryptoBoxId = cryptoBox.CryptoBoxId,
