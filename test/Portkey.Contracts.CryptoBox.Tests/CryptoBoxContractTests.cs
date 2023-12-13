@@ -99,11 +99,6 @@ namespace Portkey.Contracts.CryptoBox
             });
 
             var id = Guid.NewGuid().ToString().Replace("-", "");
-            var message = $"{id}-ELF-{10}-{10}";
-            var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
-            var signature =
-                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
-                    .ToHex();
 
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
             var txResult = await CryptoBoxContractStub.CreateCryptoBox.SendAsync(new CreateCryptoBoxInput
@@ -116,7 +111,6 @@ namespace Portkey.Contracts.CryptoBox
                 PublicKey = publicKey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
-                CryptoBoxSignature = signature,
                 CryptoBoxId = id
             });
 
@@ -138,12 +132,12 @@ namespace Portkey.Contracts.CryptoBox
                     CryptoBoxSignature = receiveSignature
                 }
             };
-            var batchInput = new TransferCryptoBoxBatchInput
+            var batchInput = new TransferCryptoBoxesInput
             {
                 CryptoBoxId = id,
                 TransferCryptoBoxInputs = { list }
             };
-            var batchResult = await CryptoBoxContractStub.TransferCryptoBoxBatch.SendAsync(batchInput);
+            var batchResult = await CryptoBoxContractStub.TransferCryptoBoxes.SendAsync(batchInput);
             batchResult.TransactionResult.Status.ShouldBe(TransactionResultStatus.Mined);
         }
 
@@ -169,11 +163,6 @@ namespace Portkey.Contracts.CryptoBox
             });
 
             var id = Guid.NewGuid().ToString().Replace("-", "");
-            var message = $"{id}-ELF-{10}-{10}";
-            var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
-            var signature =
-                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
-                    .ToHex();
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             var invalidateTotalCountResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
                 new CreateCryptoBoxInput
@@ -186,7 +175,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
             invalidateTotalCountResult.TransactionResult.Error.ShouldContain(
@@ -203,7 +191,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = ""
                 });
             cryptoBoxIdResult.TransactionResult.Error.ShouldContain("CryptoBoxId should not be null.");
@@ -220,7 +207,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
             cryptoBoxSymbolResult.TransactionResult.Error.ShouldContain("Symbol should not be null.");
@@ -237,7 +223,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
             cryptoBoxTotalAmountResult.TransactionResult.Error.ShouldContain("TotalAmount should be greater than 0.");
@@ -253,7 +238,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
             totalCountResult.TransactionResult.Error.ShouldContain("TotalCount should be greater than 0.");
@@ -269,7 +253,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
             totalCountErrorResult.TransactionResult.Error.ShouldContain(
@@ -286,7 +269,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = publicKey,
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds - 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
             expireTimeResult.TransactionResult.Error.ShouldContain("ExpiredTime should be greater than now.");
@@ -303,7 +285,6 @@ namespace Portkey.Contracts.CryptoBox
                     PublicKey = "",
                     CryptoBoxType = CryptoBoxType.QuickTransfer,
                     ExpirationTime = timeSeconds + 1000,
-                    CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
             pubkeyResult.TransactionResult.Error.ShouldContain("PublicKey should not be null.");
@@ -350,12 +331,6 @@ namespace Portkey.Contracts.CryptoBox
             });
 
             var id = Guid.NewGuid().ToString().Replace("-", "");
-            var message = $"{id}-ELF-{10}-{10}";
-            var hashByteArray = HashHelper.ComputeFrom(message).ToByteArray();
-            var signature =
-                CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(privateKey), hashByteArray)
-                    .ToHex();
-
             var timeSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
             var txResult = await CryptoBoxContractStub.CreateCryptoBox.SendAsync(new CreateCryptoBoxInput
             {
@@ -367,17 +342,16 @@ namespace Portkey.Contracts.CryptoBox
                 PublicKey = publicKey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
-                CryptoBoxSignature = signature,
                 CryptoBoxId = id
             });
             txResult.TransactionResult.Status.ShouldBe(TransactionResultStatus.Mined);
-            var CryptoBoxInfo = await CryptoBoxContractStub.GetCryptoBoxInfo.CallAsync(new GetCryptoBoxInput
+            var cryptoBoxInfo = await CryptoBoxContractStub.GetCryptoBoxInfo.CallAsync(new GetCryptoBoxInput
             {
                 CryptoBoxId = id
             });
-            CryptoBoxInfo.CryptoBoxInfo.CryptoBoxId.ShouldBe(id);
-            CryptoBoxInfo.CryptoBoxInfo.Sender.ShouldBe(DefaultAddress);
-            CryptoBoxInfo.CryptoBoxInfo.PublicKey.ShouldBe(publicKey);
+            cryptoBoxInfo.CryptoBoxInfo.CryptoBoxId.ShouldBe(id);
+            cryptoBoxInfo.CryptoBoxInfo.Sender.ShouldBe(DefaultAddress);
+            cryptoBoxInfo.CryptoBoxInfo.PublicKey.ShouldBe(publicKey);
         }
 
         [Fact]
@@ -519,7 +493,6 @@ namespace Portkey.Contracts.CryptoBox
                 PublicKey = pubkey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds + 1000,
-                CryptoBoxSignature = signature,
                 CryptoBoxId = id
             });
             return new CryptoBoxInfo
@@ -566,7 +539,6 @@ namespace Portkey.Contracts.CryptoBox
                 PublicKey = pubkey,
                 CryptoBoxType = CryptoBoxType.QuickTransfer,
                 ExpirationTime = timeSeconds,
-                CryptoBoxSignature = signature,
                 CryptoBoxId = id
             });
             return new CryptoBoxInfo
