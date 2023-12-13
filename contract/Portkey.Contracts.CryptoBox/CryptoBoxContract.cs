@@ -130,15 +130,13 @@ namespace Portkey.Contracts.CryptoBox
                     $"{cryptoBox.CryptoBoxId}-{transferCryptoBoxInput.Receiver}-{transferCryptoBoxInput.Amount}";
                 VerifySignature(cryptoBox.PublicKey, transferCryptoBoxInput.CryptoBoxSignature,
                     message);
-                Context.SendVirtualInline(virtualAddressHash, State.TokenContract.Value,
-                    nameof(State.TokenContract.Transfer),
-                    new TransferInput
-                    {
-                        To = transferCryptoBoxInput.Receiver,
-                        Amount = transferCryptoBoxInput.Amount,
-                        Symbol = cryptoBox.CryptoBoxSymbol,
-                        Memo = "TransferToReceiver"
-                    }.ToByteString());
+                State.TokenContract.Transfer.VirtualSend(virtualAddressHash, new TransferInput
+                {
+                    To = transferCryptoBoxInput.Receiver,
+                    Amount = transferCryptoBoxInput.Amount,
+                    Symbol = cryptoBox.CryptoBoxSymbol,
+                    Memo = "TransferToReceiver"
+                });
                 Context.Fire(new CryptoBoxReceived
                 {
                     CryptoBoxId = cryptoBox.CryptoBoxId,
@@ -150,6 +148,7 @@ namespace Portkey.Contracts.CryptoBox
                 list.Addresses.Add(transferCryptoBoxInput.Receiver);
                 transferCount++;
             }
+
             Assert(transferCount > 0, "All receivedAddress already received.");
             State.AlreadySnatchedList[input.CryptoBoxId] = list;
 
