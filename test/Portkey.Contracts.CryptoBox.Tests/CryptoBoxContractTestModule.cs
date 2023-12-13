@@ -5,7 +5,6 @@ using AElf.ContractTestBase;
 using AElf.ContractTestKit;
 using AElf.Kernel.SmartContract.Application;
 using Microsoft.Extensions.DependencyInjection;
-using Portkey.Contracts.CryptoBox;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 

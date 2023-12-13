@@ -8,7 +8,6 @@ using AElf.Cryptography;
 using AElf.CSharp.Core.Extension;
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
-using Portkey.Contracts.CryptoBox;
 using Shouldly;
 using Xunit;
 

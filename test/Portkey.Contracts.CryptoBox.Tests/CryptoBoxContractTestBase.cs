@@ -2,13 +2,8 @@ using AElf.Boilerplate.TestBase;
 using AElf.Contracts.MultiToken;
 using AElf.ContractTestBase.ContractTestKit;
 using AElf.Cryptography.ECDSA;
-using AElf.Kernel;
-using AElf.Standards.ACS0;
 using AElf.Types;
-using Google.Protobuf;
 using Microsoft.Extensions.DependencyInjection;
-using Portkey.Contracts.CryptoBox;
-using Volo.Abp.Threading;
 
 namespace Portkey.Contracts.CryptoBox
 {
