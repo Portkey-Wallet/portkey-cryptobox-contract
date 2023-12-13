@@ -192,7 +192,7 @@ namespace Portkey.Contracts.CryptoBox
             invalidateTotalCountResult.TransactionResult.Error.ShouldContain(
                 "TotalAmount should be greater than MinAmount * TotalCount.");
 
-            var CryptoBoxIdResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+            var cryptoBoxIdResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
                 new CreateCryptoBoxInput
                 {
                     CryptoBoxSymbol = "ELF",
@@ -206,10 +206,10 @@ namespace Portkey.Contracts.CryptoBox
                     CryptoBoxSignature = signature,
                     CryptoBoxId = ""
                 });
-            CryptoBoxIdResult.TransactionResult.Error.ShouldContain("CryptoBoxId should not be null.");
+            cryptoBoxIdResult.TransactionResult.Error.ShouldContain("CryptoBoxId should not be null.");
 
 
-            var CryptoBoxSymbolResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+            var cryptoBoxSymbolResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
                 new CreateCryptoBoxInput
                 {
                     CryptoBoxSymbol = "",
@@ -223,10 +223,10 @@ namespace Portkey.Contracts.CryptoBox
                     CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
-            CryptoBoxSymbolResult.TransactionResult.Error.ShouldContain("Symbol should not be null.");
+            cryptoBoxSymbolResult.TransactionResult.Error.ShouldContain("Symbol should not be null.");
 
 
-            var CryptoBoxTotalAmountResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
+            var cryptoBoxTotalAmountResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
                 new CreateCryptoBoxInput
                 {
                     CryptoBoxSymbol = "ELF",
@@ -240,7 +240,7 @@ namespace Portkey.Contracts.CryptoBox
                     CryptoBoxSignature = signature,
                     CryptoBoxId = id
                 });
-            CryptoBoxTotalAmountResult.TransactionResult.Error.ShouldContain("TotalAmount should be greater than 0.");
+            cryptoBoxTotalAmountResult.TransactionResult.Error.ShouldContain("TotalAmount should be greater than 0.");
 
             var totalCountResult = await CryptoBoxContractStub.CreateCryptoBox.SendWithExceptionAsync(
                 new CreateCryptoBoxInput
@@ -383,6 +383,12 @@ namespace Portkey.Contracts.CryptoBox
         [Fact]
         public async Task Refund_CryptoBox_Invalidate_Param_Test()
         {
+            await CryptoBoxContractStub.Initialize.SendAsync(new InitializeInput
+            {
+                Admin = DefaultAddress,
+                MaxCount = 1000
+            });
+
             var refundInputWithoutId = new RefundCryptoBoxInput
             {
                 CryptoBoxId = "",
@@ -402,16 +408,19 @@ namespace Portkey.Contracts.CryptoBox
             var refundResultWithErrorId =
                 await CryptoBoxContractStub.RefundCryptoBox.SendWithExceptionAsync(refundInputWithErrorId);
             refundResultWithErrorId.TransactionResult.Error.ShouldContain("CryptoBox not exists.");
+        }
 
-            var ecKeyPair = CryptoHelper.GenerateKeyPair();
+        [Fact]
+        public async Task CryptoBox_Not_Expire_Test(){
+        var ecKeyPair = CryptoHelper.GenerateKeyPair();
             var publicKey = ecKeyPair.PublicKey.ToHex();
             var privateKey = ecKeyPair.PrivateKey.ToHex();
 
-            var CryptoBox = await CreateCryptoBox(publicKey, privateKey);
+            var cryptoBox = await CreateCryptoBox(publicKey, privateKey);
 
             var refundInputWithErrorExpireTime = new RefundCryptoBoxInput
             {
-                CryptoBoxId = CryptoBox.CryptoBoxId,
+                CryptoBoxId = cryptoBox.CryptoBoxId,
                 Amount = 100,
                 CryptoBoxSignature = ""
             };

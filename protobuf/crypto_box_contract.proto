@@ -20,7 +20,7 @@ service CryptoBoxContract {
 
   rpc CreateCryptoBox (CreateCryptoBoxInput) returns (google.protobuf.Empty) {}
 
-  rpc TransferCryptoBoxBatch (TransferCryptoBoxBatchInput) returns (google.protobuf.Empty) {}
+  rpc TransferCryptoBoxes (TransferCryptoBoxesInput) returns (google.protobuf.Empty) {}
 
   rpc GetCryptoBoxInfo (GetCryptoBoxInput) returns (GetCryptoBoxOutput) {}
 
@@ -29,12 +29,6 @@ service CryptoBoxContract {
   rpc SetCryptoBoxMaxCount (SetCryptoBoxMaxCountInput) returns (google.protobuf.Empty) {}
 
   rpc RefundCryptoBox (RefundCryptoBoxInput) returns (google.protobuf.Empty) {}
-
-  rpc AddTransferController (ControllerInput) returns (google.protobuf.Empty) {}
-
-  rpc RemoveTransferController (ControllerInput) returns (google.protobuf.Empty) {}
-
-  rpc GetTransferControllers (google.protobuf.Empty) returns (ControllerOutput) {option (aelf.is_view) = true;}
 
 }
 
@@ -48,8 +42,7 @@ message CreateCryptoBoxInput{
   int64 total_count = 6;
   CryptoBoxType crypto_box_type = 7;
   string public_key = 8;
-  string crypto_box_signature = 9;
-  aelf.Address sender = 10;
+  aelf.Address sender = 9;
 }
 
 message TransferCryptoBoxInput{
@@ -58,7 +51,7 @@ message TransferCryptoBoxInput{
   string crypto_box_signature = 3;
 }
 
-message TransferCryptoBoxBatchInput{
+message TransferCryptoBoxesInput{
   string crypto_box_id = 1;
   repeated TransferCryptoBoxInput transfer_crypto_box_inputs = 2;
 }
@@ -93,9 +86,6 @@ message CryptoBoxCreated{
 
 }
 
-message AddressList{
-  repeated aelf.Address addresses = 1;
-}
 
 message CryptoBoxReceived{
   option (aelf.is_event) = true;
@@ -143,24 +133,3 @@ message CryptoBoxRefunded{
   int64 amount = 4;
 }
 
-message ControllerInput{
-  aelf.Address address = 1;
-}
-
-message ControllerOutput{
-  repeated aelf.Address addresses = 1;
-}
-
-message ControllerList {
-  repeated aelf.Address controllers = 1;
-}
-
-message TransferControllerAdded {
-  option (aelf.is_event) = true;
-  aelf.Address address = 1 [(aelf.is_indexed) = true];
-}
-
-message TransferControllerRemoved {
-  option (aelf.is_event) = true;
-  aelf.Address address = 1 [(aelf.is_indexed) = true];
-}

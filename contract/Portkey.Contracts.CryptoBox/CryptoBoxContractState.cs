@@ -24,18 +24,13 @@ namespace Portkey.Contracts.CryptoBox
         public SingletonState<bool> Initialized { get; set; }
 
         /// <summary>
-        /// CryptoBoxInfoId -> AddressList of already snatched
+        /// CryptoBoxInfoId -> Address -> IsSnatched Map of already snatched
         /// </summary>
-        public MappedState<string, AddressList> AlreadySnatchedList { get; set; }
+        public MappedState<string, Address, bool> AlreadySnatchedMap { get; set; }
 
         /// <summary>
         /// CryptoBoxMaxCount
         /// </summary>
         public SingletonState<long> CryptoBoxMaxCount { get; set; }
-
-        /// <summary>
-        /// TransferControllers
-        /// </summary>
-        public SingletonState<ControllerList> TransferControllers { get; set; }
     }
 }
