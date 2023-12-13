@@ -121,7 +121,7 @@ namespace Portkey.Contracts.CryptoBox
             foreach (var transferCryptoBoxInput in input.TransferCryptoBoxInputs)
             {
                 Assert(!transferCryptoBoxInput.Receiver.Value.IsNullOrEmpty(), "ReceiverAddress is empty");
-                if (list.Addresses.FirstOrDefault(c => c.Value == transferCryptoBoxInput.Receiver.Value) == null)
+                if (list.Addresses.FirstOrDefault(c => c.Value == transferCryptoBoxInput.Receiver.Value) != null)
                 {
                     continue;
                 }
