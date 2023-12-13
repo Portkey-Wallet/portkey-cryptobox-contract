@@ -1,7 +1,6 @@
 using AElf;
 using AElf.Contracts.MultiToken;
 using AElf.Sdk.CSharp;
-using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 
 namespace Portkey.Contracts.CryptoBox
