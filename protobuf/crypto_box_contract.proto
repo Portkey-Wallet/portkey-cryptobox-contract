@@ -1,0 +1,153 @@
+/**
+  * CryptoBoxContract.proto
+ **/
+syntax = "proto3";
+
+import "aelf/core.proto";
+import "aelf/options.proto";
+import "acs12.proto";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "Portkey.Contracts.CryptoBox";
+
+service CryptoBoxContract {
+
+  option (aelf.csharp_state) = "Portkey.Contracts.CryptoBox.CryptoBoxContractState";
+  option (aelf.base) = "acs12.proto";
+
+  rpc Initialize(InitializeInput) returns (google.protobuf.Empty){}
+
+  rpc CreateCryptoBox (CreateCryptoBoxInput) returns (google.protobuf.Empty) {}
+
+  rpc TransferCryptoBoxes (TransferCryptoBoxesInput) returns (google.protobuf.Empty) {}
+
+  rpc GetCryptoBoxInfo (GetCryptoBoxInput) returns (GetCryptoBoxOutput) {}
+
+  rpc GetCryptoBoxMaxCount (google.protobuf.Empty) returns (GetCryptoBoxMaxCountOutput) {}
+
+  rpc SetCryptoBoxMaxCount (SetCryptoBoxMaxCountInput) returns (google.protobuf.Empty) {}
+
+  rpc RefundCryptoBox (RefundCryptoBoxInput) returns (google.protobuf.Empty) {}
+
+  rpc ChangeAdmin (AdminInput) returns (google.protobuf.Empty) {}
+
+  rpc GetAdmin (google.protobuf.Empty) returns (AdminOutput) {option (aelf.is_view) = true;}
+
+}
+
+
+message CreateCryptoBoxInput{
+  string crypto_box_id = 1;
+  string crypto_box_symbol = 2;
+  int64 total_amount = 3;
+  int64 min_amount = 4;
+  int64 expiration_time = 5;
+  int64 total_count = 6;
+  CryptoBoxType crypto_box_type = 7;
+  string public_key = 8;
+  aelf.Address sender = 9;
+}
+
+message TransferCryptoBoxInput{
+  int64 amount = 1;
+  aelf.Address receiver = 2;
+  string crypto_box_signature = 3;
+}
+
+message TransferCryptoBoxesInput{
+  string crypto_box_id = 1;
+  repeated TransferCryptoBoxInput transfer_crypto_box_inputs = 2;
+}
+
+enum CryptoBoxType{
+  UNKNOWN = 0;
+  FIXED = 1;
+  RANDOM = 2;
+  QUICK_TRANSFER = 3;
+}
+
+message CryptoBoxInfo{
+  string crypto_box_id = 1;
+  string crypto_box_symbol = 2;
+  int64 total_amount = 3;
+  int64 expiration_time = 4;
+  int64 total_count = 5;
+  CryptoBoxType crypto_box_type = 6;
+  aelf.Address sender = 7;
+  string public_key = 8;
+}
+
+message CryptoBoxCreated{
+  option (aelf.is_event) = true;
+  aelf.Address sender = 1;
+  string crypto_box_id = 2;
+  string crypto_box_symbol = 3;
+  int64 total_amount = 4;
+  int64 total_count = 5;
+  CryptoBoxType crypto_box_type = 6;
+  aelf.Address receiver = 7;
+
+}
+
+
+message CryptoBoxReceived{
+  option (aelf.is_event) = true;
+  aelf.Address sender = 1;
+  string crypto_box_id = 2;
+  string crypto_box_symbol = 3;
+  int64 amount = 4;
+  aelf.Address receiver = 5;
+  bool is_success = 6;
+}
+
+message InitializeInput{
+  aelf.Address admin = 1;
+  int64 max_count = 2;
+
+}
+
+message GetCryptoBoxOutput{
+  CryptoBoxInfo crypto_box_info = 1;
+}
+
+message GetCryptoBoxInput{
+  string crypto_box_id = 1;
+}
+
+message GetCryptoBoxMaxCountOutput{
+  int64 max_count = 1;
+}
+
+message SetCryptoBoxMaxCountInput{
+  int64 max_count = 1;
+}
+
+message RefundCryptoBoxInput{
+  string crypto_box_id = 1;
+  int64 amount = 2;
+  string crypto_box_signature = 3;
+}
+
+message CryptoBoxRefunded{
+  option (aelf.is_event) = true;
+  string crypto_box_id = 1;
+  aelf.Address refund_address = 2;
+  string crypto_box_symbol = 3;
+  int64 amount = 4;
+}
+
+message AdminInput{
+  aelf.Address address = 1;
+}
+
+message AdminChanged {
+  option (aelf.is_event) = true;
+  aelf.Address address = 1 [(aelf.is_indexed) = true];
+}
+
+message AdminOutput{
+  aelf.Address address = 1;
+}
+
+
