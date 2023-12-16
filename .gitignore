@@ -301,6 +301,7 @@ coverage*.xml
 # Contract patcher dlls
 scripts/patcher/*
 test/patched/*
+src/AElf.Boilerplate.Launcher/contracts/*.dll
 
 tools
 .dotnet
