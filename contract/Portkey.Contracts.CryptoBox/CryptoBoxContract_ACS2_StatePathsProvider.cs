@@ -14,7 +14,6 @@ public partial class CryptoBoxContract
 {
     public override ResourceInfo GetResourceInfo(Transaction txn)
     {
-        
         switch (txn.MethodName)
         {
             case nameof(CreateCryptoBox):
@@ -31,13 +30,15 @@ public partial class CryptoBoxContract
                         GetPath(nameof(State.Initialized)),
                         GetPath(nameof(State.CryptoBoxInfoMap), args.CryptoBoxId),
                     }
-                    
                 };
+                AddBalancePath(resource, Context.Self.ToString(), args.CryptoBoxSymbol);
+                AddBalancePath(resource, Context.Sender.ToString(), args.CryptoBoxSymbol);
+                AddBalancePath(resource,
+                    Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(args.CryptoBoxId)).ToString(),
+                    args.CryptoBoxSymbol);
                 AddPathForTransactionFee(resource, txn.From.ToString(), txn.MethodName);
                 AddPathForTransactionFeeFreeAllowance(resource, txn.From);
                 AddPathForDelegatees(resource, txn.From, txn.To, txn.MethodName);
-                AddBalancePath(resource, Context.Self.ToString(), args.CryptoBoxSymbol);
-                AddBalancePath(resource, Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(args.CryptoBoxId)).ToString(), args.CryptoBoxSymbol);
                 return resource;
             }
             case nameof(TransferCryptoBoxes):
@@ -54,14 +55,19 @@ public partial class CryptoBoxContract
                 foreach (var transferCryptoBoxInput in args.TransferCryptoBoxInputs)
                 {
                     resource.ReadPaths.Add(GetPath(nameof(State.CryptoBoxInfoMap), args.CryptoBoxId));
-                    resource.WritePaths.Add(GetPath(nameof(State.AlreadySnatchedMap), args.CryptoBoxId, transferCryptoBoxInput.Receiver.ToString()));
+                    resource.WritePaths.Add(GetPath(nameof(State.AlreadySnatchedMap), args.CryptoBoxId,
+                        transferCryptoBoxInput.Receiver.ToString()));
                     var symbol = State.CryptoBoxInfoMap[args.CryptoBoxId].CryptoBoxSymbol;
+                    AddBalancePath(resource,
+                        Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(args.CryptoBoxId))
+                            .ToString(), symbol);
                     AddBalancePath(resource, transferCryptoBoxInput.Receiver.ToString(), symbol);
                 }
+
                 AddPathForTransactionFee(resource, txn.From.ToString(), txn.MethodName);
                 AddPathForTransactionFeeFreeAllowance(resource, txn.From);
                 AddPathForDelegatees(resource, txn.From, txn.To, txn.MethodName);
-                
+
 
                 return resource;
             }
@@ -92,8 +98,8 @@ public partial class CryptoBoxContract
             }
         };
     }
-    
-    
+
+
     private void AddPathForTransactionFee(ResourceInfo resourceInfo, string from, string methodName)
     {
         var symbols = GetTransactionFeeSymbols(methodName);
@@ -107,7 +113,7 @@ public partial class CryptoBoxContract
             resourceInfo.WritePaths.Add(path);
         }
     }
-    
+
     private List<string> GetTransactionFeeSymbols(string methodName)
     {
         var actualFee = GetActualFee(methodName);
@@ -127,15 +133,16 @@ public partial class CryptoBoxContract
                     symbols.Add(sizeFee.TokenSymbol);
             }
         }
+
         return symbols;
     }
-    
+
     private SymbolListToPayTxSizeFee GetSizeFeeSymbols()
     {
         var symbolListToPayTxSizeFee = State.TokenContract.GetSymbolsToPayTxSizeFee.Call(new Empty());
         return symbolListToPayTxSizeFee;
     }
-    
+
     private UserContractMethodFees GetActualFee(string methodName)
     {
         var UserContractMethodFeeKey = "UserContractMethodFee";
@@ -165,7 +172,7 @@ public partial class CryptoBoxContract
         fee.MergeFrom(value.Value);
         return fee;
     }
-    
+
     private void AddPathForTransactionFeeFreeAllowance(ResourceInfo resourceInfo, Address from)
     {
         var getTransactionFeeFreeAllowancesConfigOutput =
@@ -187,7 +194,7 @@ public partial class CryptoBoxContract
             }
         }
     }
-    
+
     private void AddPathForDelegatees(ResourceInfo resourceInfo, Address from, Address to, string methodName)
     {
         var delegateeList = new List<string>();
@@ -209,8 +216,8 @@ public partial class CryptoBoxContract
             AddPathForTransactionFeeFreeAllowance(resourceInfo, Address.FromBase58(delegatee));
         }
     }
-    
-    
+
+
     private List<string> GetDelegateeList(Address delegator, Address to, string methodName)
     {
         var delegateeList = new List<string>();
@@ -222,11 +229,13 @@ public partial class CryptoBoxContract
 
         if (allDelegatees == null || allDelegatees.Count == 0)
         {
-            allDelegatees = State.TokenContractImpl.GetTransactionFeeDelegatees.Call(new GetTransactionFeeDelegateesInput
-            {
-                DelegatorAddress = delegator
-            }).DelegateeAddresses;
+            allDelegatees = State.TokenContractImpl.GetTransactionFeeDelegatees.Call(
+                new GetTransactionFeeDelegateesInput
+                {
+                    DelegatorAddress = delegator
+                }).DelegateeAddresses;
         }
+
         if (allDelegatees != null)
         {
             delegateeList.AddRange(allDelegatees.Select(address => address.ToBase58()));
@@ -234,14 +243,11 @@ public partial class CryptoBoxContract
 
         return delegateeList;
     }
-    
+
     private void AddBalancePath(ResourceInfo resourceInfo, string distributorAddress, string symbol)
     {
         var path = GetPath(State.TokenContract.Value, "Balances", distributorAddress, symbol);
         if (resourceInfo.WritePaths.Contains(path)) return;
         resourceInfo.WritePaths.Add(path);
     }
-    
-
-    
 }
