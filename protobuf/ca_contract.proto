@@ -11,10 +11,12 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "authority_info.proto";
 import "acs12.proto";
+import "acs2.proto";
 
 option csharp_namespace = "Portkey.Contracts.CA";
 
 service CAContract {
+  option (aelf.base) = "acs2.proto";
   rpc Initialize(InitializeInput) returns (google.protobuf.Empty){}
 
   // If the Guardian has CAHolder and Manager, meaning CAHolder created before, return true
@@ -51,9 +53,9 @@ service CAContract {
 
   // If the managerInfo is already removed, return true
   rpc RemoveManagerInfo (RemoveManagerInfoInput) returns (google.protobuf.Empty) {}
-
+  
   rpc RemoveOtherManagerInfo (RemoveOtherManagerInfoInput) returns (google.protobuf.Empty) {}
-
+  
   rpc UpdateManagerInfos (UpdateManagerInfosInput) returns (google.protobuf.Empty) {}
 
   // If End Points already exists, return true
@@ -68,49 +70,56 @@ service CAContract {
   rpc AddCAServer (AddCAServerInput) returns (google.protobuf.Empty){}
 
   rpc RemoveCAServer (RemoveCAServerInput) returns (google.protobuf.Empty){}
-
+  
   rpc SetCheckChainIdInSignatureEnabled(SetCheckChainIdInSignatureEnabledInput) returns (google.protobuf.Empty){}
 
   rpc GetHolderInfo(GetHolderInfoInput) returns (GetHolderInfoOutput) {option (aelf.is_view) = true;}
 
   rpc GetVerifierServers (google.protobuf.Empty) returns (GetVerifierServersOutput) {option (aelf.is_view) = true;}
-
+  
   rpc GetRemovedToCurrentVerifierIdMapper (aelf.Hash) returns (GetRemovedToCurrentVerifierIdMapperOutput) {option (aelf.is_view) = true;}
 
   rpc GetCAServers (google.protobuf.Empty) returns (GetCAServersOutput) {option (aelf.is_view) = true;}
-
+  
   rpc GetCheckChainIdInSignatureEnabled (google.protobuf.Empty) returns (GetCheckChainIdInSignatureEnabledOutput) {option (aelf.is_view) = true;}
 
   // Validates CAHolder with ManagerInfos
   rpc ValidateCAHolderInfoWithManagerInfosExists (ValidateCAHolderInfoWithManagerInfosExistsInput) returns (google.protobuf.Empty) {}
 
   rpc SyncHolderInfo (SyncHolderInfoInput) returns (google.protobuf.Empty) {}
+  
+  rpc SyncHolderInfos (SyncHolderInfosInput) returns (google.protobuf.Empty) {}
 
   rpc ValidateStrategy (ValidateStrategyInput) returns (ValidateStrategyOutput) {option (aelf.is_view) = true;}
-
+  
   rpc SetContractDelegationFee (SetContractDelegationFeeInput) returns (google.protobuf.Empty) {}
-
-  rpc GetContractDelegationFee (google.protobuf.Empty) returns (GetContractDelegationFeeOutput) {}
-
+  
+  rpc GetContractDelegationFee (google.protobuf.Empty) returns (GetContractDelegationFeeOutput) {option (aelf.is_view) = true;}
+  
   rpc AddCreatorController (ControllerInput) returns (google.protobuf.Empty) {}
 
   rpc RemoveCreatorController (ControllerInput) returns (google.protobuf.Empty) {}
-
+  
   rpc GetCreatorControllers (google.protobuf.Empty) returns (ControllerOutput) {option (aelf.is_view) = true;}
 
   rpc AddServerController (ControllerInput) returns (google.protobuf.Empty) {}
-
+  
   rpc RemoveServerController (ControllerInput) returns (google.protobuf.Empty) {}
-
+  
   rpc GetServerControllers (google.protobuf.Empty) returns (ControllerOutput) {option (aelf.is_view) = true;}
-
+  
   rpc ChangeAdmin (AdminInput) returns (google.protobuf.Empty) {}
-
+  
   rpc GetAdmin (google.protobuf.Empty) returns (AdminOutput) {option (aelf.is_view) = true;}
 
   rpc SetCAContractAddresses (SetCAContractAddressesInput) returns (google.protobuf.Empty) {}
-
+  
   rpc AddRemovedToCurrentVerifierIdMapper (AddRemovedToCurrentVerifierIdMapperInput) returns (google.protobuf.Empty) {}
+
+  rpc SetSecondaryDelegationFee (SetSecondaryDelegationFeeInput) returns (google.protobuf.Empty) {}
+
+  rpc GetSecondaryDelegationFee (google.protobuf.Empty) returns (SecondaryDelegationFee) { option (aelf.is_view) = true; }
+
 }
 
 //Data structure
@@ -144,6 +153,7 @@ enum GuardianType {
   GUARDIAN_TYPE_OF_PHONE = 1;
   GUARDIAN_TYPE_OF_GOOGLE = 2;
   GUARDIAN_TYPE_OF_APPLE = 3;
+  GUARDIAN_TYPE_OF_TELEGRAM = 4;
 }
 
 message VerifierServer {
@@ -227,8 +237,6 @@ message VerificationInfo {
   string verification_doc = 3;
 }
 
-
-
 enum StrategyValueType {
   STRATEGY = 0;
   LONG = 1;
@@ -297,11 +305,15 @@ message UpdateGuardianInput{
 message SetGuardianForLoginInput {
   aelf.Hash ca_hash = 1;
   Guardian guardian = 2;
+  GuardianInfo guardian_to_set_login = 3;
+  repeated GuardianInfo guardians_approved = 4;
 }
 
 message UnsetGuardianForLoginInput {
   aelf.Hash ca_hash = 1;
   Guardian guardian = 2;
+  GuardianInfo guardian_to_unset_login = 3;
+  repeated GuardianInfo guardians_approved = 4;
 }
 
 message ManagerForwardCallInput {
@@ -309,6 +321,7 @@ message ManagerForwardCallInput {
   aelf.Address contract_address = 2;
   string method_name = 3;
   bytes args = 4;
+  repeated ca.GuardianInfo guardians_approved = 5;
 }
 
 message ManagerTransferInput{
@@ -321,6 +334,7 @@ message ManagerTransferInput{
   int64 amount = 4;
   // The memo.
   string memo = 5;
+  repeated ca.GuardianInfo guardians_approved = 6;
 }
 
 message ManagerTransferFromInput{
@@ -439,6 +453,10 @@ message SyncHolderInfoInput {
   VerificationTransactionInfo verification_transaction_info = 1;
 }
 
+message SyncHolderInfosInput {
+  repeated VerificationTransactionInfo verification_transaction_infos = 1;
+}
+
 message ValidateStrategyInput {
   StrategyNode strategy_node = 1;
   map<string, int64> variables = 2;
@@ -456,6 +474,14 @@ message ValidateStrategyOutput {
   bool bool_result = 1;
   int64 int64_result = 2;
   StrategyNode strategy_output = 3;
+}
+
+message SecondaryDelegationFee {
+  int64 amount = 1;
+}
+
+message SetSecondaryDelegationFeeInput {
+  SecondaryDelegationFee delegation_fee = 1;
 }
 
 // LogEvent
@@ -577,12 +603,12 @@ message VerifierServerRemoved {
 }
 
 message RemovedToCurrentVerifierIdMapperAdded {
-  option (aelf.is_event) = true;
-  RemovedToCurrentVerifierIdMapperInfoList mapper_list = 1 [(aelf.is_indexed) = true];
+    option (aelf.is_event) = true;
+    RemovedToCurrentVerifierIdMapperInfoList mapper_list = 1 [(aelf.is_indexed) = true];
 }
 
 message RemovedToCurrentVerifierIdMapperInfoList {
-  repeated RemovedToCurrentVerifierIdMapperInfo mappers = 1;
+    repeated RemovedToCurrentVerifierIdMapperInfo mappers = 1;
 }
 
 message CAServerAdded {
@@ -605,6 +631,7 @@ message CAHolderSynced {
   LoginGuardianList login_guardians_unbound = 7 [(aelf.is_indexed) = true];
   GuardianList guardians_added = 8 [(aelf.is_indexed) = true];
   GuardianList guardians_removed = 9 [(aelf.is_indexed) = true];
+  int32 create_chain_id = 10 [(aelf.is_indexed) = true];
 }
 message CreatorControllerAdded {
   option (aelf.is_event) = true;
@@ -638,6 +665,8 @@ enum OperationType {
   SetLoginAccount = 7;
   Approve = 8;
   ModifyTransferLimit = 9;
+  GuardianApproveTransfer = 10;
+  UnSetLoginAccount = 11;
 }
 message SetCAContractAddressesInput {
   repeated CAContractAddress ca_contract_addresses = 1;
