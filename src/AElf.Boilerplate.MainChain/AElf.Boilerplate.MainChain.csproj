@@ -126,17 +126,11 @@
         <ContractStub Include="..\..\protobuf\cross_chain_contract.proto">
             <Link>Protobuf\Proto\cross_chain_contract.proto</Link>
         </ContractStub>
-        <ContractStub Include="..\..\protobuf\profit_contract.proto">
-            <Link>Protobuf\Proto\profit_contract.proto</Link>
-        </ContractStub>
         <ContractStub Include="..\..\protobuf\parliament_contract.proto">
             <Link>Protobuf\Proto\parliament_contract.proto</Link>
         </ContractStub>
         <ContractStub Include="..\..\protobuf\token_contract.proto">
             <Link>Protobuf\Proto\token_contract.proto</Link>
-        </ContractStub>
-        <ContractStub Include="..\..\protobuf\treasury_contract.proto">
-            <Link>Protobuf\Proto\treasury_contract.proto</Link>
         </ContractStub>
         <ContractStub Include="..\..\protobuf\token_converter_contract.proto">
             <Link>Protobuf\Proto\token_converter_contract.proto</Link>
