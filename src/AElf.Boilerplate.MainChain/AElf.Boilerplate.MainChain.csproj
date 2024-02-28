@@ -129,26 +129,17 @@
         <ContractStub Include="..\..\protobuf\profit_contract.proto">
             <Link>Protobuf\Proto\profit_contract.proto</Link>
         </ContractStub>
-        <ContractStub Include="..\..\protobuf\election_contract.proto">
-            <Link>Protobuf\Proto\election_contract.proto</Link>
-        </ContractStub>
         <ContractStub Include="..\..\protobuf\parliament_contract.proto">
             <Link>Protobuf\Proto\parliament_contract.proto</Link>
         </ContractStub>
         <ContractStub Include="..\..\protobuf\token_contract.proto">
             <Link>Protobuf\Proto\token_contract.proto</Link>
         </ContractStub>
-        <ContractStub Include="..\..\protobuf\vote_contract.proto">
-            <Link>Protobuf\Proto\vote_contract.proto</Link>
-        </ContractStub>
         <ContractStub Include="..\..\protobuf\treasury_contract.proto">
             <Link>Protobuf\Proto\treasury_contract.proto</Link>
         </ContractStub>
         <ContractStub Include="..\..\protobuf\token_converter_contract.proto">
             <Link>Protobuf\Proto\token_converter_contract.proto</Link>
-        </ContractStub>
-        <ContractStub Include="..\..\protobuf\economic_contract.proto">
-            <Link>Protobuf\Proto\economic_contract.proto</Link>
         </ContractStub>
         <ContractStub Include="..\..\protobuf\referendum_contract.proto">
             <Link>Protobuf\Proto\referendum_contract.proto</Link>
