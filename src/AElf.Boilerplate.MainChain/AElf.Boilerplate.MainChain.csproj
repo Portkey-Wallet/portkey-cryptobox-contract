@@ -17,7 +17,7 @@
     <PropertyGroup>
         <NoWarn>0436</NoWarn>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="AElf.Contracts.Configuration" Version="1.6.0">
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
@@ -91,6 +91,11 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
+        <ContractMessage Include="..\..\protobuf\authority_info.proto">
+            <Link>Protobuf\Proto\authority_info.proto</Link>
+        </ContractMessage>
+    </ItemGroup>
+    <ItemGroup>
         <ContractMessage Include="..\..\protobuf\acs3.proto">
             <Link>Protobuf\Proto\acs3.proto</Link>
         </ContractMessage>
@@ -111,6 +116,12 @@
         </ContractStub>
         <ContractStub Include="..\..\protobuf\acs10.proto">
             <Link>Protobuf\Proto\acs10.proto</Link>
+        </ContractStub>
+        <ContractStub Include="..\..\protobuf\aedpos_contract.proto">
+            <Link>Protobuf\Proto\aedpos_contract.proto</Link>
+        </ContractStub>
+        <ContractStub Include="..\..\protobuf\aedpos_contract_impl.proto">
+            <Link>Protobuf\Proto\aedpos_contract_impl.proto</Link>
         </ContractStub>
         <ContractStub Include="..\..\protobuf\cross_chain_contract.proto">
             <Link>Protobuf\Proto\cross_chain_contract.proto</Link>
@@ -141,6 +152,12 @@
         </ContractStub>
         <ContractStub Include="..\..\protobuf\referendum_contract.proto">
             <Link>Protobuf\Proto\referendum_contract.proto</Link>
+        </ContractStub>
+        <ContractStub Include="..\..\protobuf\association_contract.proto">
+            <Link>Protobuf\Proto\association_contract.proto</Link>
+        </ContractStub>
+        <ContractStub Include="..\..\protobuf\configuration_contract.proto">
+            <Link>Protobuf\Proto\configuration_contract.proto</Link>
         </ContractStub>
     </ItemGroup>
 </Project>
