@@ -33,10 +33,5 @@ namespace Portkey.Contracts.CryptoBox
         /// </summary>
         public SingletonState<long> CryptoBoxMaxCount { get; set; }
         
-        /// <summary>
-        /// 
-        /// </summary>
-        
-        
     }
 }

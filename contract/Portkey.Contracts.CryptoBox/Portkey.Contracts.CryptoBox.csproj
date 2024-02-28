@@ -19,12 +19,6 @@
         </ContractCode>
     </ItemGroup>
 
-    <ItemGroup>
-        <CommonMessage Include="..\..\protobuf\authority_info.proto">
-            <Link>Protobuf\Proto\authority_info.proto</Link>
-        </CommonMessage>
-    </ItemGroup>
-
 
     <ItemGroup>
         <ContractReference Include="..\..\protobuf\acs0.proto">
@@ -35,9 +29,6 @@
         </ContractReference>
         <ContractReference Include="..\..\protobuf\token_contract.proto">
             <Link>Protobuf\Proto\reference\token_contract.proto</Link>
-        </ContractReference>
-        <ContractReference Include="..\..\protobuf\configuration_contract.proto">
-            <Link>Protobuf\Proto\reference\configuration_contract.proto</Link>
         </ContractReference>
         <ContractReference Include="..\..\protobuf\token_contract_impl.proto">
             <Link>Protobuf\Proto\reference\token_contract_impl.proto</Link>
