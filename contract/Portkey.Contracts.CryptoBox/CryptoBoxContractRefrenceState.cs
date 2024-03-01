@@ -11,10 +11,7 @@ namespace Portkey.Contracts.CryptoBox
     {
         // state definitions go here.
         internal ACS0Container.ACS0ReferenceState GenesisContract { get; set; }
-        internal TokenContractContainer.TokenContractReferenceState TokenContract { get; set; }
-        
         internal ConfigurationContainer.ConfigurationReferenceState ConfigurationContract { get; set; }
-        
-        internal TokenContractImplContainer.TokenContractImplReferenceState TokenContractImpl { get; set; }
+        internal TokenContractImplContainer.TokenContractImplReferenceState TokenContract { get; set; }
     }
 }

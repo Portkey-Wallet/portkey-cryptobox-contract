@@ -33,5 +33,10 @@ namespace Portkey.Contracts.CryptoBox
         /// </summary>
         public SingletonState<long> CryptoBoxMaxCount { get; set; }
         
+        /// <summary>
+        /// ManagerForwardCallParallelMap
+        /// </summary>
+        public MappedState<Address, string, bool> ManagerForwardCallParallelMap { get; set; }
+        
     }
 }

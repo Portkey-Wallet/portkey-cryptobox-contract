@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AElf;
 using AElf.Contracts.MultiToken;
+using AElf.Sdk.CSharp;
 using AElf.Standards.ACS12;
 using AElf.Standards.ACS2;
 using AElf.Types;
@@ -28,7 +29,7 @@ public partial class CryptoBoxContract
                     ReadPaths =
                     {
                         GetPath(nameof(State.Initialized)),
-                        GetPath(nameof(State.CryptoBoxInfoMap), args.CryptoBoxId),
+                        GetPath(nameof(State.CryptoBoxMaxCount))
                     }
                 };
                 AddBalancePath(resource, Context.Self.ToString(), args.CryptoBoxSymbol);
@@ -52,23 +53,20 @@ public partial class CryptoBoxContract
                         GetPath(nameof(State.CryptoBoxInfoMap), args.CryptoBoxId),
                     }
                 };
+                var symbol = State.CryptoBoxInfoMap[args.CryptoBoxId].CryptoBoxSymbol;
+                resource.ReadPaths.Add(GetPath(nameof(State.CryptoBoxInfoMap), args.CryptoBoxId));
                 foreach (var transferCryptoBoxInput in args.TransferCryptoBoxInputs)
                 {
-                    resource.ReadPaths.Add(GetPath(nameof(State.CryptoBoxInfoMap), args.CryptoBoxId));
                     resource.WritePaths.Add(GetPath(nameof(State.AlreadySnatchedMap), args.CryptoBoxId,
                         transferCryptoBoxInput.Receiver.ToString()));
-                    var symbol = State.CryptoBoxInfoMap[args.CryptoBoxId].CryptoBoxSymbol;
-                    AddBalancePath(resource,
-                        Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(args.CryptoBoxId))
-                            .ToString(), symbol);
                     AddBalancePath(resource, transferCryptoBoxInput.Receiver.ToString(), symbol);
                 }
-
+                AddBalancePath(resource,
+                    Context.ConvertVirtualAddressToContractAddress(HashHelper.ComputeFrom(args.CryptoBoxId))
+                        .ToString(), symbol);
                 AddPathForTransactionFee(resource, txn.From.ToString(), txn.MethodName);
                 AddPathForTransactionFeeFreeAllowance(resource, txn.From);
                 AddPathForDelegatees(resource, txn.From, txn.To, txn.MethodName);
-
-
                 return resource;
             }
             default:
@@ -176,7 +174,7 @@ public partial class CryptoBoxContract
     private void AddPathForTransactionFeeFreeAllowance(ResourceInfo resourceInfo, Address from)
     {
         var getTransactionFeeFreeAllowancesConfigOutput =
-            State.TokenContractImpl.GetTransactionFeeFreeAllowancesConfig.Call(new Empty());
+            State.TokenContract.GetTransactionFeeFreeAllowancesConfig.Call(new Empty());
         if (getTransactionFeeFreeAllowancesConfigOutput != null)
         {
             foreach (var symbol in getTransactionFeeFreeAllowancesConfigOutput.Value.Select(config => config.Symbol))
@@ -221,7 +219,7 @@ public partial class CryptoBoxContract
     private List<string> GetDelegateeList(Address delegator, Address to, string methodName)
     {
         var delegateeList = new List<string>();
-        var allDelegatees = State.TokenContractImpl.GetTransactionFeeDelegatees.Call(
+        var allDelegatees = State.TokenContract.GetTransactionFeeDelegatees.Call(
             new GetTransactionFeeDelegateesInput
             {
                 DelegatorAddress = delegator
@@ -229,7 +227,7 @@ public partial class CryptoBoxContract
 
         if (allDelegatees == null || allDelegatees.Count == 0)
         {
-            allDelegatees = State.TokenContractImpl.GetTransactionFeeDelegatees.Call(
+            allDelegatees = State.TokenContract.GetTransactionFeeDelegatees.Call(
                 new GetTransactionFeeDelegateesInput
                 {
                     DelegatorAddress = delegator
@@ -250,4 +248,30 @@ public partial class CryptoBoxContract
         if (resourceInfo.WritePaths.Contains(path)) return;
         resourceInfo.WritePaths.Add(path);
     }
+    
+    public override Empty SetManagerForwardCallParallelInfo(SetManagerForwardCallParallelInfoInput input)
+    {
+        Assert(State.Admin.Value.Equals(Context.Sender), "No permission.");
+        Assert(input.ContractAddress != null, "Invalid input.");
+        Assert(!string.IsNullOrWhiteSpace(input.MethodName), "Invalid input.");
+        if (State.ConfigurationContract.Value == null)
+        {
+            State.ConfigurationContract.Value =
+                Context.GetContractAddressByName(SmartContractConstants.ConfigurationContractSystemName);
+        }
+        State.ManagerForwardCallParallelMap[input.ContractAddress][input.MethodName] = input.IsParallel;
+        return new Empty();
+    }
+
+    public override GetManagerForwardCallParallelInfoOutput GetManagerForwardCallParallelInfo(
+        GetManagerForwardCallParallelInfoInput input)
+    {
+        return new GetManagerForwardCallParallelInfoOutput
+        {
+            ContractAddress = input.ContractAddress,
+            MethodName = input.MethodName,
+            IsParallel = State.ManagerForwardCallParallelMap[input.ContractAddress][input.MethodName]
+        };
+    }
+    
 }

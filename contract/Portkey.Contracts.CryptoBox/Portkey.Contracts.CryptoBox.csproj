@@ -57,9 +57,5 @@
             <Link>Protobuf\Proto\reference\acs2.proto</Link>
         </ContractBase>
     </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="AElf.Contracts.MultiToken" Version="1.6.0" />
-    </ItemGroup>
-
-
+  
 </Project>

@@ -69,9 +69,6 @@
       <Link>Protobuf\Proto\reference\acs2.proto</Link>
     </ContractBase>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="AElf.Contracts.MultiToken" Version="1.6.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\contract\Portkey.Contracts.CryptoBox\Portkey.Contracts.CryptoBox.csproj" />
