@@ -28,6 +28,8 @@ namespace Portkey.Contracts.CryptoBox
             State.CryptoBoxMaxCount.Value = input.MaxCount;
             State.TokenContract.Value =
                 Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
+            State.ConfigurationContract.Value =
+                Context.GetContractAddressByName(SmartContractConstants.ConfigurationContractSystemName);
             State.Initialized.Value = true;
             return new Empty();
         }

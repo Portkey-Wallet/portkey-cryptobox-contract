@@ -6,6 +6,7 @@ syntax = "proto3";
 import "aelf/core.proto";
 import "aelf/options.proto";
 import "acs12.proto";
+import "acs2.proto";
 
 import "google/protobuf/empty.proto";
 
@@ -15,6 +16,7 @@ service CryptoBoxContract {
 
   option (aelf.csharp_state) = "Portkey.Contracts.CryptoBox.CryptoBoxContractState";
   option (aelf.base) = "acs12.proto";
+  option (aelf.base) = "acs2.proto";
 
   rpc Initialize(InitializeInput) returns (google.protobuf.Empty){}
 
