@@ -147,7 +147,7 @@ namespace Portkey.Contracts.CryptoBox
             Assert(!string.IsNullOrEmpty(input.CryptoBoxId), "CryptoBoxId should not be null.");
             var cryptoBox = State.CryptoBoxInfoMap[input.CryptoBoxId];
             Assert(cryptoBox != null, "CryptoBox not exists.");
-            Assert(cryptoBox?.ExpirationTime < Context.CurrentBlockTime.Seconds * 1000, "CryptoBox not expired.");
+            // Assert(cryptoBox?.ExpirationTime < Context.CurrentBlockTime.Seconds * 1000, "CryptoBox not expired.");
             var virtualAddressHash = HashHelper.ComputeFrom(input.CryptoBoxId);
             var message =
                 $"{cryptoBox.CryptoBoxId}-{input.Amount}";
